@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119040232</name>
+          <description>Overlay of ISS019.ESC1.119040232, located at or near Tasmania, Australia and Indian Ocean, taken on </description>
+          <LookAt>
+            <longitude>147.5200</longitude>
+            <latitude>-42.9800</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119040232/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-42.3754657442683</north>
+            <south>-43.5845342557317</south>
+            <east>148.756308966634</east>
+            <west>146.283691033366</west>
+            <rotation>147.77</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

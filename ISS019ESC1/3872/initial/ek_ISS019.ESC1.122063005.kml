@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122063005</name>
+          <description>Overlay of ISS019.ESC1.122063005, located at or near Kenya, Somalia and Ethiopia, taken on </description>
+          <LookAt>
+            <longitude>41.6000</longitude>
+            <latitude>3.7000</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122063005/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>3.86426047798579</north>
+            <south>3.53573952201421</south>
+            <east>41.8462976955767</east>
+            <west>41.3537023044233</west>
+            <rotation>128.44</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

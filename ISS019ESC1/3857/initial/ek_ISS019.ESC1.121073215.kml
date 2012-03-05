@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121073215</name>
+          <description>Overlay of ISS019.ESC1.121073215, located at or near Chad, taken on </description>
+          <LookAt>
+            <longitude>18.5300</longitude>
+            <latitude>19.6300</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121073215/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>19.7947096452759</north>
+            <south>19.4652903547241</south>
+            <east>18.7916649132779</east>
+            <west>18.2683350867221</west>
+            <rotation>131.16</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

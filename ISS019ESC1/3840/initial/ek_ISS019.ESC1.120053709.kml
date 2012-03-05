@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120053709</name>
+          <description>Overlay of ISS019.ESC1.120053709, located at or near Oman and Arabian Sea, taken on </description>
+          <LookAt>
+            <longitude>55.5200</longitude>
+            <latitude>17.8500</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120053709/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>18.4442483247886</north>
+            <south>17.2557516752114</south>
+            <east>56.4541367131342</east>
+            <west>54.5858632868658</west>
+            <rotation>130.65</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

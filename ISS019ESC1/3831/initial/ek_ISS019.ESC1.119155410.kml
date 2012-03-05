@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119155410</name>
+          <description>Overlay of ISS019.ESC1.119155410, located at or near Mexico and Pacific Ocean, taken on </description>
+          <LookAt>
+            <longitude>-93.6300</longitude>
+            <latitude>16.0300</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119155410/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>16.6238889909566</north>
+            <south>15.4361110090434</south>
+            <east>-92.7054188351098</east>
+            <west>-94.5545811648902</west>
+            <rotation>130.18</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

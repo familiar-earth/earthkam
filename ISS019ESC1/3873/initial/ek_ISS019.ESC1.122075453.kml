@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122075453</name>
+          <description>Overlay of ISS019.ESC1.122075453, located at or near Algeria, taken on </description>
+          <LookAt>
+            <longitude>2.5500</longitude>
+            <latitude>23.8900</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122075453/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>24.0550240623789</north>
+            <south>23.7249759376211</south>
+            <east>2.82004214931419</east>
+            <west>2.2799578506858</west>
+            <rotation>132.68</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

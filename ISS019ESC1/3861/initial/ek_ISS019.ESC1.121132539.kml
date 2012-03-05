@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121132539</name>
+          <description>Overlay of ISS019.ESC1.121132539, located at or near British Columbia, Canada, taken on </description>
+          <LookAt>
+            <longitude>-121.5600</longitude>
+            <latitude>49.3800</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121132539/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>49.5472249821004</north>
+            <south>49.2127750178996</south>
+            <east>-121.175721598509</east>
+            <west>-121.944278401491</west>
+            <rotation>161.8</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

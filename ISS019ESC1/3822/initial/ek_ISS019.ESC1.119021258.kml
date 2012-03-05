@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119021258</name>
+          <description>Overlay of ISS019.ESC1.119021258, located at or near Sulu Sea, taken on </description>
+          <LookAt>
+            <longitude>121.3600</longitude>
+            <latitude>8.6400</latitude>
+            <range>355000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119021258/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>9.23276607273134</north>
+            <south>8.04723392726866</south>
+            <east>122.257105842373</east>
+            <west>120.462894157627</west>
+            <rotation>128.86</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121042512</name>
+          <description>Overlay of ISS019.ESC1.121042512, located at or near Iran, taken on </description>
+          <LookAt>
+            <longitude>54.0100</longitude>
+            <latitude>31.1300</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121042512/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>31.2957427300431</north>
+            <south>30.9642572699569</south>
+            <east>54.2997013676895</east>
+            <west>53.7202986323105</west>
+            <rotation>136.36</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

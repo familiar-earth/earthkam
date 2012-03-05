@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121193013</name>
+          <description>Overlay of ISS019.ESC1.121193013, located at or near Russia, taken on </description>
+          <LookAt>
+            <longitude>137.0600</longitude>
+            <latitude>50.8700</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121193013/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>51.0371800653714</north>
+            <south>50.7028199346286</south>
+            <east>137.456358736403</east>
+            <west>136.663641263597</west>
+            <rotation>168.47</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

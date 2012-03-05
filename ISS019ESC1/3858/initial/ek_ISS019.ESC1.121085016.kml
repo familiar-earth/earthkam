@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121085016</name>
+          <description>Overlay of ISS019.ESC1.121085016, located at or near Newfoundland, Canada and Atlantic Ocean, taken on </description>
+          <LookAt>
+            <longitude>-56.4000</longitude>
+            <latitude>50.3000</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121085016/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>50.4671800653714</north>
+            <south>50.1328199346286</south>
+            <east>-56.0084100071709</east>
+            <west>-56.7915899928291</west>
+            <rotation>165.51</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

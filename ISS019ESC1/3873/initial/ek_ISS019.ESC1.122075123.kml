@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122075123</name>
+          <description>Overlay of ISS019.ESC1.122075123, located at or near Atlantic Ocean and Morocco, taken on </description>
+          <LookAt>
+            <longitude>-7.8700</longitude>
+            <latitude>33.7600</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122075123/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>33.9258325635011</north>
+            <south>33.5941674364989</south>
+            <east>-7.57161056343577</east>
+            <west>-8.16838943656423</west>
+            <rotation>138.15</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121055126</name>
+          <description>Overlay of ISS019.ESC1.121055126, located at or near Italy, taken on </description>
+          <LookAt>
+            <longitude>11.2500</longitude>
+            <latitude>43.9000</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121055126/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>44.0667758148103</north>
+            <south>43.7332241851897</south>
+            <east>11.5963363584036</east>
+            <west>10.9036636415964</west>
+            <rotation>149.18</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

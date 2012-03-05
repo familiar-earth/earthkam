@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120144339</name>
+          <description>Overlay of ISS019.ESC1.120144339, located at or near Gulf of Mexico, taken on </description>
+          <LookAt>
+            <longitude>-90.7200</longitude>
+            <latitude>25.4400</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120144339/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>25.605203729295</north>
+            <south>25.274796270705</south>
+            <east>-90.4462339919342</east>
+            <west>-90.9937660080658</west>
+            <rotation>133.34</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

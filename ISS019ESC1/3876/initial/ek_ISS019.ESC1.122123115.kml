@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122123115</name>
+          <description>Overlay of ISS019.ESC1.122123115, located at or near Atlantic Ocean, taken on </description>
+          <LookAt>
+            <longitude>-62.6300</longitude>
+            <latitude>18.5700</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122123115/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>18.7347545620049</north>
+            <south>18.4052454379951</south>
+            <east>-62.3699586393249</east>
+            <west>-62.8900413606751</west>
+            <rotation>130.85</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

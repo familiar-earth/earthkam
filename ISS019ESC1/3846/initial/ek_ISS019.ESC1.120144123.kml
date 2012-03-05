@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120144123</name>
+          <description>Overlay of ISS019.ESC1.120144123, located at or near Texas, USA, taken on </description>
+          <LookAt>
+            <longitude>-97.3200</longitude>
+            <latitude>31.7700</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120144123/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>31.9357427300431</north>
+            <south>31.6042572699569</south>
+            <east>-97.0282599615028</east>
+            <west>-97.6117400384971</west>
+            <rotation>136.77</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

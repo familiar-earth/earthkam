@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122031840</name>
+          <description>Overlay of ISS019.ESC1.122031840, located at or near Pakistan, taken on </description>
+          <LookAt>
+            <longitude>67.5300</longitude>
+            <latitude>28.8200</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122031840/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>28.9855630631271</north>
+            <south>28.6544369368729</south>
+            <east>67.8127340306239</east>
+            <west>67.2472659693761</west>
+            <rotation>135.01</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

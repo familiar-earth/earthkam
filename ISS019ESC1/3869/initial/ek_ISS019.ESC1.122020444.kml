@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122020444</name>
+          <description>Overlay of ISS019.ESC1.122020444, located at or near Northern Territory, Australia, taken on </description>
+          <LookAt>
+            <longitude>132.7000</longitude>
+            <latitude>-24.2100</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122020444/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-24.0440776030409</north>
+            <south>-24.3759223969591</south>
+            <east>132.972193467655</east>
+            <west>132.427806532345</west>
+            <rotation>132.81</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

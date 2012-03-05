@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.118171744</name>
+          <description>Overlay of ISS019.ESC1.118171744, located at or near Argentina, taken on </description>
+          <LookAt>
+            <longitude>-65.0000</longitude>
+            <latitude>-32.9900</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118171744/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-32.3894184164211</north>
+            <south>-33.5905815835789</south>
+            <east>-63.928721797</east>
+            <west>-66.071278203</west>
+            <rotation>137.6</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

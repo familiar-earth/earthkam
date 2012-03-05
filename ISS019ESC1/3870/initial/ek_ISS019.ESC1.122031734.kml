@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122031734</name>
+          <description>Overlay of ISS019.ESC1.122031734, located at or near Afghanistan, taken on </description>
+          <LookAt>
+            <longitude>64.1700</longitude>
+            <latitude>31.8800</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122031734/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>32.0458325635011</north>
+            <south>31.7141674364989</south>
+            <east>64.4621936337729</east>
+            <west>63.8778063662271</west>
+            <rotation>136.85</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

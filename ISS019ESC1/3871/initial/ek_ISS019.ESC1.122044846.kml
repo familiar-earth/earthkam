@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122044846</name>
+          <description>Overlay of ISS019.ESC1.122044846, located at or near Iraq, taken on </description>
+          <LookAt>
+            <longitude>39.9300</longitude>
+            <latitude>32.7000</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122044846/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>32.8657876467721</north>
+            <south>32.5342123532279</south>
+            <east>40.2247947624364</east>
+            <west>39.6352052375636</west>
+            <rotation>137.4</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122015629</name>
+          <description>Overlay of ISS019.ESC1.122015629, located at or near Indonesia, taken on </description>
+          <LookAt>
+            <longitude>113.4100</longitude>
+            <latitude>0.8500</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122015629/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>1.01448506163084</north>
+            <south>0.685514938369161</south>
+            <east>113.656125840915</east>
+            <west>113.163874159085</west>
+            <rotation>128.35</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

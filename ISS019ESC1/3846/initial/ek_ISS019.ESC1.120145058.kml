@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120145058</name>
+          <description>Overlay of ISS019.ESC1.120145058, located at or near Colombia, taken on </description>
+          <LookAt>
+            <longitude>-73.2600</longitude>
+            <latitude>3.3700</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120145058/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>3.53426047798579</north>
+            <south>3.20573952201421</south>
+            <east>-73.0138349129786</east>
+            <west>-73.5061650870214</west>
+            <rotation>128.42</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

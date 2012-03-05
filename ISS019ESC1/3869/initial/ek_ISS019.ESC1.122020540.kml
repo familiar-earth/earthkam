@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122020540</name>
+          <description>Overlay of ISS019.ESC1.122020540, located at or near South Australia, Australia, taken on </description>
+          <LookAt>
+            <longitude>135.2100</longitude>
+            <latitude>-26.8400</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122020540/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-26.6738081026668</north>
+            <south>-27.0061918973332</south>
+            <east>135.488629212499</east>
+            <west>134.931370787501</west>
+            <rotation>133.98</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

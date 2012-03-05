@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119035528</name>
+          <description>Overlay of ISS019.ESC1.119035528, located at or near Western Australia, Australia, taken on </description>
+          <LookAt>
+            <longitude>123.5400</longitude>
+            <latitude>-24.8500</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119035528/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-24.2526075041807</north>
+            <south>-25.4473924958193</south>
+            <east>124.525042745442</east>
+            <west>122.554957254558</west>
+            <rotation>133.08</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

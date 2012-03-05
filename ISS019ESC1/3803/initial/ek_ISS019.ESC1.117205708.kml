@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.117205708</name>
+          <description>Overlay of ISS019.ESC1.117205708, located at or near Russia and Sea of Okhotsk, taken on </description>
+          <LookAt>
+            <longitude>143.5000</longitude>
+            <latitude>50.2600</latitude>
+            <range>363000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/117205708/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>50.8650732564798</north>
+            <south>49.6549267435202</south>
+            <east>144.915888827798</east>
+            <west>142.084111172202</west>
+            <rotation>165.3</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

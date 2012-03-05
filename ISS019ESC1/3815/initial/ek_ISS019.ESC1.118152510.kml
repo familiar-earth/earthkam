@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.118152510</name>
+          <description>Overlay of ISS019.ESC1.118152510, located at or near Texas, USA, Louisiana, USA and Gulf of Mexico, taken on </description>
+          <LookAt>
+            <longitude>-94.0600</longitude>
+            <latitude>29.9800</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118152510/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>30.5776170794643</north>
+            <south>29.3823829205357</south>
+            <east>-93.0277313100488</east>
+            <west>-95.0922686899512</west>
+            <rotation>135.66</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

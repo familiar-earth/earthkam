@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121134810</name>
+          <description>Overlay of ISS019.ESC1.121134810, located at or near Brazil, taken on </description>
+          <LookAt>
+            <longitude>-52.2000</longitude>
+            <latitude>-10.6900</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121134810/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-10.5252454379951</north>
+            <south>-10.8547545620049</south>
+            <east>-51.9490979184868</east>
+            <west>-52.4509020815132</west>
+            <rotation>129.14</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

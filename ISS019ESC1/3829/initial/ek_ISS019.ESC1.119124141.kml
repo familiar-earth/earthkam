@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119124141</name>
+          <description>Overlay of ISS019.ESC1.119124141, located at or near Pennsylvania, USA and New York, USA, taken on </description>
+          <LookAt>
+            <longitude>-76.0300</longitude>
+            <latitude>41.6500</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119124141/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>42.2521985858232</north>
+            <south>41.0478014141768</south>
+            <east>-74.8242934508292</east>
+            <west>-77.2357065491708</west>
+            <rotation>145.92</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

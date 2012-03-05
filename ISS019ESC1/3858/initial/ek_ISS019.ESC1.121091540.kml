@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121091540</name>
+          <description>Overlay of ISS019.ESC1.121091540, located at or near Angola and Zambia, taken on </description>
+          <LookAt>
+            <longitude>22.4300</longitude>
+            <latitude>-16.9800</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121091540/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-16.8150208543501</north>
+            <south>-17.1449791456499</south>
+            <east>22.6880668768304</east>
+            <west>22.1719331231696</west>
+            <rotation>130.41</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120070021</name>
+          <description>Overlay of ISS019.ESC1.120070021, located at or near Mediterranean Sea, taken on </description>
+          <LookAt>
+            <longitude>6.9000</longitude>
+            <latitude>40.4600</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120070021/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>41.061120584327</north>
+            <south>39.858879415673</south>
+            <east>8.08208461053799</east>
+            <west>5.71791538946201</west>
+            <rotation>144.44</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

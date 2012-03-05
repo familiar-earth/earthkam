@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121014317</name>
+          <description>Overlay of ISS019.ESC1.121014317, located at or near New South Wales, Australia and Tasman Sea, taken on </description>
+          <LookAt>
+            <longitude>152.6800</longitude>
+            <latitude>-31.7500</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121014317/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-31.5834936855638</north>
+            <south>-31.9165063144362</south>
+            <east>152.972997528173</east>
+            <west>152.387002471827</west>
+            <rotation>136.75</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

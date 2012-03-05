@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120113313</name>
+          <description>Overlay of ISS019.ESC1.120113313, located at or near Maine, USA and Atlantic Ocean, taken on </description>
+          <LookAt>
+            <longitude>-69.8000</longitude>
+            <latitude>44.0100</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120113313/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>44.1768207315393</north>
+            <south>43.8431792684607</south>
+            <east>-69.4528970879817</east>
+            <west>-70.1471029120183</west>
+            <rotation>149.36</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

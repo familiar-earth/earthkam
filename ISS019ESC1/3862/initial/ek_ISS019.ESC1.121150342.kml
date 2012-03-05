@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121150342</name>
+          <description>Overlay of ISS019.ESC1.121150342, located at or near Nevada, USA, taken on </description>
+          <LookAt>
+            <longitude>-115.7300</longitude>
+            <latitude>36.6200</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121150342/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>36.7861918973332</north>
+            <south>36.4538081026668</south>
+            <east>-115.420246132219</east>
+            <west>-116.039753867781</west>
+            <rotation>140.49</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

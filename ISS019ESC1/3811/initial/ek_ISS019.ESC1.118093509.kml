@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.118093509</name>
+          <description>Overlay of ISS019.ESC1.118093509, located at or near Indian Ocean, taken on </description>
+          <LookAt>
+            <longitude>37.2700</longitude>
+            <latitude>-18.6100</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118093509/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-18.0157516752114</north>
+            <south>-19.2042483247886</south>
+            <east>38.208179211965</east>
+            <west>36.331820788035</west>
+            <rotation>130.86</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120035550</name>
+          <description>Overlay of ISS019.ESC1.120035550, located at or near Russia and Caspian Sea, taken on </description>
+          <LookAt>
+            <longitude>47.2000</longitude>
+            <latitude>43.7000</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120035550/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>44.3028274200294</north>
+            <south>43.0971725799707</south>
+            <east>48.4474531540093</east>
+            <west>45.9525468459907</west>
+            <rotation>148.86</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>
