@@ -32,16 +32,16 @@ sub distance {
 
 	# now the gory calculations. Yes, there be blood everywhere! The two times is so that we know for absolutely sure that calc_lambda will recurse at least once
 	my @lambda_result = calc_lambda($reduced_lat, $reduced_nlat, $flattening, $longdiff);
-	
+
 	if (scalar(@lambda_result) == 1)
 	{
 		my $radius_earth = RADIUS_EARTH;
 		my $pi = atan2(1, 1) * 4;
 		return great_circle($lat, $lon, $nlat, $nlon);
 	}
-	
+
 	my ($lambda, $cos_sq_alpha, $cos_2sigma_m, $sin_sigma, $sigma, $cos_sigma) = @lambda_result;
-	
+
 	my $u_sq = $cos_sq_alpha * ($major_axis**2 - $minor_axis**2) / $minor_axis**2;
 	my $A = 1 + $u_sq / 16384 * (4096 + $u_sq * (-768 + $u_sq * (320 - 175 * $u_sq)));
 	my $B = $u_sq / 1024 * (256 + $u_sq * (-128 + $u_sq * (74 - 47 * $u_sq)));
@@ -50,11 +50,11 @@ sub distance {
 	return $distance;
 }
 
-# a little iterative helper function for the great circle distance. Once the value "lambda" is 10**-12 percent from the last one, it has converged to a value. 
+# a little iterative helper function for the great circle distance. Once the value "lambda" is 10**-12 percent from the last one, it has converged to a value.
 sub calc_lambda {
 	my ($u, $v, $f, $longdiff) = @_;
 	my $lambda = $longdiff;
-	my $last_result = 2 + $longdiff; # so that there will be an initial calculation no matter what. Otherwise, if the two latitudes are the same when doing these calculations, then there will be a distance of 0 returned. 
+	my $last_result = 2 + $longdiff; # so that there will be an initial calculation no matter what. Otherwise, if the two latitudes are the same when doing these calculations, then there will be a distance of 0 returned.
 	my ($cos_sq_alpha, $cos_2sigma_m, $sin_sigma, $sigma, $cos_sigma); # variables that will be returned by the calc_lambda function
 	while (abs($lambda - $last_result) > 10**-12)
 	{
@@ -69,19 +69,19 @@ sub calc_lambda {
 	return ($lambda, $cos_sq_alpha, $cos_2sigma_m, $sin_sigma, $sigma, $cos_sigma);
 }
 
-# helper function to calc_lambda so that calc_lambda can iterate. This part iterates the lambda value so that 
+# helper function to calc_lambda so that calc_lambda can iterate. This part iterates the lambda value so that
 sub calc_lambda_helper {
 	my ($u, $v, $f, $lambda, $longdiff) = @_;
 	my $sin_sigma = sqrt((cos($v) * sin($lambda))**2 + (cos($u) * sin($v) - sin($u) * cos($v) * cos($lambda))**2);
 	my $cos_sigma = sin($u) * sin($v) + cos($u) * cos($v) * cos($lambda);
 	my $sigma = atan2($sin_sigma, $cos_sigma);
-	
-	# We don't want any division by zero. So if there is any division by zero at all, then we will resort to the Great Circle Distance 
+
+	# We don't want any division by zero. So if there is any division by zero at all, then we will resort to the Great Circle Distance
 	if ($sin_sigma == 0)
 	{
 		return 0;
 	}
-	
+
 	my $sin_alpha = cos($u) * cos($v) * sin($lambda) / $sin_sigma;
 	my $cos_sq_alpha = 1 - $sin_alpha**2;
 	my $cos_2sigma_m = $cos_sigma - 2 * sin($u) * sin($v) / $cos_sq_alpha;
@@ -90,7 +90,8 @@ sub calc_lambda_helper {
 	return ($lambda, $cos_sq_alpha, $cos_2sigma_m, $sin_sigma, $sigma, $cos_sigma);
 }
 
-# To model the Earth as a sphere instead and use the great circle distance formula instead of the ellipsoid model, use the predefined function:
+# To model the Earth as a sphere instead and use the great circle distance
+# formula instead of the ellipsoid model, use the predefined function:
 # great_circle_distance($lon, pi/2 - $lat, $nlon, pi/2 - $nlat, $radius_of_earth);
 # Since the formula thinks that the north pole and not the equator is 0 degrees, the pi/2 - $ lat is necessary
 
@@ -111,7 +112,7 @@ sub calc_lambda_helper {
 
 sub distance_x1 {
     my($lon, $lat, $nlon, $nlat) = @_;
-	if ($nlon > $lon) 
+	if ($nlon > $lon)
 	{
 		return distance($lat, $lon, $lat, $nlon);
 	}
@@ -119,7 +120,7 @@ sub distance_x1 {
 	{
 		return -distance($lat, $lon, $lat, $nlon);
 	}
-	else 
+	else
 	{
 		return 0;
 	}
@@ -127,7 +128,7 @@ sub distance_x1 {
 
 sub distance_x2 {
     my($lon, $lat, $nlon, $nlat) = @_;
-	if ($nlon > $lon) 
+	if ($nlon > $lon)
 	{
 		return distance($nlat, $lon, $nlat, $nlon);
 	}
@@ -135,7 +136,7 @@ sub distance_x2 {
 	{
 		return -distance($nlat, $lon, $nlat, $nlon);
 	}
-	else 
+	else
 	{
 		return 0;
 	}
@@ -143,7 +144,7 @@ sub distance_x2 {
 
 sub distance_y {
     my($lon, $lat, $nlon, $nlat) = @_;
-	if ($nlat > $lat) 
+	if ($nlat > $lat)
 	{
 		return distance($lat, $lon, $nlat, $lon);
 	}
@@ -151,7 +152,7 @@ sub distance_y {
 	{
 		return -distance($lat, $lon, $nlat, $lon);
 	}
-	else 
+	else
 	{
 		return 0;
 	}

@@ -1,24 +1,55 @@
 #!/usr/bin/perl
+########################################################################
+# Co-Author(s):
+#   Stephanie Tsuei
+#   Alex Fandrianto
+#   Carson McNeil
+#   David Choy
+#   Allen Eubank
+#   John Uba
+### Description ########################################################
+# FILE: updateKMLFile.pl
+#       TODO add a descript of this file (one to two sentences)
+#            called by KMLupload.cgi
+# @params:
+#     ARGV[0] = $orbitPath: The location to the directory
+#                             of the KML files to be updated.
+#     ARGV[1] = $CORRECT:   The type of correction to apply to the
+#                              KML files.
+#
+### Imports ############################################################
 use strict;
-
-# Useful for create_automated_orbit.pl when reading old and creating the new .kml files
-# Note that throughout this file, dScale and dTranslate will be in km, so the final reading involves a change
-
+# TODO (remove extraneous comment?)
+# Useful for create_automated_orbit.pl when reading old and creating the
+# new .kml files note that throughout this file, dScale and dTranslate
+# will be in km, so the final reading involves a change
 require "stat_functions.pl"; # for avg
 require "distance_calc.pl"; # for distances
-require "lat_long_box_changes.pl"; #for the conversions to and from the latlonbox
+require "latLongBoxChanges.pl"; #for the conversions to and from the latlonbox
 use Matrix;
-
+### Constants ##########################################################
 use constants 'PI', 'RADIUS_EARTH';
-# some constants
 my $pi = atan2(1, 1) * 4;
 my $radius_earth = RADIUS_EARTH; # Wikipedia
 my $circ_earth = 2 *$pi * $radius_earth;
-
 my $orbitPath = $ARGV[0];
-my $CORRECT = 'constant'; # The general correction scheme is to apply a constant offset, averaging all those the differences in manual vs initial corrections. Requires 1 corrected image to perform.
-if (defined $ARGV[1])
-{
+my $initialPath = $orbitPath . "initial/";
+my $completedPath = $orbitPath . "completed/";
+my $automatedPath = $orbitPath . "automated/";
+my $CORRECT = 'constant';
+
+# TODO (another extraneous comment???)
+# The general correction scheme is to apply a constant offset, averaging
+# all those the differences in manual vs initial corrections. Requires 1
+# corrected image to perform.
+if (defined $ARGV[1]) {
+
+  # TODO
+  #   Restructure?
+  #   How, why, and when are these different corrections used and called?
+  #   These should belong in there in files (they seem to be their own classes)
+  #   as to increase cohesion.
+
   # 'constant': Uses the ellipsoidal model (for translations) to help it look better than a constant offset application only, the others do not use this model since they've already attempted to model it.
   # '0': Skip the correction process and just copy over the initial files to the automated. (That's a zero not a capital 'o', by the way)
   # 'lookAt': allow the application of no corrections, just copy over. Useful for when manually correcting and wanting to update LookAt only
@@ -29,72 +60,74 @@ if (defined $ARGV[1])
   # 'sinusoidal': application of sinusoidal/sawtooth corrections
   # 'copyCorrected': copy over corrected images to automated folder
   $CORRECT = $ARGV[1];
-  
+
   # if sinusoidal correction, must be direct correction
   if ($CORRECT eq 'sinusoidal') {
     $CORRECT = 'sinusoidalDirect';
   }
 
-  if ($CORRECT eq 'constantDirect')
-  { die("What? Constant direct? Are you stupid/crazy? [It means every image will be put in the exact same location...]\n"); }
-  if ($CORRECT ne 'constant' && $CORRECT ne '0' && $CORRECT ne 'lookAt' && $CORRECT ne 'linear' && $CORRECT ne 'linearDirect' && $CORRECT ne 'quadratic' && $CORRECT ne 'quadraticDirect' && $CORRECT ne 'sinusoidalDirect' && $CORRECT ne 'copyCorrected')
-  { die("Invalid correction type: $CORRECT was inputted.\n"); }
+  if ($CORRECT eq 'constantDirect') {
+    die("What? Constant direct? Are you stupid/crazy? [It means every ".
+      "image will be put in the exact same location...]\n");
+  }
+  if ($CORRECT ne 'constant' && $CORRECT ne '0' && $CORRECT ne 'lookAt'
+      && $CORRECT ne 'linear' && $CORRECT ne 'linearDirect'
+      && $CORRECT ne 'quadratic' && $CORRECT ne 'quadraticDirect'
+      && $CORRECT ne 'sinusoidalDirect' && $CORRECT ne 'copyCorrected') {
+        die("Invalid correction type: $CORRECT was inputted.\n"); }
 }
 
+# TODO (remove extraneous comment?)
 # The folders the .kml files should always be in are the 'initial' 'completed' and 'automated' folders.
 # Initial is for the raw .kml files. All uncorrected .kml files go here.
 # Completed is for the manually corrected .kml files.
-# Automated will be the folder where all the automatically generated files appear. Note: The completed folder files are not simply copied over. Corrections are applied to them too.
-  # As a result, if more than the # of images required are manually corrected, then a correction will not keep those images in the same place.
-  # Constant/Averaged requires 1
-  # Linear requires 2
-  # Quadratic requires 3
-my $initialPath = $orbitPath . "initial/";
-my $completedPath = $orbitPath . "completed/";
-my $automatedPath = $orbitPath . "automated/";
+# Automated will be the folder where all the automatically generated files appear.
+# Note: The completed folder files are not simply copied over.
+# Corrections are applied to them too.
+#
+# As a result, if more than the # of images required are manually corrected,
+# then a correction will not keep those images in the same place.
+#   Constant/Averaged requires 1
+#   Linear requires 2
+#   Quadratic requires 3
+#   Sinusoidal requires 4 or more
 
+# TODO Remove extraneous print? Seems to be for testing purposes
 print "$initialPath \n";
-
-#if (! -d $initialPath)
-#{
+#if (! -d $initialPath) {
 #  die("There are no initial images, so there is nothing to do.\n");
 #}
-if (! -d $completedPath)
-{
+if (! -d $completedPath) {
   `mkdir -p $completedPath`;
-  unless ($CORRECT eq '0')
-  {
-    die "Warning: There are no completed images, so there are no offsets, corrections should NOT occur.\n";
+  unless ($CORRECT eq '0') {
+    die "Warning: There are no completed images, ".
+        "so there are no offsets, corrections should NOT occur.\n";
   }
 }
-if (! -d $automatedPath)
-{
+if (! -d $automatedPath) {
   `mkdir -p -m 770 $automatedPath`;
 }
 
-if ($CORRECT eq 'copyCorrected')
-{
+if ($CORRECT eq 'copyCorrected') {
   print "Copying over corrected files to the automated folder\n";
   my @correctedFiles = <$completedPath*.kml>;
-  foreach my $file (@correctedFiles)
-  {
+  foreach my $file (@correctedFiles) {
     my $automatedFilepath = $file . "";
     $automatedFilepath =~ s/\/completed\//\/automated\//;
     `cp -f $file $automatedFilepath`;
   }
   exit;
 }
-if ($CORRECT eq '0')
-{
+
+# TODO print statement for testing purposes?
+if ($CORRECT eq '0') {
   my @initialFiles = <$initialPath*.kml>;
-  foreach my $file (@initialFiles)
-  {
+  foreach my $file (@initialFiles) {
     my @data = getLatLonBox($file);
     printKML($file, \@data);
   }
 }
-else
-{
+else {
   # Actually apply a correction
 
   # X is Lon, Y is Lat
@@ -103,46 +136,59 @@ else
   my @dRot = ();
   my @dScaleX = ();
   my @dScaleY = ();
-
   my @correctedFiles = <$completedPath*.kml>;
-  if (scalar(@correctedFiles) == 0)
-  {
-    die ("You need a corrected image in $completedPath. Alternatively, skip updateKMLFile by running with '0' as the second argument\n");
+
+  if (scalar(@correctedFiles) == 0) {
+    die ("You need a corrected image in $completedPath. Alternatively, ".
+        "skip updateKMLFile by running with '0' as the second argument\n");
   }
-  print "Reading " . scalar(@correctedFiles) . " corrected files from " . $completedPath . "\n";
-  foreach my $file (@correctedFiles)
-  {
-    if ($CORRECT ne 'lookAt')
-    {
-      #print "Reading corrected file: $file\n";
+
+  # TODO Another testing statement?
+  print "Reading " . scalar(@correctedFiles) . " corrected files from ".
+        $completedPath . "\n";
+
+  # TODO rename $file to $corFile
+  foreach my $corFile (@correctedFiles) {
+    if ($CORRECT ne 'lookAt') {
+      # TODO remove test statement?
+      # print "Reading corrected file: $file\n";
       # get the initial filename by using the search replace, Perl syntax
       # replace '/completed/' with '/initial/'
-      my $initialFile = $file . "";
+      my $initialFile = $corFile . "";
       $initialFile =~ s/\/completed\//\/initial\//;
-      
+
       # get the lat lon boxes
-      my @latLonBoxCorrected = getLatLonBox($file);
+      my @latLonBoxCorrected = getLatLonBox($corFile);
       my @latLonBoxInitial = getLatLonBox($initialFile);
 
       # change from latlonbox to the alt-form: four vectors, center, and rotation
-      my @vectorBoxCorrected = changefromlatlonbox(@latLonBoxCorrected);
-      my @vectorBoxInitial = changefromlatlonbox(@latLonBoxInitial);
+      # TODO test this functio, see why we need vectors
+      my @vectorBoxCorrected = changeFromLatLonBox(@latLonBoxCorrected);
+      my @vectorBoxInitial = changeFromLatLonBox(@latLonBoxInitial);
 
       # compare centers and push the change into the array
       my @center1 = @{ $vectorBoxInitial[1] };
       my @center2 = @{ $vectorBoxCorrected[1] };
-      
-      if (index($CORRECT, 'Direct') == -1)
-      {
-        # not applying Direct corrections. Calculate offsets by comparing against the initial files
-        if ($CORRECT eq 'constant')
-        {
-          # put this distance is in km once you're done. Remember to convert back later to degrees. (Ellipsoidal model is called in the distance functions)
+
+
+
+      # TODO here begin the corrections, this is where the code can be
+      #      broken up into pieces.
+      if (index($CORRECT, 'Direct') == -1) {
+
+        # Calculate offsets by comparing against the initial files
+        if ($CORRECT eq 'constant') {
+          # TODO more extraneous comments that should only belong with
+          #      this code.
+
+          # put this distance is in km once you're done.
+          # Remember to convert back later to degrees.
+          # (Ellipsoidal model is called in the distance functions)
           my $x1 = distance_x1(@center1, @center2);
           my $y = distance_y(@center1, @center2); #north-south translation
-          my $x2 = distance_x2(@center1, @center2); 
-          my $x = mean($x1, $x2); #east-west translation. We take the averages of the east-west translation from before and after the north-south translation. 
-          
+          my $x2 = distance_x2(@center1, @center2);
+          my $x = mean($x1, $x2); #east-west translation. We take the averages of the east-west translation from before and after the north-south translation.
+
           # put the center value into array
           push(@dTransX, $x); # $center2 is coordinate of initial, $center1 is corrected
           push(@dTransY, $y);
@@ -151,14 +197,14 @@ else
         {
           # put the center value into array
           push(@dTransX, $center2[0] - $center1[0]);
-          push(@dTransY, $center2[1] - $center1[1]);        
+          push(@dTransY, $center2[1] - $center1[1]);
         }
-        
+
         # put rotation value into array
         my $dRotate = $vectorBoxCorrected[2] - $vectorBoxInitial[2];
         $dRotate = fixRotationValue($dRotate);
         # compare rotations and push the change into the array
-        push(@dRot, $dRotate);        
+        push(@dRot, $dRotate);
       }
       else #applying Direct corrections, so push in the actual values of the corrected files. (don't compare to the initial files)
       {
@@ -167,7 +213,7 @@ else
         push(@dTransY, $center2[1]);
 
         # put rotation value into array
-        push(@dRot, fixRotationValue($vectorBoxCorrected[2]));        
+        push(@dRot, fixRotationValue($vectorBoxCorrected[2]));
       }
 
       # compare the topRight vectors to get the scale change
@@ -181,8 +227,8 @@ else
     else
     {
       # Only updating the lookAt values for the corrected files.
-      my @latLonBoxCorrected = getLatLonBox($file);
-      my $initialFile = $file . "";
+      my @latLonBoxCorrected = getLatLonBox($corFile);
+      my $initialFile = $corFile . "";
       $initialFile =~ s/\/completed\//\/initial\//;
       printKML($initialFile, \@latLonBoxCorrected);
       # Doing this prints the automated file.
@@ -201,7 +247,7 @@ else
     my @dTranslate = (mean(@dTransX), mean(@dTransY));
     my $dRotate = avgRotationValues(@dRot);
     my @dScale = (mean(@dScaleX), mean(@dScaleY));
-    
+
     my @regressionValues = (); # This will be used by the linear and quadratic corrections to store their deviously different values.
     if (index($CORRECT, 'linear') != -1)
     {
@@ -220,13 +266,15 @@ else
     # Now compute the mean changes and apply them to each initial file (except for the complete ones)
     my @initialFiles = <$initialPath*.kml>;
     print "Correcting " . scalar(@initialFiles) . " initial files in " . $initialPath . "\n";
-    foreach my $file (@initialFiles)
+    # TODO renamed file to initFile
+    foreach my $initFile (@initialFiles)
     {
-      #print "Correcting initial file: $file\n";
+      # TODO Remove unneeded print and test statment?
+      #print "Correcting initial file: $initFile\n";
       # apply corrections to the initial files and the automated files will pop-out later
       # We no longer ignore the completed folder
-        # completedImages need to have their lookAt values updated too, so we'll correct those again.
-      applyCorrection(\@dTranslate, $dRotate, \@dScale, $file, \@regressionValues);
+      # completedImages need to have their lookAt values updated too, so we'll correct those again.
+      applyCorrection(\@dTranslate, $dRotate, \@dScale, $initFile, \@regressionValues);
     }
   }
 }
@@ -237,7 +285,7 @@ sub containsString
 {
   my @array = @{ $_[0] };
   my $element = $_[1];
-  
+
   foreach my $item (@array)
   {
     if ($item eq $element)
@@ -280,20 +328,20 @@ sub calcLatLonBox
   # get the centeredData
   # 0 is the distance array (x,y) to the corner (top right)
   # 1 is center point (array, (x,y))
-  # 2 is rotation value 
-  my @centeredData = changefromlatlonbox(@data);  
-  
+  # 2 is rotation value
+  my @centeredData = changeFromLatLonBox(@data);
+
   # Scale: Everyone applies scales the same way
   my @cornerVector = @{ $centeredData[0] };
   $cornerVector[0] *= $dScale[0]; # multiply x value
   $cornerVector[1] *= $dScale[1]; # multiply y value
-  $centeredData[0] = \@cornerVector;  
-  
+  $centeredData[0] = \@cornerVector;
+
   if ($CORRECT eq 'constant')
   {
     # Rotate: The rotation value just goes up by dRotate
     $centeredData[2] += $dRotate;
-    
+
     # Use the great circle distance formula to get back to degrees from km.
     $dTranslate[0] *= 360 / ($circ_earth * cos(deg2rad($centeredData[1]->[1]))); # x translation
     $dTranslate[1] *= 360 / $circ_earth; # y translation
@@ -302,7 +350,7 @@ sub calcLatLonBox
     my @center = @{ $centeredData[1] };
     $center[0] += $dTranslate[0];
     $center[1] += $dTranslate[1];
-    $centeredData[1] = \@center;    
+    $centeredData[1] = \@center;
   }
   else
   {
@@ -311,33 +359,33 @@ sub calcLatLonBox
     if (index($CORRECT, 'linear') != -1)
     {
       # obtain regression data variables
-      my ($dTransX, $dTransY, $dRotation, $dTransXSlope, $dTransYSlope, $dRotateSlope, $avgTime) = @regressionData; 
-      
+      my ($dTransX, $dTransY, $dRotation, $dTransXSlope, $dTransYSlope, $dRotateSlope, $avgTime) = @regressionData;
+
       #rotate
       my $rotationValue = ($dRotation + ($timeValue - $avgTime) * $dRotateSlope);
-      
+
       #translate
       my @center = @{$centeredData[1]};
       my $changeX = $dTransX + ($timeValue - $avgTime) * $dTransXSlope;
       my $changeY = $dTransY + ($timeValue - $avgTime) * $dTransYSlope;
-      
+
       if (index($CORRECT, 'Direct') != -1)
       {
         $centeredData[2] = $rotationValue;
 
         $center[0] = $changeX;
-        $center[1] = $changeY;          
+        $center[1] = $changeY;
       }
       else
       {
         $centeredData[2] += $rotationValue;
 
         $center[0] += $changeX;
-        $center[1] += $changeY;       
+        $center[1] += $changeY;
       }
 
       # store the translation changes
-      $centeredData[1] = \@center;      
+      $centeredData[1] = \@center;
     }
     elsif (index($CORRECT, 'quadratic') != -1)
     {
@@ -345,32 +393,32 @@ sub calcLatLonBox
       my @coeffTransX = @{$regressionData[0]};
       my @coeffTransY = @{$regressionData[1]};
       my @coeffRotate = @{$regressionData[2]};
-      
-      #rotate     
+
+      #rotate
       my $rotationValue = $coeffRotate[0] * $timeValue**2 + $coeffRotate[1] * $timeValue + $coeffRotate[2];
-      
+
       #translate
       my @center = @{ $centeredData[1] };
       my $changeX = $coeffTransX[0] * $timeValue**2 + $coeffTransX[1] * $timeValue + $coeffTransX[2];
       my $changeY = $coeffTransY[0] * $timeValue**2 + $coeffTransY[1] * $timeValue + $coeffTransY[2];
-      
+
       if (index($CORRECT, 'Direct') != -1)
       {
         $centeredData[2] = $rotationValue;
 
         $center[0] = $changeX;
-        $center[1] = $changeY;          
+        $center[1] = $changeY;
       }
       else
       {
         $centeredData[2] += $rotationValue;
 
         $center[0] += $changeX;
-        $center[1] += $changeY;       
+        $center[1] += $changeY;
       }
-      
+
       # store the translation changes
-      $centeredData[1] = \@center;      
+      $centeredData[1] = \@center;
     }
     else
     {
@@ -379,20 +427,20 @@ sub calcLatLonBox
       my @coeffTransX = @{$regressionData[0]};
       my @coeffTransY = @{$regressionData[1]};
       my @coeffRotate = @{$regressionData[2]};
-      
-      #rotate     
+
+      #rotate
       #my $rotationValue = $coeffRotate[0] * $timeValue**2 + $coeffRotate[1] * $timeValue + $coeffRotate[2]; #quadratic
       my $rotationValue = $coeffRotate[0] * sin($coeffRotate[1] * $timeValue) + $coeffRotate[2] * cos($coeffRotate[1] * $timeValue) + $coeffRotate[3] + $coeffRotate[4] * $timeValue; #sinusoidal
-      
+
       #translate
       my @center = @{ $centeredData[1] };
       #my $changeX = $coeffTransX[0] + ($timeValue - $coeffTransX[2]) * $coeffTransX[1]; #linear
       #my $changeX = $coeffTransX[0] * $timeValue**2 + $coeffTransX[1] * $timeValue + $coeffTransX[2]; #quadratic
       #my $changeX = $coeffTransX[0] * sin($coeffTransX[1] * $timeValue) + $coeffTransX[2] * cos($coeffTransX[1] * $timeValue) + $coeffTransX[3] + $coeffTransX[4] * $timeValue; #sinusoidal
       my $changeX = $coeffTransX[0] * (($timeValue-$coeffTransX[2])/$coeffTransX[1] - int(($timeValue-$coeffTransX[2])/$coeffTransX[1])) + $coeffTransX[3]; #sawtooth
-      
+
       my $changeY = $coeffTransY[0] * sin($coeffTransY[1] * $timeValue) + $coeffTransY[2] * cos($coeffTransY[1] * $timeValue) + $coeffTransY[3] + $coeffTransY[4] * $timeValue; #sinusoidal
-      
+
       if (index($CORRECT, 'Direct') != -1)
       {
         # move image to place along regression line, where we calculate it should be
@@ -400,18 +448,18 @@ sub calcLatLonBox
 
         $center[0] = $changeX;
         #$center[0] = $center[0]; # don't change X coordinate at all
-        $center[1] = $changeY;          
+        $center[1] = $changeY;
       }
       else
       {
         $centeredData[2] += $rotationValue;
 
         $center[0] += $changeX;
-        $center[1] += $changeY;       
+        $center[1] += $changeY;
       }
-      
+
       # store the translation changes
-      $centeredData[1] = \@center;    
+      $centeredData[1] = \@center;
     }
   }
 
@@ -430,31 +478,45 @@ sub calcLatLonBox
   return @boxedData;
 }
 
+#
 # This gets you the lat lon box (new or old) from a .kml file
 # Please give a .kml filepath for me to read too, thanks.
 # The returned array gives you a north, south, east, west, and rotation value
+#
+/*
+585    * _shouldShowRights - Determines if the user should be shown the
+586    * about:rights notification. The notification should *not* be shown if
+587    * we've already shown the current version, or if the override pref says to
+588    * never show it. The notification *should* be shown if it's never been seen
+589    * before, if a newer version is available, or if the override pref says to
+590    * always show it.
+591    */
+
+# getLatLonBox
+#   @param string $filePathToKMLFile
+#   - returns an array
+#       with north(0), south(1), east(2), west(3) and rotation(4).
+#
 sub getLatLonBox
 {
   my ($filepath) = @_;
-  
   open (KMLFILE, $filepath) or die "Could not open $filepath";
-  
+
   my $seenNorth = 0;
   my $line = "";
-  until ($seenNorth)
-  {
+  until ($seenNorth) {
     $line = <KMLFILE>;
-    
-    chomp($line); # apparently, they tend to end with \n, so we get rid of it, though we don't have to
-    
-    my $index = index($line, "<north>"); #this is the index we need
-    if ($index != -1)
-    {
+    chomp($line); # get rid of new line at end of this line
+
+    my $index = index($line, "<north>"); # this is the index we need
+    if ($index != -1) {
       $seenNorth = 1; # now we can just read 5 lines of data
     }
   }
 
-  # the next 5 lines of data contain the north (0), south (1), east (2), west (3), and rotation (4) values in that order. 
+  # the next 5 lines of data contain the
+  # north (0), south (1), east (2), west (3), and rotation (4)
+  # values in that order.
   # We are currently on the <north> line
   my @data = ();
   for (my $i = 0; $i < 5; $i++)
@@ -464,14 +526,14 @@ sub getLatLonBox
     $data[$i] = $string;
     $line = <KMLFILE>; #get the next line
   }
-  
-  # If the picture so happens to cross the international date line here (if the eastern side of the picture has coordinates that are less than those on the western side), then we will add 360 degrees to the eastern side for the rest of the correction step
-  if (cross_date_line($data[2], $data[3]))
-  {
+
+  # If the picture so happens to cross the international date line here
+  # (if the eastern side of the picture has coordinates that are less
+  # than those on the western side), then we will add 360 degrees to the
+  # eastern side for the rest of the correction step
+  if (crossDateLine($data[2], $data[3])) {
     $data[2] += 360;
   }
-
-  # We are done with the file.
   close(KMLFILE);
 
   return @data;
@@ -487,28 +549,28 @@ sub getLatLonBox
   # involves subtracting y-intercept from the current value and dividing by the time for the current file.
   # average the individual slopes for the overall slope. compare to the avg
   # apply the slope change after comparing the time to the average
-# avgTranslateX, avgTranslateY, avgRotate, avgScaleX, avgScaleY, slopeTranslateX, slopeTranslateY, slopeRotate, slopeScaleX, slopeScaleY, avgTime)  
+# avgTranslateX, avgTranslateY, avgRotate, avgScaleX, avgScaleY, slopeTranslateX, slopeTranslateY, slopeRotate, slopeScaleX, slopeScaleY, avgTime)
 sub getInterceptsAndSlopes
-{ 
+{
   my @translateX = @{$_[0]};
   my @translateY = @{$_[1]};
   my @rotate = @{$_[2]};
   my @correctedFilepaths = @{$_[3]};
-  
+
   # Saving time with these base cases
   if (scalar(@correctedFilepaths) >= 2) # two or more images were corrected, can use linear fit
   {
     # first calculate the averages for the intercept
     my @timeValues = ();
     foreach my $correctedFilepath (@correctedFilepaths)
-    { 
+    {
       push(@timeValues, getImageTime($correctedFilepath));
     }
     my $avgTime = mean(@timeValues);
     my $avgTranslateX = mean(@translateX);
     my $avgTranslateY = mean(@translateY);
     my $avgRotate = mean(@rotate);
-    
+
     # Now calculate the individual slopes with respect to that intercept to get the average slope
     my @slopesTranslateX = ();
     my @slopesTranslateY = ();
@@ -518,12 +580,12 @@ sub getInterceptsAndSlopes
       my $time = getImageTime($correctedFilepaths[$i]);
       push(@slopesTranslateX, ($translateX[$i] - $avgTranslateX) / ($time - $avgTime));
       push(@slopesTranslateY, ($translateY[$i] - $avgTranslateY) / ($time - $avgTime));
-      push(@slopesRotate, ($rotate[$i] - $avgRotate) / ($time - $avgTime));     
+      push(@slopesRotate, ($rotate[$i] - $avgRotate) / ($time - $avgTime));
     }
-    
+
     return ($avgTranslateX, $avgTranslateY, $avgRotate,
       mean(@slopesTranslateX), mean(@slopesTranslateY), mean(@slopesRotate),
-      $avgTime);    
+      $avgTime);
   }
   else
   {
@@ -559,7 +621,7 @@ sub getQuadraticRegressionSingle
   # Basically, we just need every combination of 3 corrected images.
   # Perform the regression and then average the results at the end
   # Calculates the coefficients for the given set of values, but only 1 set of given values
-  
+
   my @aVals = ();
   my @bVals = ();
   my @cVals = ();
@@ -579,7 +641,7 @@ sub getQuadraticRegressionSingle
       }
     }
   }
-  
+
 #  print mean(@aVals);
 #  print "\n";
 #  print mean(@bVals);
@@ -599,19 +661,19 @@ sub getQuadraticRegressionSingleSingle
   my $point1 = $_[2];
   my $point2 = $_[3];
   my $point3 = $_[4];
-  
+
   my $x1 = getImageTime($correctedFilepaths[$point1]);
   my $x2 = getImageTime($correctedFilepaths[$point2]);
   my $x3 = getImageTime($correctedFilepaths[$point3]);
   my $y1 = $yVals[$point1];
   my $y2 = $yVals[$point2];
   my $y3 = $yVals[$point3];
-  
+
   # Calculate the coefficients for these 3 points. This is the exact quadratic curve for these 3 points
   my $a = (-1 * $x3 * ($y1 - $y2) + $x2 * ($y1 - $y3) - $x1 * ($y2 - $y3)) / (($x1 - $x2) * ($x1 - $x3) * ($x2 - $x3));
   my $b = ($x3**2 * ($y1 - $y2) - $x2**2 * ($y1 - $y3) + $x1**2 * ($y2 - $y3)) / (($x1 - $x2) * ($x1 - $x3) * ($x2 - $x3));
   my $c = ($x3 * ($x2 * ($x2 - $x3) * $y1 - $x1 * ($x1 - $x3) * $y2) + $x1 * ($x1 - $x2) * $x2 * $y3) / (($x1 - $x2) * ($x1 - $x3) * ($x2 - $x3));
-  
+
   return ($a, $b, $c);
 }
 
@@ -623,21 +685,21 @@ sub getImageTime
 {
   my $filepath = $_[0];
   my $imageid = getImageID($filepath);
-  
+
   $imageid = int($imageid); # since a string may have been returned, let's protect by converting to int (front 0s are deleted)
-  
+
   my $time = 0;
   $time += ($imageid % 100); #tack on seconds
   $imageid = int($imageid / 100); #shift so that minutes are last
-  
+
   $time += ($imageid % 100) * 60; # tack on minutes converted to seconds
   $imageid = int($imageid / 100); #shift so that hours are last
 
   $time += ($imageid % 100) * 60 * 60; # tack on hours converted to seconds
   $imageid = int($imageid / 100); #shift so that days are last
-  
+
   $time += $imageid * 24 * 60 * 60; # The rest are days, so convert them to seconds
-  
+
   return $time;
 }
 
@@ -652,12 +714,12 @@ sub getImageID
     if (index($line, "<name>") != -1) # This is the line with the imageid on it
     {
       my $string = substr($line, index($line, ">")+1, index($line, "</") - index($line, ">") - 1); # gets whatever is between the <tag>...</tag>
-      
+
       # $string is of form ######.####.imageid
       # We are getting rid of everything before and including the 2 periods.
       $string = substr($string, index($string, ".")+1);
       $string = substr($string, index($string, ".")+1);
-      
+
        # This is our $imageID
       return $string;
     }
@@ -691,10 +753,10 @@ sub printKML
       $lookAt = 1;
     }
   }
-  
+
   my $lon = mean($data[2], $data[3]);
   my $lat = mean($data[0], $data[1]);
-  
+
   # lookAt box just needs 2 fields updated
   for (my $i = 0; $i < 2; $i++)
   {
@@ -710,7 +772,7 @@ sub printKML
     {
       print NEWDATA "            <latitude>$lat</latitude>\n";
     }
-  } 
+  }
 
   my $skipFive = 0;
   until ($skipFive)
@@ -755,7 +817,7 @@ sub printKML
       print NEWDATA "This 'for' loop is broken.\n";
     }
   }
-  
+
   while (my $line = <FILE>) # until end of file, continue copying over
   {
     print NEWDATA $line;
@@ -785,11 +847,11 @@ sub avgRotationValues
   my $xSum = 0;
   for (my $i = 0; $i < @_; $i++)
   {
-    $ySum += sin(@_[deg2rad($i)]);  
+    $ySum += sin(@_[deg2rad($i)]);
     $xSum += cos(@_[deg2rad($i)]);
     #print "Angle being avgd: @_[$i]\n";
   }
-  
+
   my $angle = atan2($ySum, $xSum);
 
   #print "Final angle: " . fixRotationValue($angle) . "\n";
@@ -817,7 +879,7 @@ sub getSinusoidalRegressions
 #    my $avgTranslateX = mean(@translateX);
 #    my @timeValues = ();
 #    foreach my $correctedFilepath (@correctedFilepaths)
-#    { 
+#    {
 #      push(@timeValues, getImageTime($correctedFilepath));
 #    }
 #    my $avgTime = mean(@timeValues);
@@ -826,7 +888,7 @@ sub getSinusoidalRegressions
 #    for (my $i = 0; $i < scalar(@correctedFilepaths); $i++)
 #    {
 #     my $time = getImageTime($correctedFilepaths[$i]);
-#      push(@slopesTranslateX, ($translateX[$i] - $avgTranslateX) / ($time - $avgTime));     
+#      push(@slopesTranslateX, ($translateX[$i] - $avgTranslateX) / ($time - $avgTime));
 #    }
 #    push(@coeffTransX, $avgTranslateX);
 #    push(@coeffTransX, mean(@slopesTranslateX));
@@ -850,16 +912,16 @@ sub getSinusoidalRegressionSingle
   my @deltaYValues = @{$_[0]};
   my @correctedFilepaths = @{$_[1]};
   my $periodTime = $_[2];
-  
+
   #my @times = map(getImageTime, @correctedFilepaths);
   my @times = ();
   for(my $i = 0; $i < scalar(@correctedFilepaths); $i++) {
     push(@times, getImageTime(@correctedFilepaths[$i]));
   }
-  
+
   # guess an initial period, then increment up/down until we have the highest r^2 value
   my $timeStep = 10;
-  
+
   my ($aVals, $bVals, $cVals, $dVals, $eVals) = getSinusoidalRegressionSingleSingle(\@deltaYValues, \@times, $periodTime - $timeStep);
   my ($rSquaredLess, $stdDevLess) = getSinusoidalRegressionStats(\@deltaYValues, \@times, $aVals, $bVals, $cVals, $dVals, $eVals);
   ($aVals, $bVals, $cVals, $dVals, $eVals) = getSinusoidalRegressionSingleSingle(\@deltaYValues, \@times, $periodTime + $timeStep);
@@ -888,12 +950,12 @@ sub getSinusoidalRegressionSingle
     # keep the values from the given period, which was last calculated
     # do nothing
   }
-  
+
   print "r^2: " . $rSquared;
   print "\n";
   #print "std dev: " . $stdDev;
   #print "\n";
-  
+
   print $aVals;
   print "\n";
   #print $bVals . " " . $periodTime;
@@ -906,7 +968,7 @@ sub getSinusoidalRegressionSingle
   print $eVals;
   print "\n";
   print "\n";
-  
+
   # Passing back a*cos(c), b, a*sin(c), d
   # Average each of the combinations together for the final coefficients (There may be a better way involving minimizing RMSE instead of this average coefficients method)
   return ($aVals, $bVals, $cVals, $dVals, $eVals);
@@ -918,7 +980,7 @@ sub getSinusoidalRegressionSingleSingle
   my @yValues = @{$_[0]};
   my @times = @{$_[1]};
   my $periodTime = $_[2];
-  
+
   # Create regression on absolute values on deltaYValues vs times
   # least squares analysis
   # minimize
@@ -940,7 +1002,7 @@ sub getSinusoidalRegressionSingleSingle
   my $matrixY = new Matrix(\@yValues);
   $matrixY = $matrixY->transpose();
   my $matrixBeta = ($matrixX->transpose() * $matrixX)->inverse() * $matrixX->transpose() * $matrixY;
-  
+
   return ($matrixBeta->[0][0], 2*$pi/$periodTime, $matrixBeta->[1][0], $matrixBeta->[2][0], $matrixBeta->[3][0]);
 }
 
@@ -954,7 +1016,7 @@ sub getSinusoidalRegressionStats
   my $cVal = $_[4];
   my $dVal = $_[5];
   my $eVal = $_[6];
-  
+
   # Calculate residuals
   my $mean = mean(@yValues);
   my $SSerr = 0;
@@ -966,7 +1028,7 @@ sub getSinusoidalRegressionStats
   }
   my $rSquared = 1 - $SSerr/$SStot;
   my $stdDev = sqrt($SStot);
-  
+
   return ($rSquared, $stdDev);
 }
 
@@ -975,43 +1037,43 @@ sub getSawtoothRegressionSingle
   my @deltaYValues = @{$_[0]};
   my @correctedFilepaths = @{$_[1]};
   my $periodTime = $_[2];
-  
+
   #my @times = map(getImageTime, @correctedFilepaths);
   my @times = ();
   for(my $i = 0; $i < scalar(@correctedFilepaths); $i++) {
     push(@times, getImageTime(@correctedFilepaths[$i]));
   }
-  
+
   # y = h * (t/period - int(t/period - s)) + v
   # s is horizontal shift to the right (between 0 and 1)
   # v is vertical shift
   # h is total height from bottom to top
-  
+
   my $h;
   my $period;
   my $s;
-  my $v;  
-  
+  my $v;
+
   my @periods = ();
   my @rSquares = ();
   my $rSquared = 0;
-  
-  for (my $i = 0; $i < 100; $i++) {   
+
+  for (my $i = 0; $i < 100; $i++) {
     #initial guesses along with $period
     $h = 360;
     $period = 92*60 + 10*$i;
     $s = 0;
     $v = -180;
     push(@periods, $period);
-    
+
     ($h, $period, $s, $v, $rSquared) = getSawtoothRegressionSingleSingle(\@deltaYValues, \@times, $h, $period, $s, $v);
-    
+
     #store regression data to compare after
     push(@rSquares, $rSquared);
-    
+
     print "Period: " . $period . " -> r^2: " . $rSquared . "\n";
   }
-  
+
   # find maximum r^2 value from table
   # also gives initial guess for period that yielded this result
   my $maxRSquared = $rSquares[0];
@@ -1024,10 +1086,10 @@ sub getSawtoothRegressionSingle
   }
   # get actual values that gave the maximum r^2 value
   ($h, $period, $s, $v, $rSquared) = getSawtoothRegressionSingleSingle(\@deltaYValues, \@times, 360, $period, 0, -180);
-  
+
   print "r^2: " . $rSquared;
   print "\n";
-  
+
   print $h;
   print "\n";
   print $period;
@@ -1037,7 +1099,7 @@ sub getSawtoothRegressionSingle
   print $v;
   print "\n";
   print "\n";
-  
+
   return ($h, $period, $s, $v);
 }
 
@@ -1049,21 +1111,21 @@ sub getSawtoothRegressionSingleSingle
   my $period = $_[3];
   my $s = $_[4];
   my $v = $_[5];
-  
+
   my $rSquared = 0;
   my $rSquaredLess = 0;
   my $rSquaredMore = 0;
-  
+
   # amounts to shift
   my $timeStep = .125;
   my $sShift = .02;
   my $heightScale = .1;
   my $vShift = .1;
-  
+
   my $iterations = 100;
   for (my $i = 0; $i < $iterations; $i++) {
     my $num_changes = 4;
-    
+
     #fix period
     $rSquaredLess = getSawtoothRegressionStats(\@deltaYValues, \@times, $h, $period - $timeStep, $s, $v);
     $rSquaredMore = getSawtoothRegressionStats(\@deltaYValues, \@times, $h, $period + $timeStep, $s, $v);
@@ -1084,11 +1146,11 @@ sub getSawtoothRegressionSingleSingle
       # do nothing, guess is fine
       $num_changes -= 1;
     }
-    
+
     #fix horizontal shift
     $rSquaredLess = getSawtoothRegressionStats(\@deltaYValues, \@times, $h, $period, $s - $sShift, $v);
     $rSquaredMore = getSawtoothRegressionStats(\@deltaYValues, \@times, $h, $period, $s + $sShift, $v);
-    $rSquared = getSawtoothRegressionStats(\@deltaYValues, \@times, $h, $period, $s, $v);    
+    $rSquared = getSawtoothRegressionStats(\@deltaYValues, \@times, $h, $period, $s, $v);
     if ($rSquaredLess > $rSquared) {
       while ($rSquaredLess > $rSquared) {
         $s -= $sShift;
@@ -1105,7 +1167,7 @@ sub getSawtoothRegressionSingleSingle
       # do nothing, guess is fine
       $num_changes -= 1;
     }
-    
+
     #fix height
     $rSquaredLess = getSawtoothRegressionStats(\@deltaYValues, \@times, $h - $heightScale, $period, $s, $v);
     $rSquaredMore = getSawtoothRegressionStats(\@deltaYValues, \@times, $h + $heightScale, $period, $s, $v);
@@ -1126,7 +1188,7 @@ sub getSawtoothRegressionSingleSingle
       # do nothing, guess is fine
       $num_changes -= 1;
     }
-    
+
     #fix vertical shift
     $rSquaredLess = getSawtoothRegressionStats(\@deltaYValues, \@times, $h, $period, $s, $v - $vShift);
     $rSquaredMore = getSawtoothRegressionStats(\@deltaYValues, \@times, $h, $period, $s, $v + $vShift);
@@ -1147,13 +1209,13 @@ sub getSawtoothRegressionSingleSingle
       # do nothing, guess is fine
       $num_changes -= 1;
     }
-    
+
     if ($num_changes == 0) {
       # didn't make any changes to the variables, so break out of loop
       last;
     }
   }
-  
+
   return ($h, $period, $s, $v, $rSquared);
 }
 
@@ -1166,7 +1228,7 @@ sub getSawtoothRegressionStats
   my $bVal = $_[3];
   my $cVal = $_[4];
   my $dVal = $_[5];
-  
+
   # Calculate residuals
   my $mean = mean(@yValues);
   my $SSerr = 0;
@@ -1178,9 +1240,9 @@ sub getSawtoothRegressionStats
   }
   my $rSquared = 1 - $SSerr/$SStot;
   my $stdDev = sqrt($SStot);
-  
+
   #return ($rSquared, $stdDev);
   return $rSquared;
 }
-  
+
 1;

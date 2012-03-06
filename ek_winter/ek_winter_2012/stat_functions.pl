@@ -3,11 +3,11 @@
 # use strict;
 
 # mean calculates the numerical average of a list of numbers
-
+# TODO add function description
 sub mean {
     my @numbers = @_;
     my $sum = 0;
-    
+
     foreach my $number (@numbers) {
         $sum += $number;
     }
@@ -25,11 +25,11 @@ sub std_dev {
     my @numbers = @_;
     my $mean = mean(@numbers);
     my $sum_std = 0;
-    
+
     foreach my $num (@numbers) {
         $sum_std += ($num - $mean)**2;
     }
-    
+
     # check numbers non zero
     if(@numbers != 0) {
         return sqrt($sum_std / @numbers);
