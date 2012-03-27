@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 ########################################################################
+#
 # Co-Author(s):
 #   Carson McNeil
 #   David Choy
@@ -7,18 +8,24 @@
 #   Alex Fandrianto
 #   Allen Eubank
 #   John Uba
+#
 ### Imports ############################################################
+
 use CGI qw(:standard);
 use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
 use DataGet;
 use List::Util qw(min);
+
 ### INSTALLER SET CONSTANTS ############################################
+
 $PUBLIC_WEB_ROOT = "/var/www/html";
 $SERVER_NAME = "ssvekdev.jpl.nasa.gov";
 $CGI_ROOT = "/var/www/cgi-bin";
 $INSTALLATION_ROOT = "datasys/ek_summer";
 $KML_ROOT = "ek/ek_summer/kml_files";
+
 ### Constants ##########################################################
+
 $PROGRAM_ROOT = "$CGI_ROOT/$INSTALLATION_ROOT";
 $KML_ROOT = "$PUBLIC_WEB_ROOT/$KML_ROOT";
 $IMAGE_ROOT = "$PUBLIC_WEB_ROOT/ek/imgs";
@@ -29,7 +36,9 @@ $KML_ROOT =~ /$PUBLIC_WEB_ROOT\/(.*)$/;
 $kml_dir_web = "http://$SERVER_NAME/$1";
 $PROGRAM_ROOT =~ /$CGI_ROOT\/(.*)$/;
 $own_url = "http://$SERVER_NAME/cgi-bin/$1/KMLcorrect1.cgi";
+
 ########################################################################
+
 # Default place to look for images is the automated folder. Otherwise,
 # it will be sent as a parameter.
 $correction_stage = "automated";

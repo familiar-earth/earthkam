@@ -1,40 +1,52 @@
 #!/usr/bin/perl -w
+########################################################################
+#
+# Co-Author(s):
+#   Carson McNeil
+#   David Choy
+#   Stephanie Tsuei
+#   Alex Fandrianto
+#   Allen Eubank
+#   John Uba
+#
+### Imports ############################################################
 
 use CGI qw(:standard);
 use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
 use DataGet;
 
-###%%% INSTALLER SET CONSTANTS
+### CONSTANTS ##########################################################
+
 $PUBLIC_WEB_ROOT = "/var/www/html";
 $SERVER_NAME = "ssvekdev.jpl.nasa.gov";
 $CGI_ROOT = "/var/www/cgi-bin";
 $INSTALLATION_ROOT = "datasys/ek_summer";
 $KML_ROOT = "ek/ek_summer/kml_files";
-###%%%
-
 $kml_file_dir = "$PUBLIC_WEB_ROOT/$KML_ROOT";
 $DOWNLOAD_TOOL_URL = "http://$SERVER_NAME/cgi-bin/$INSTALLATION_ROOT/KMLcorrect1.cgi";
 my $return_url = "";
-
 $CGI::POST_MAX = 1024 * 1024;  # maximum upload filesize is 1MB
+
+########################################################################
+
 print header;
-print start_html("KML Uploader"), 
+print start_html("KML Uploader"),
     h1("KML Upload"),br,
     i("Please upload corrected KML files"),br,br,
     start_multipart_form;
 
 # select total number of files to upload
-if (not param('numberOfFiles')) 
+if (not param('numberOfFiles'))
 {
   print "Select number of files to upload: ", textfield(-name => 'numberOfFiles'
                     ),
                     submit(-value => "Enter"),hr;
-} 
+}
 # if number has been given, show that many boxes to upload
-elsif (param('numberOfFiles')) 
+elsif (param('numberOfFiles'))
 {
   print "Number of files to upload: ", param('numberOfFiles'), br;
-  for (my $i = 0; $i < param('numberOfFiles'); $i++) 
+  for (my $i = 0; $i < param('numberOfFiles'); $i++)
   {
     print "Enter a filename, or click on the browse button to choose one: ",
               filefield(
@@ -43,7 +55,7 @@ elsif (param('numberOfFiles'))
                   -maxlength => 80), br;
   }
   print br, submit(-value => "Upload the files");
-  
+
 }
 print end_form;
 
@@ -62,9 +74,9 @@ if (!param('filename') && cgi_error()) {
 # Upload the file
 #
 
-if (param('file0')) 
+if (param('file0'))
 {
-  
+
   my $i = 0;
   my %orbitMap = ();
   my $source = "";
@@ -80,7 +92,7 @@ if (param('file0'))
     my $orbit = $data[1];
     my $filepath = $data[0];
     my ($msn, $src, $id) = split(/\./, $filepath);
-    
+
     # push each image's data to a hash table to find total number of orbits
     if (exists $orbitMap{$orbit})
     {
@@ -93,8 +105,8 @@ if (param('file0'))
     $msn =~ s/ek_(.*)/$1/g;
     $msnCode = $msn;
     $source = $src;
-    
-    
+
+
     save_file("file$i", $orbit);
     # update database (ekImages) with new corrected location data
     `perl updateNewFields.pl $kml_file_dir/$msn$src/$orbit/completed/ek_$filepath.kml WebUser -i`;
@@ -170,11 +182,11 @@ if (param('file0'))
       }
       `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/ $CORRECT`;
       `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/ copyCorrected`;
-      
+
       $return_url = "$DOWNLOAD_TOOL_URL?msnCode=$msnCode&orbit=ALL";
   }
   print i("Images done correcting, go back to the ".
-            a({-href => $return_url}, 
+            a({-href => $return_url},
             "Download Tool")." to see them and/or correct more.");
 }
 
@@ -196,25 +208,25 @@ sub save_file {
 
   # Untaint $filename
 
-  if ($filename =~ /^([-\@:\/\\\w.]+)$/) 
+  if ($filename =~ /^([-\@:\/\\\w.]+)$/)
   {
       # remove any folder heirarchy from filename so we only get filename
       my @pieces = split(/\//, $1);
       $untainted_filename = pop @pieces;
-  } 
-  else 
+  }
+  else
   {
     die <<"EOT";
-    Unsupported characters in the filename "$filename". 
-    Your filename may only contain alphabetic characters and numbers, 
+    Unsupported characters in the filename "$filename".
+    Your filename may only contain alphabetic characters and numbers,
     and the characters '_', '-', '\@', '/', '\\' and '.'
 EOT
   }
 
-  if ($untainted_filename =~ m/\.\./) 
+  if ($untainted_filename =~ m/\.\./)
   {
       die <<"EOT";
-    Your upload filename may not contain the sequence '..' 
+    Your upload filename may not contain the sequence '..'
     Rename your file so that it does not include the sequence '..', and try again.
 EOT
   }
@@ -225,9 +237,9 @@ EOT
   }
   my $file = "$kml_file_dir/$msn$src/$orbit/completed/$untainted_filename";
 
-  # If running this on a non-Unix/non-Linux/non-MacOS platform, be sure to 
-  # set binmode on the OUTFILE filehandle, refer to 
-  #    perldoc -f open 
+  # If running this on a non-Unix/non-Linux/non-MacOS platform, be sure to
+  # set binmode on the OUTFILE filehandle, refer to
+  #    perldoc -f open
   # and
   #    perldoc -f binmode
 

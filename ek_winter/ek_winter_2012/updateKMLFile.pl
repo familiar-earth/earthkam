@@ -12,12 +12,13 @@
 #       TODO add a descript of this file (one to two sentences)
 #            called by KMLupload.cgi
 # @params:
-#     ARGV[0] = $orbitPath: The location to the directory
-#                             of the KML files to be updated.
-#     ARGV[1] = $CORRECT:   The type of correction to apply to the
-#                              KML files.
+#     ARGV[0] The location to the root directory
+#             containing the automated, completed, and initial directories
+#
+#     ARGV[1] The type of correction to apply to the KML files.
 #
 ### Imports ############################################################
+
 use strict;
 # TODO (remove extraneous comment?)
 # Useful for create_automated_orbit.pl when reading old and creating the
@@ -27,7 +28,9 @@ require "stat_functions.pl"; # for avg
 require "distance_calc.pl"; # for distances
 require "latLongBoxChanges.pl"; #for the conversions to and from the latlonbox
 use Matrix;
+
 ### Constants ##########################################################
+
 use constants 'PI', 'RADIUS_EARTH';
 my $pi = atan2(1, 1) * 4;
 my $radius_earth = RADIUS_EARTH; # Wikipedia
@@ -175,6 +178,7 @@ else {
       # TODO here begin the corrections, this is where the code can be
       #      broken up into pieces.
       if (index($CORRECT, 'Direct') == -1) {
+        print "DEBUG: correct = $CORRECT\n";
 
         # Calculate offsets by comparing against the initial files
         if ($CORRECT eq 'constant') {
@@ -240,6 +244,7 @@ else {
   {
     # Now calculate the y-intercept of dTranslate, dRotate, and dScale
 
+    # TODO broken
     # Also calculate the avg. slope of the changes
     #my @printThisArray = getInterceptsAndSlopes(\@dTransX, \@dTransY, \@dRot, \@dScaleX, \@dScaleY, \@correctedFiles);
     #print "@printThisArray\n";
@@ -269,8 +274,7 @@ else {
     # TODO renamed file to initFile
     foreach my $initFile (@initialFiles)
     {
-      # TODO Remove unneeded print and test statment?
-      #print "Correcting initial file: $initFile\n";
+      print "Correcting initial file: $initFile\n";
       # apply corrections to the initial files and the automated files will pop-out later
       # We no longer ignore the completed folder
       # completedImages need to have their lookAt values updated too, so we'll correct those again.
@@ -479,19 +483,6 @@ sub calcLatLonBox
 }
 
 #
-# This gets you the lat lon box (new or old) from a .kml file
-# Please give a .kml filepath for me to read too, thanks.
-# The returned array gives you a north, south, east, west, and rotation value
-#
-/*
-585    * _shouldShowRights - Determines if the user should be shown the
-586    * about:rights notification. The notification should *not* be shown if
-587    * we've already shown the current version, or if the override pref says to
-588    * never show it. The notification *should* be shown if it's never been seen
-589    * before, if a newer version is available, or if the override pref says to
-590    * always show it.
-591    */
-
 # getLatLonBox
 #   @param string $filePathToKMLFile
 #   - returns an array
@@ -539,6 +530,13 @@ sub getLatLonBox
   return @data;
 }
 
+
+# TODO
+# I think this function needs some serious work,
+# The parameters are messed up, I think there is only 4,
+# avgTranslateX, avgTranslateY, avgRotate, and correctedFilepaths
+#
+#
 # returns the y-intercepts and best fit slopes for the translate, rotate, and scale adjustments
 # The inputs must be indexed together (in the same order)
 # y-intercept... how to find that?
