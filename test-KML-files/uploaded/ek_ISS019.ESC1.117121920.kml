@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS019.ESC1.117121920</name>
+	<description>Overlay of ISS019.ESC1.117121920, located at or near Atlantic Ocean and South Africa, taken on</description>
+	<LookAt>
+		<longitude>17.98</longitude>
+		<latitude>-33.74</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>360000</range>
+	</LookAt>
+	<color>e6ffffff</color>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/117121920/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>-33.28585131032803</north>
+		<south>-34.44794300029194</south>
+		<east>19.10283812282927</east>
+		<west>17.00349792725132</west>
+		<rotation>135.1014969526891</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

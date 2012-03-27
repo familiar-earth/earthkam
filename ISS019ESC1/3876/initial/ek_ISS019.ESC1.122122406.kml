@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122122406</name>
+          <description>Overlay of ISS019.ESC1.122122406, located at or near Kentucky, USA, taken on </description>
+          <LookAt>
+            <longitude>-83.8300</longitude>
+            <latitude>38.2500</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122122406/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>38.4162368140622</north>
+            <south>38.0837631859378</south>
+            <east>-83.5133114616329</east>
+            <west>-84.1466885383671</west>
+            <rotation>142.04</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

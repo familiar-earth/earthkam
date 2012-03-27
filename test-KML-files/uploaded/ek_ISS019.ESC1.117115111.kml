@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS019.ESC1.117115111</name>
+	<description>Overlay of ISS019.ESC1.117115111, located at or near Atlantic Ocean and Nova Scotia, Canada, taken on</description>
+	<LookAt>
+		<longitude>-60.39</longitude>
+		<latitude>45.74</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>362000</range>
+	</LookAt>
+	<gx:balloonVisibility>1</gx:balloonVisibility>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/117115111/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>46.28299496278265</north>
+		<south>45.10327185262253</south>
+		<east>-59.32693415985021</east>
+		<west>-61.7791981235116</west>
+		<rotation>148.8254233727524</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

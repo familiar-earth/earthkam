@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.118043040</name>
+          <description>Overlay of ISS019.ESC1.118043040, located at or near North Sea and Belgium, taken on </description>
+          <LookAt>
+            <longitude>3.0500</longitude>
+            <latitude>51.6400</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118043040/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>52.2444893390027</north>
+            <south>51.0355106609973</south>
+            <east>4.50711200411453</east>
+            <west>1.59288799588547</west>
+            <rotation>184.91</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

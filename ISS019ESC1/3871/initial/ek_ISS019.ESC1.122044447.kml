@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122044447</name>
+          <description>Overlay of ISS019.ESC1.122044447, located at or near Bulgaria, taken on </description>
+          <LookAt>
+            <longitude>25.4400</longitude>
+            <latitude>42.3600</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122044447/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>42.5266410646233</north>
+            <south>42.1933589353767</south>
+            <east>25.777420615598</east>
+            <west>25.102579384402</west>
+            <rotation>146.88</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

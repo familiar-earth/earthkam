@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122094222</name>
+          <description>Overlay of ISS019.ESC1.122094222, located at or near Namibia, taken on </description>
+          <LookAt>
+            <longitude>16.6500</longitude>
+            <latitude>-24.5100</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122094222/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-24.3441674364989</north>
+            <south>-24.6758325635011</south>
+            <east>16.9226914090269</east>
+            <west>16.3773085909731</west>
+            <rotation>132.93</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

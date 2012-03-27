@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120163312</name>
+          <description>Overlay of ISS019.ESC1.120163312, located at or near Pacific Ocean and Chile, taken on </description>
+          <LookAt>
+            <longitude>-70.8200</longitude>
+            <latitude>-28.9300</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120163312/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-28.7637631859378</north>
+            <south>-29.0962368140622</south>
+            <east>-70.5358374327975</east>
+            <west>-71.1041625672025</west>
+            <rotation>135.07</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

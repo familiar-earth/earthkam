@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122140629</name>
+          <description>Overlay of ISS019.ESC1.122140629, located at or near Colombia and Panama, taken on </description>
+          <LookAt>
+            <longitude>-77.2300</longitude>
+            <latitude>7.2200</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122140629/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>7.38439522817282</north>
+            <south>7.05560477182718</south>
+            <east>-76.9820702215117</east>
+            <west>-77.4779297784883</west>
+            <rotation>128.7</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

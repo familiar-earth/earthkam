@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122075840</name>
+          <description>Overlay of ISS019.ESC1.122075840, located at or near Nigeria and Niger, taken on </description>
+          <LookAt>
+            <longitude>11.7500</longitude>
+            <latitude>12.7500</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122075840/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>12.9144401449018</north>
+            <south>12.5855598550982</south>
+            <east>12.0022279924101</east>
+            <west>11.4977720075899</west>
+            <rotation>129.48</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

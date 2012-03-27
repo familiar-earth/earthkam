@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121055724</name>
+          <description>Overlay of ISS019.ESC1.121055724, located at or near Egypt and Red Sea, taken on </description>
+          <LookAt>
+            <longitude>32.8200</longitude>
+            <latitude>29.2200</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121055724/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>29.385473229669</north>
+            <south>29.054526770331</south>
+            <east>33.1036767345521</east>
+            <west>32.5363232654479</west>
+            <rotation>135.23</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

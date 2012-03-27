@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119154455</name>
+          <description>Overlay of ISS019.ESC1.119154455, located at or near California, USA, taken on </description>
+          <LookAt>
+            <longitude>-121.7700</longitude>
+            <latitude>41.2200</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119154455/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>41.8217045018041</north>
+            <south>40.6182954981959</south>
+            <east>-120.573209443641</east>
+            <west>-122.966790556359</west>
+            <rotation>145.37</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

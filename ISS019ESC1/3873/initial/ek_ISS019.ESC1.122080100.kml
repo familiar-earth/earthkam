@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122080100</name>
+          <description>Overlay of ISS019.ESC1.122080100, located at or near Central African Republic, taken on </description>
+          <LookAt>
+            <longitude>17.0000</longitude>
+            <latitude>5.5700</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122080100/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>5.73426047798579</north>
+            <south>5.40573952201421</south>
+            <east>17.2469502976402</east>
+            <west>16.7530497023598</west>
+            <rotation>128.55</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

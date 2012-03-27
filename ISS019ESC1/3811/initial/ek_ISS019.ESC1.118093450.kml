@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.118093450</name>
+          <description>Overlay of ISS019.ESC1.118093450, located at or near Mozambique, taken on </description>
+          <LookAt>
+            <longitude>36.4500</longitude>
+            <latitude>-17.6200</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118093450/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-17.0260660923144</north>
+            <south>-18.2139339076856</south>
+            <east>37.3824670034481</east>
+            <west>35.5175329965519</west>
+            <rotation>130.58</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

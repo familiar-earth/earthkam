@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122044218</name>
+          <description>Overlay of ISS019.ESC1.122044218, located at or near Austria, taken on </description>
+          <LookAt>
+            <longitude>14.0700</longitude>
+            <latitude>47.1000</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122044218/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>47.2670003984553</north>
+            <south>46.9329996015447</south>
+            <east>14.4369957769419</east>
+            <west>13.7030042230581</west>
+            <rotation>155.33</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

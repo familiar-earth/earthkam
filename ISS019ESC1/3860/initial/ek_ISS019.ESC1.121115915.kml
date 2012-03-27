@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121115915</name>
+          <description>Overlay of ISS019.ESC1.121115915, located at or near New Jersey, USA and Atlantic Ocean, taken on </description>
+          <LookAt>
+            <longitude>-74.3000</longitude>
+            <latitude>39.9600</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121115915/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>40.1264613977072</north>
+            <south>39.7935386022928</south>
+            <east>-73.9750657081573</east>
+            <west>-74.6249342918426</west>
+            <rotation>143.86</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

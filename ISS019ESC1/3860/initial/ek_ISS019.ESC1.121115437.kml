@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121115437</name>
+          <description>Overlay of ISS019.ESC1.121115437, located at or near Minnesota, USA and Manitoba, Canada, taken on </description>
+          <LookAt>
+            <longitude>-95.5500</longitude>
+            <latitude>48.7200</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121115437/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>48.8871351486424</north>
+            <south>48.5528648513576</south>
+            <east>-95.1709931107621</east>
+            <west>-95.9290068892379</west>
+            <rotation>159.64</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

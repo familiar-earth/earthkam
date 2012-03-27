@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121055224</name>
+          <description>Overlay of ISS019.ESC1.121055224, located at or near Italy and Mediterranean Sea, taken on </description>
+          <LookAt>
+            <longitude>15.4500</longitude>
+            <latitude>41.8300</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121055224/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>41.9965961478943</north>
+            <south>41.6634038521057</south>
+            <east>15.7845524636858</east>
+            <west>15.1154475363142</west>
+            <rotation>146.16</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

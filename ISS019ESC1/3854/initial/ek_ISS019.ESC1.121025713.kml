@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121025713</name>
+          <description>Overlay of ISS019.ESC1.121025713, located at or near Bay of Bengal and India, taken on </description>
+          <LookAt>
+            <longitude>87.0900</longitude>
+            <latitude>21.0900</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121025713/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>21.2549791456499</north>
+            <south>20.9250208543501</south>
+            <east>87.3545843489117</east>
+            <west>86.8254156510883</west>
+            <rotation>131.64</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119022126</name>
+          <description>Overlay of ISS019.ESC1.119022126, located at or near Arafura Sea and Queensland, Australia, taken on </description>
+          <LookAt>
+            <longitude>140.3600</longitude>
+            <latitude>-17.4200</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119022126/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-16.8249431740892</north>
+            <south>-18.0150568259108</south>
+            <east>141.293181896367</east>
+            <west>139.426818103633</west>
+            <rotation>130.53</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

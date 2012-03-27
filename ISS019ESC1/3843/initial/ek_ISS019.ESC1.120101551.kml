@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120101551</name>
+          <description>Overlay of ISS019.ESC1.120101551, located at or near Cote dIvoire and Atlantic Ocean, taken on </description>
+          <LookAt>
+            <longitude>-4.6700</longitude>
+            <latitude>5.0900</latitude>
+            <range>355000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120101551/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>5.25403589434075</north>
+            <south>4.92596410565925</south>
+            <east>-4.42355829454769</east>
+            <west>-4.91644170545231</west>
+            <rotation>128.52</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

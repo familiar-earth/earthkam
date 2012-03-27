@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121072341</name>
+          <description>Overlay of ISS019.ESC1.121072341, located at or near Spain and Atlantic Ocean, taken on </description>
+          <LookAt>
+            <longitude>-8.7500</longitude>
+            <latitude>42.3100</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121072341/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>42.4766410646233</north>
+            <south>42.1433589353767</south>
+            <east>-8.41284752471842</east>
+            <west>-9.08715247528158</west>
+            <rotation>146.82</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

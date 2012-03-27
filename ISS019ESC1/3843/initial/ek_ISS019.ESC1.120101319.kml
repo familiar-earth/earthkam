@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120101319</name>
+          <description>Overlay of ISS019.ESC1.120101319, located at or near Mali, taken on </description>
+          <LookAt>
+            <longitude>-10.3800</longitude>
+            <latitude>12.8800</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120101319/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>13.0442604779858</north>
+            <south>12.7157395220142</south>
+            <east>-10.1278721820513</east>
+            <west>-10.6321278179487</west>
+            <rotation>129.51</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

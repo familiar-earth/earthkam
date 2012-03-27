@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS015.ESC1.115054439</name>
+	<description>Overlay of ISS015.ESC1.115054439, located at or near China and Yellow Sea, taken on 05:44:39 04/25/2007</description>
+	<LookAt>
+		<longitude>117.4</longitude>
+		<latitude>38.79</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>329000</range>
+	</LookAt>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS015ESC1/115054439/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>39.1385075648977</north>
+		<south>38.1555477205558</south>
+		<east>118.2415698866007</east>
+		<west>116.1543657267732</west>
+		<rotation>29.53345110319</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

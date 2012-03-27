@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.118032140</name>
+          <description>Overlay of ISS019.ESC1.118032140, located at or near South China Sea and Malaysia, taken on </description>
+          <LookAt>
+            <longitude>113.4800</longitude>
+            <latitude>4.3000</latitude>
+            <range>355000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118032140/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>4.89191265488017</north>
+            <south>3.70808734511983</south>
+            <east>114.36812297672</east>
+            <west>112.59187702328</west>
+            <rotation>128.47</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121041745</name>
+          <description>Overlay of ISS019.ESC1.121041745, located at or near Romania and Ukraine, taken on </description>
+          <LookAt>
+            <longitude>24.2400</longitude>
+            <latitude>47.7500</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121041745/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>47.9171800653714</north>
+            <south>47.5828199346286</south>
+            <east>24.6120229791132</east>
+            <west>23.8679770208868</west>
+            <rotation>156.94</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121072607</name>
+          <description>Overlay of ISS019.ESC1.121072607, located at or near Mediterranean Sea and Algeria, taken on </description>
+          <LookAt>
+            <longitude>0.6500</longitude>
+            <latitude>36.5800</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121072607/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>36.7461020638752</north>
+            <south>36.4138979361248</south>
+            <east>0.959481449970409</east>
+            <west>0.340518550029591</west>
+            <rotation>140.45</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120053418</name>
+          <description>Overlay of ISS019.ESC1.120053418, located at or near Saudi Arabia, taken on </description>
+          <LookAt>
+            <longitude>48.1800</longitude>
+            <latitude>26.1600</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120053418/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>26.7564941612391</north>
+            <south>25.5635058387609</south>
+            <east>49.1743450973634</east>
+            <west>47.1856549026366</west>
+            <rotation>133.67</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

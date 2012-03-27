@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122140406</name>
+          <description>Overlay of ISS019.ESC1.122140406, located at or near Caribbean Sea, taken on </description>
+          <LookAt>
+            <longitude>-82.5800</longitude>
+            <latitude>14.4200</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122140406/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>14.5845748950889</north>
+            <south>14.2554251049111</south>
+            <east>-82.3257572754965</east>
+            <west>-82.8342427245035</west>
+            <rotation>129.81</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

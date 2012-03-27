@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122141225</name>
+          <description>Overlay of ISS019.ESC1.122141225, located at or near Brazil and Bolivia, taken on </description>
+          <LookAt>
+            <longitude>-64.0800</longitude>
+            <latitude>-11.1800</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122141225/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-11.0151556045371</north>
+            <south>-11.3448443954629</south>
+            <east>-63.8285456716166</east>
+            <west>-64.3314543283834</west>
+            <rotation>129.21</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

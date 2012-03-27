@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121014120</name>
+          <description>Overlay of ISS019.ESC1.121014120, located at or near Queensland, Australia, taken on </description>
+          <LookAt>
+            <longitude>146.9200</longitude>
+            <latitude>-26.2800</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121014120/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-26.1140776030409</north>
+            <south>-26.4459223969591</south>
+            <east>147.196920589258</east>
+            <west>146.643079410742</west>
+            <rotation>133.72</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

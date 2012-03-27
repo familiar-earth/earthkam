@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119141804</name>
+          <description>Overlay of ISS019.ESC1.119141804, located at or near Florida, USA, taken on </description>
+          <LookAt>
+            <longitude>-82.4400</longitude>
+            <latitude>29.4000</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119141804/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>29.9976619961933</north>
+            <south>28.8023380038067</south>
+            <east>-81.4136202638304</east>
+            <west>-83.4663797361696</west>
+            <rotation>135.33</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

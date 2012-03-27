@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121224110</name>
+          <description>Overlay of ISS019.ESC1.121224110, located at or near South Korea, taken on </description>
+          <LookAt>
+            <longitude>127.8400</longitude>
+            <latitude>36.6900</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121224110/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>36.8562368140622</north>
+            <south>36.5237631859378</south>
+            <east>128.150147623048</east>
+            <west>127.529852376952</west>
+            <rotation>140.55</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

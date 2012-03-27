@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120102312</name>
+          <description>Overlay of ISS019.ESC1.120102312, located at or near Namibia, Atlantic Ocean and Angola, taken on </description>
+          <LookAt>
+            <longitude>11.8900</longitude>
+            <latitude>-17.5700</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120102312/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-17.4051556045371</north>
+            <south>-17.7348443954629</south>
+            <east>12.1487532509294</east>
+            <west>11.6312467490706</west>
+            <rotation>130.57</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

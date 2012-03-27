@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121152713</name>
+          <description>Overlay of ISS019.ESC1.121152713, located at or near Uruguay, taken on </description>
+          <LookAt>
+            <longitude>-55.6500</longitude>
+            <latitude>-32.6500</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121152713/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-32.4832241851897</north>
+            <south>-32.8167758148103</south>
+            <east>-55.3536097631172</east>
+            <west>-55.9463902368828</west>
+            <rotation>137.36</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

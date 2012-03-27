@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122014934</name>
+          <description>Overlay of ISS019.ESC1.122014934, located at or near Myanmar(Burma), taken on </description>
+          <LookAt>
+            <longitude>97.3800</longitude>
+            <latitude>21.9200</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122014934/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>22.085113895837</north>
+            <south>21.754886104163</south>
+            <east>97.6462440520349</east>
+            <west>97.1137559479651</west>
+            <rotation>131.93</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

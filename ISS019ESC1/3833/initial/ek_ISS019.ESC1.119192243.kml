@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119192243</name>
+          <description>Overlay of ISS019.ESC1.119192243, located at or near Atlantic Ocean and Falkland Islands, United Kingdom, taken on </description>
+          <LookAt>
+            <longitude>-59.5900</longitude>
+            <latitude>-50.7000</latitude>
+            <range>364000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119192243/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-50.0924563234247</north>
+            <south>-51.3075436765753</south>
+            <east>-58.1550544601711</east>
+            <west>-61.0249455398289</west>
+            <rotation>167.51</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

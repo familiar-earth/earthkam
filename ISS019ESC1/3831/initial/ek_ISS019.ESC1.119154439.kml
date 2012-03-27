@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119154439</name>
+          <description>Overlay of ISS019.ESC1.119154439, located at or near California, USA and Oregon, USA, taken on </description>
+          <LookAt>
+            <longitude>-122.8600</longitude>
+            <latitude>41.8100</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119154439/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>42.4118841687202</north>
+            <south>41.2081158312798</south>
+            <east>-121.651829203162</east>
+            <west>-124.068170796838</west>
+            <rotation>146.13</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

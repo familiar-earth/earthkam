@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122075933</name>
+          <description>Overlay of ISS019.ESC1.122075933, located at or near Cameroon, Nigeria and Chad, taken on </description>
+          <LookAt>
+            <longitude>13.8000</longitude>
+            <latitude>9.9900</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122075933/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>10.1543503114438</north>
+            <south>9.82564968855619</south>
+            <east>14.0496593215073</east>
+            <west>13.5503406784927</west>
+            <rotation>129.03</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

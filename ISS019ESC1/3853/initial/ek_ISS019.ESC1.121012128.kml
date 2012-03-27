@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121012128</name>
+          <description>Overlay of ISS019.ESC1.121012128, located at or near China, taken on </description>
+          <LookAt>
+            <longitude>98.3000</longitude>
+            <latitude>33.0600</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121012128/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>33.2259673136881</north>
+            <south>32.8940326863119</south>
+            <east>98.5962624622578</east>
+            <west>98.0037375377422</west>
+            <rotation>137.64</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

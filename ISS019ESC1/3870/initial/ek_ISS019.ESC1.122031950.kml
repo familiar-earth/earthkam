@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122031950</name>
+          <description>Overlay of ISS019.ESC1.122031950, located at or near India and Pakistan, taken on </description>
+          <LookAt>
+            <longitude>70.7800</longitude>
+            <latitude>25.5700</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122031950/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>25.735338479482</north>
+            <south>25.404661520518</south>
+            <east>71.0542118762505</east>
+            <west>70.5057881237495</west>
+            <rotation>133.39</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

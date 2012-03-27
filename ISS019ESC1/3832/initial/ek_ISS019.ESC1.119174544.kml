@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119174544</name>
+          <description>Overlay of ISS019.ESC1.119174544, located at or near Atlantic Ocean and Argentina, taken on </description>
+          <LookAt>
+            <longitude>-63.7400</longitude>
+            <latitude>-42.0400</latitude>
+            <range>363000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119174544/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-41.4351064104362</north>
+            <south>-42.6448935895638</south>
+            <east>-62.5214183379684</east>
+            <west>-64.9585816620316</west>
+            <rotation>146.44</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>
