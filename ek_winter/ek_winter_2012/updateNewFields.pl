@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 # use strict;
 
+### This file is called in KMLupload.cgi! Based on KMLupload.cgi, the script so far only uses the "-i" option. ###
+
 # This file updates new fields in the ekImages database for corrected images. Images will not annotate unless the fields are updated. Currently takes in a .kml file as an argument. and a user as an argument 
 #Args: 0 - absolute path to overlays directory (required)
 #   1 - user (required)
@@ -36,7 +38,7 @@ else
   my $overlays = $ARGV[0] or die $usage; # overlays directory
 }
 
-
+### So far, the KMLUpload.cgi script only uses this option.
 if ($option eq "-i") # update data for a single image
 {
   update_single($image, $user);
