@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120052222</name>
+          <description>Overlay of ISS019.ESC1.120052222, located at or near England, UK and Atlantic Ocean, taken on </description>
+          <LookAt>
+            <longitude>-1.7500</longitude>
+            <latitude>50.9200</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120052222/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>51.5242647553576</north>
+            <south>50.3157352446424</south>
+            <east>-0.315975730232378</east>
+            <west>-3.18402426976762</west>
+            <rotation>168.83</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

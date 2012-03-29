@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119124013</name>
+          <description>Overlay of ISS019.ESC1.119124013, located at or near Lake Huron, taken on </description>
+          <LookAt>
+            <longitude>-82.4400</longitude>
+            <latitude>44.7200</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119124013/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>45.3232765873194</north>
+            <south>44.1167234126806</south>
+            <east>-81.1698071861934</east>
+            <west>-83.7101928138066</west>
+            <rotation>150.55</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122020432</name>
+          <description>Overlay of ISS019.ESC1.122020432, located at or near Northern Territory, Australia, taken on </description>
+          <LookAt>
+            <longitude>132.1700</longitude>
+            <latitude>-23.6300</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122020432/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-23.4641225197699</north>
+            <south>-23.7958774802301</south>
+            <east>132.44087602912</east>
+            <west>131.89912397088</west>
+            <rotation>132.57</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

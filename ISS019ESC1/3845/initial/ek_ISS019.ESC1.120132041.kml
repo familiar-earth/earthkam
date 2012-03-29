@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120132041</name>
+          <description>Overlay of ISS019.ESC1.120132041, located at or near Atlantic Ocean and Brazil, taken on </description>
+          <LookAt>
+            <longitude>-47.3100</longitude>
+            <latitude>-0.4400</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120132041/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-0.275739522014206</north>
+            <south>-0.604260477985794</south>
+            <east>-47.0642084115889</east>
+            <west>-47.5557915884111</west>
+            <rotation>128.34</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

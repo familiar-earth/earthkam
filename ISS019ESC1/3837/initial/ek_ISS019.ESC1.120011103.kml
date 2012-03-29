@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120011103</name>
+          <description>Overlay of ISS019.ESC1.120011103, located at or near Coral Sea and Papua New Guinea, taken on </description>
+          <LookAt>
+            <longitude>144.2600</longitude>
+            <latitude>-8.0600</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120011103/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-7.46638050941749</north>
+            <south>-8.65361949058251</south>
+            <east>145.15704418225</east>
+            <west>143.36295581775</west>
+            <rotation>128.79</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

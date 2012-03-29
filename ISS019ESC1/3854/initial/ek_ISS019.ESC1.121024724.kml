@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121024724</name>
+          <description>Overlay of ISS019.ESC1.121024724, located at or near Kazakhstan and Caspian Sea, taken on </description>
+          <LookAt>
+            <longitude>53.2100</longitude>
+            <latitude>45.8100</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121024724/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>45.9770902319134</north>
+            <south>45.6429097680866</south>
+            <east>53.5686619447863</east>
+            <west>52.8513380552137</west>
+            <rotation>152.58</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120052952</name>
+          <description>Overlay of ISS019.ESC1.120052952, located at or near Turkey, taken on </description>
+          <LookAt>
+            <longitude>34.0600</longitude>
+            <latitude>38.0300</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120052952/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>38.6305366668499</north>
+            <south>37.4294633331501</south>
+            <east>35.2006839061476</east>
+            <west>32.9193160938524</west>
+            <rotation>141.82</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

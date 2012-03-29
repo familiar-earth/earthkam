@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119174350</name>
+          <description>Overlay of ISS019.ESC1.119174350, located at or near Chile, taken on </description>
+          <LookAt>
+            <longitude>-71.0400</longitude>
+            <latitude>-37.6700</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119174350/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-37.0668581628676</north>
+            <south>-38.2731418371324</south>
+            <east>-69.8999915860568</east>
+            <west>-72.1800084139432</west>
+            <rotation>141.46</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120101147</name>
+          <description>Overlay of ISS019.ESC1.120101147, located at or near Mauritania, taken on </description>
+          <LookAt>
+            <longitude>-14.0000</longitude>
+            <latitude>17.5200</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120101147/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>17.6844850616308</north>
+            <south>17.3555149383692</south>
+            <east>-13.7418833457439</east>
+            <west>-14.2581166542561</west>
+            <rotation>130.56</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

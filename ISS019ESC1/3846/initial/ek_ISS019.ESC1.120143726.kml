@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120143726</name>
+          <description>Overlay of ISS019.ESC1.120143726, located at or near Utah, USA, taken on </description>
+          <LookAt>
+            <longitude>-111.3900</longitude>
+            <latitude>41.5600</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120143726/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>41.7266859813523</north>
+            <south>41.3933140186477</south>
+            <east>-111.056728862693</east>
+            <west>-111.723271137307</west>
+            <rotation>145.81</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

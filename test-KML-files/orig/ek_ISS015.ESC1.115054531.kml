@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS015.ESC1.115054531</name>
+          <description>Overlay of ISS015.ESC1.115054531, located at or near China and Yellow Sea, taken on 05:45:31 04/25/2007</description>
+          <LookAt>
+            <longitude>120.7800</longitude>
+            <latitude>40.8200</latitude>
+            <range>329000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS015ESC1/115054531/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>41.3687476783026</north>
+            <south>40.2712523216974</south>
+            <east>121.864846795048</east>
+            <west>119.695153204952</west>
+            <rotation>395.11</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

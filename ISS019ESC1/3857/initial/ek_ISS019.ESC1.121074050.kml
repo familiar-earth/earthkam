@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121074050</name>
+          <description>Overlay of ISS019.ESC1.121074050, located at or near Tanzania, taken on </description>
+          <LookAt>
+            <longitude>38.0000</longitude>
+            <latitude>-6.7700</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121074050/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-6.60564968855619</north>
+            <south>-6.93435031144381</south>
+            <east>38.2476457534093</east>
+            <west>37.7523542465907</west>
+            <rotation>128.66</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

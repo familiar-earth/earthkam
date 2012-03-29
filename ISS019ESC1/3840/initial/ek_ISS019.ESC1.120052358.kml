@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120052358</name>
+          <description>Overlay of ISS019.ESC1.120052358, located at or near Germany and France, taken on </description>
+          <LookAt>
+            <longitude>7.3100</longitude>
+            <latitude>49.3100</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120052358/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>49.9140850884416</north>
+            <south>48.7059149115584</south>
+            <east>8.69618926471055</east>
+            <west>5.92381073528945</west>
+            <rotation>161.58</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

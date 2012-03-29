@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122002929</name>
+          <description>Overlay of ISS019.ESC1.122002929, located at or near Coral Sea, taken on </description>
+          <LookAt>
+            <longitude>146.6700</longitude>
+            <latitude>-13.0000</latitude>
+            <range>357000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122002929/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-12.8350208543501</north>
+            <south>-13.1649791456499</south>
+            <east>146.923355526286</east>
+            <west>146.416644473714</west>
+            <rotation>129.53</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

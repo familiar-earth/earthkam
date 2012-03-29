@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121132722</name>
+          <description>Overlay of ISS019.ESC1.121132722, located at or near Montana, USA, taken on </description>
+          <LookAt>
+            <longitude>-112.6200</longitude>
+            <latitude>46.8800</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121132722/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>47.0470902319134</north>
+            <south>46.7129097680866</south>
+            <east>-112.254314507595</east>
+            <west>-112.985685492405</west>
+            <rotation>154.83</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

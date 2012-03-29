@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122062100</name>
+          <description>Overlay of ISS019.ESC1.122062100, located at or near Mediterranean Sea and Libya, taken on </description>
+          <LookAt>
+            <longitude>18.9800</longitude>
+            <latitude>30.7000</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122062100/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>30.8655630631271</north>
+            <south>30.5344369368729</south>
+            <east>19.2680889284082</east>
+            <west>18.6919110715918</west>
+            <rotation>136.09</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

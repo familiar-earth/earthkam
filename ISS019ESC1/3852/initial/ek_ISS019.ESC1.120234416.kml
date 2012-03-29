@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120234416</name>
+          <description>Overlay of ISS019.ESC1.120234416, located at or near Mongolia, taken on </description>
+          <LookAt>
+            <longitude>99.1700</longitude>
+            <latitude>46.0300</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120234416/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>46.1970453151844</north>
+            <south>45.8629546848156</south>
+            <east>99.5300221056402</east>
+            <west>98.8099778943598</west>
+            <rotation>153</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

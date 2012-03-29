@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121103649</name>
+          <description>Overlay of ISS019.ESC1.121103649, located at or near Atlantic Ocean and Cayman Island, taken on </description>
+          <LookAt>
+            <longitude>-24.1900</longitude>
+            <latitude>14.9100</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121103649/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>15.0744850616308</north>
+            <south>14.7455149383692</south>
+            <east>-23.9353271059145</east>
+            <west>-24.4446728940855</west>
+            <rotation>129.92</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

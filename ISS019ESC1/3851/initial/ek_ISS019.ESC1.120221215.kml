@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120221215</name>
+          <description>Overlay of ISS019.ESC1.120221215, located at or near China and Mongolia, taken on </description>
+          <LookAt>
+            <longitude>120.0500</longitude>
+            <latitude>46.8800</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120221215/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>47.0471351486424</north>
+            <south>46.7128648513576</south>
+            <east>120.415816915763</east>
+            <west>119.684183084237</west>
+            <rotation>154.82</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

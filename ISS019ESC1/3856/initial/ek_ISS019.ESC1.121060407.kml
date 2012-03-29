@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121060407</name>
+          <description>Overlay of ISS019.ESC1.121060407, located at or near Somalia, taken on </description>
+          <LookAt>
+            <longitude>49.7900</longitude>
+            <latitude>9.3500</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121060407/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>9.51426047798579</north>
+            <south>9.18573952201421</south>
+            <east>50.0390935655842</east>
+            <west>49.5409064344158</west>
+            <rotation>128.95</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

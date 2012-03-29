@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121024955</name>
+          <description>Overlay of ISS019.ESC1.121024955, located at or near Uzbekistan, taken on </description>
+          <LookAt>
+            <longitude>64.1400</longitude>
+            <latitude>40.6400</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121024955/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>40.8066410646233</north>
+            <south>40.4733589353767</south>
+            <east>64.468576302065</east>
+            <west>63.811423697935</west>
+            <rotation>144.65</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

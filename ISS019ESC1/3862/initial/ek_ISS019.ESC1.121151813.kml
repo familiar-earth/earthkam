@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121151813</name>
+          <description>Overlay of ISS019.ESC1.121151813, located at or near Peru, taken on </description>
+          <LookAt>
+            <longitude>-78.7400</longitude>
+            <latitude>-6.2000</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121151813/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-6.03542510491114</north>
+            <south>-6.36457489508886</south>
+            <east>-78.4923178574146</east>
+            <west>-78.9876821425854</west>
+            <rotation>128.61</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

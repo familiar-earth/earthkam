@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120004803</name>
+          <description>Overlay of ISS019.ESC1.120004803, located at or near Kazakhstan, taken on </description>
+          <LookAt>
+            <longitude>69.2700</longitude>
+            <latitude>50.7600</latitude>
+            <range>362000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120004803/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>51.3643995055447</north>
+            <south>50.1556004944553</south>
+            <east>70.699399954114</east>
+            <west>67.840600045886</west>
+            <rotation>167.85</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

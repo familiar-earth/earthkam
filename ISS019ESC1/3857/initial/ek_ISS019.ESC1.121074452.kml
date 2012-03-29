@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121074452</name>
+          <description>Overlay of ISS019.ESC1.121074452, located at or near Madagascar, taken on </description>
+          <LookAt>
+            <longitude>47.3300</longitude>
+            <latitude>-19.0000</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121074452/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-18.834886104163</north>
+            <south>-19.165113895837</south>
+            <east>47.5913235462498</east>
+            <west>47.0686764537502</west>
+            <rotation>130.97</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

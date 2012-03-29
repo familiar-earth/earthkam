@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121055350</name>
+          <description>Overlay of ISS019.ESC1.121055350, located at or near Greece and Mediterranean Sea, taken on </description>
+          <LookAt>
+            <longitude>21.1200</longitude>
+            <latitude>38.4900</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121055350/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>38.6563266475202</north>
+            <south>38.3236733524798</south>
+            <east>21.43791265443</east>
+            <west>20.80208734557</west>
+            <rotation>142.27</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

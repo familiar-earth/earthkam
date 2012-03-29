@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120065928</name>
+          <description>Overlay of ISS019.ESC1.120065928, located at or near Mediterranean Sea, Spain and France, taken on </description>
+          <LookAt>
+            <longitude>3.3100</longitude>
+            <latitude>42.4200</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120065928/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>43.0218392519912</north>
+            <south>41.8181607480089</south>
+            <east>4.52967248016736</east>
+            <west>2.09032751983264</west>
+            <rotation>146.96</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

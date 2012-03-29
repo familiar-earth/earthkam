@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121091248</name>
+          <description>Overlay of ISS019.ESC1.121091248, located at or near Angola, taken on </description>
+          <LookAt>
+            <longitude>15.7600</longitude>
+            <latitude>-8.1900</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121091248/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-8.02560477182718</north>
+            <south>-8.35439522817282</south>
+            <east>16.0085436763498</east>
+            <west>15.5114563236502</west>
+            <rotation>128.8</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

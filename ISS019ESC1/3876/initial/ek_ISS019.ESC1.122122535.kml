@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122122535</name>
+          <description>Overlay of ISS019.ESC1.122122535, located at or near North Carolina, USA and South Carolina, USA, taken on </description>
+          <LookAt>
+            <longitude>-78.6400</longitude>
+            <latitude>34.5300</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122122535/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>34.6959223969591</north>
+            <south>34.3640776030409</south>
+            <east>-78.3386605180963</east>
+            <west>-78.9413394819037</west>
+            <rotation>138.74</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

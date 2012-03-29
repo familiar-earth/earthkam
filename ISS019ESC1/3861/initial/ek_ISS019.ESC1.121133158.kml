@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121133158</name>
+          <description>Overlay of ISS019.ESC1.121133158, located at or near Missouri, USA, taken on </description>
+          <LookAt>
+            <longitude>-93.2000</longitude>
+            <latitude>37.1400</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121133158/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>37.3062817307912</north>
+            <south>36.9737182692088</south>
+            <east>-92.8879607905394</east>
+            <west>-93.5120392094606</west>
+            <rotation>140.96</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

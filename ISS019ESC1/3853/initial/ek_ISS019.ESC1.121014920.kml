@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121014920</name>
+          <description>Overlay of ISS019.ESC1.121014920, located at or near Pacific Ocean, taken on </description>
+          <LookAt>
+            <longitude>176.0500</longitude>
+            <latitude>-45.8100</latitude>
+            <range>364000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121014920/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-45.6420114335065</north>
+            <south>-45.9779885664935</south>
+            <east>176.410595084985</east>
+            <west>175.689404915015</west>
+            <rotation>152.58</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

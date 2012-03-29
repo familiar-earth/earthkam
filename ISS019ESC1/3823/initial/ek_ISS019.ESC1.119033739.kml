@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119033739</name>
+          <description>Overlay of ISS019.ESC1.119033739, located at or near Nepal and India, taken on </description>
+          <LookAt>
+            <longitude>80.9700</longitude>
+            <latitude>28.8900</latitude>
+            <range>358000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119033739/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>29.4875721627353</north>
+            <south>28.2924278372647</south>
+            <east>81.9911955435555</east>
+            <west>79.9488044564445</west>
+            <rotation>135.04</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

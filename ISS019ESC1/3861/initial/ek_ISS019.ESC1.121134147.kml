@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121134147</name>
+          <description>Overlay of ISS019.ESC1.121134147, located at or near Venezuela, taken on </description>
+          <LookAt>
+            <longitude>-66.2800</longitude>
+            <latitude>8.9900</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121134147/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>9.15444014490183</north>
+            <south>8.82555985509817</south>
+            <east>-66.0309315687365</east>
+            <west>-66.5290684312635</west>
+            <rotation>128.9</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

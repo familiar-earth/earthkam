@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.120102653</name>
+          <description>Overlay of ISS019.ESC1.120102653, located at or near South Africa, taken on </description>
+          <LookAt>
+            <longitude>21.5400</longitude>
+            <latitude>-28.2500</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/120102653/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-28.0841225197699</north>
+            <south>-28.4158774802301</south>
+            <east>21.8217186981297</east>
+            <west>21.2582813018703</west>
+            <rotation>134.7</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

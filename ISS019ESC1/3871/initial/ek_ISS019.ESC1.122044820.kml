@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122044820</name>
+          <description>Overlay of ISS019.ESC1.122044820, located at or near Syria, taken on </description>
+          <LookAt>
+            <longitude>38.5300</longitude>
+            <latitude>33.8500</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122044820/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>34.0159223969591</north>
+            <south>33.6840776030409</south>
+            <east>38.828865668267</east>
+            <west>38.231134331733</west>
+            <rotation>138.23</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

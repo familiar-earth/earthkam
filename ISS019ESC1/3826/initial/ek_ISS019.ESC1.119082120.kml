@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119082120</name>
+          <description>Overlay of ISS019.ESC1.119082120, located at or near Uganda, taken on </description>
+          <LookAt>
+            <longitude>33.4700</longitude>
+            <latitude>1.3900</latitude>
+            <range>355000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119082120/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>1.98173298796414</north>
+            <south>0.798267012035863</south>
+            <east>34.3556142352514</east>
+            <west>32.5843857647486</west>
+            <rotation>128.35</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS015.ESC1.115054459</name>
+          <description>Overlay of ISS015.ESC1.115054459, located at or near China, taken on 05:44:59 04/25/2007</description>
+          <LookAt>
+            <longitude>118.6800</longitude>
+            <latitude>39.5800</latitude>
+            <range>329000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS015ESC1/115054459/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>40.1287925950316</north>
+            <south>39.0312074049684</south>
+            <east>119.745302741671</east>
+            <west>117.614697258329</west>
+            <rotation>396.55</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

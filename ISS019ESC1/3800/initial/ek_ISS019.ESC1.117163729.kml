@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.117163729</name>
+          <description>Overlay of ISS019.ESC1.117163729, located at or near Guatemala and Mexico, taken on </description>
+          <LookAt>
+            <longitude>-91.7800</longitude>
+            <latitude>15.2900</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/117163729/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>15.8829457396474</north>
+            <south>14.6970542603526</south>
+            <east>-90.8602503227875</east>
+            <west>-92.6997496772125</west>
+            <rotation>130</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

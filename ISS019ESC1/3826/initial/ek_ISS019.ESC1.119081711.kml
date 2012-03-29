@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119081711</name>
+          <description>Overlay of ISS019.ESC1.119081711, located at or near Sudan, taken on </description>
+          <LookAt>
+            <longitude>24.1200</longitude>
+            <latitude>14.2200</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119081711/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>14.8129008229184</north>
+            <south>13.6270991770816</south>
+            <east>25.0351907652935</east>
+            <west>23.2048092347065</west>
+            <rotation>129.77</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

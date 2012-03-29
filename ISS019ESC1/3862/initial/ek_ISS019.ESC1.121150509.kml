@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.121150509</name>
+          <description>Overlay of ISS019.ESC1.121150509, located at or near Arizona, USA, taken on </description>
+          <LookAt>
+            <longitude>-110.8200</longitude>
+            <latitude>32.8300</latitude>
+            <range>359000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/121150509/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>32.9958325635011</north>
+            <south>32.6641674364989</south>
+            <east>-110.524721013715</east>
+            <west>-111.115278986285</west>
+            <rotation>137.48</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

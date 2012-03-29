@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.119232501</name>
+          <description>Overlay of ISS019.ESC1.119232501, located at or near Sea of Japan, taken on </description>
+          <LookAt>
+            <longitude>131.2900</longitude>
+            <latitude>35.0700</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/119232501/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>35.6697281657277</north>
+            <south>34.4702718342723</south>
+            <east>132.386330558938</east>
+            <west>130.193669441062</west>
+            <rotation>139.16</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

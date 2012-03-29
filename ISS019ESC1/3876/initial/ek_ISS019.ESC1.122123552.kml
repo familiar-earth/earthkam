@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.122123552</name>
+          <description>Overlay of ISS019.ESC1.122123552, located at or near French Guiana and Atlantic Ocean, taken on </description>
+          <LookAt>
+            <longitude>-52.0100</longitude>
+            <latitude>4.4800</latitude>
+            <range>356000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/122123552/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>4.64435031144381</north>
+            <south>4.31564968855619</south>
+            <east>-51.7633272749211</east>
+            <west>-52.2566727250789</west>
+            <rotation>128.48</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>
