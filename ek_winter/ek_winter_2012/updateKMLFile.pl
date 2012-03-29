@@ -131,6 +131,7 @@ if ($CORRECT eq '0') {
   }
 }
 else {
+  print "DEBUG: correct = $CORRECT\n";
   # Actually apply a correction
 
   # X is Lon, Y is Lat
@@ -153,8 +154,8 @@ else {
   # TODO rename $file to $corFile
   foreach my $corFile (@correctedFiles) {
     if ($CORRECT ne 'lookAt') {
-      # TODO remove test statement?
-      # print "Reading corrected file: $file\n";
+
+      print "Reading corrected file: $file\n";
       # get the initial filename by using the search replace, Perl syntax
       # replace '/completed/' with '/initial/'
       my $initialFile = $corFile . "";
@@ -164,8 +165,8 @@ else {
       my @latLonBoxCorrected = getLatLonBox($corFile);
       my @latLonBoxInitial = getLatLonBox($initialFile);
 
-      # change from latlonbox to the alt-form: four vectors, center, and rotation
-      # TODO test this functio, see why we need vectors
+      # change from latlonbox to the alt-form: four vectors, center, and
+      # rotation
       my @vectorBoxCorrected = changeFromLatLonBox(@latLonBoxCorrected);
       my @vectorBoxInitial = changeFromLatLonBox(@latLonBoxInitial);
 
@@ -173,17 +174,12 @@ else {
       my @center1 = @{ $vectorBoxInitial[1] };
       my @center2 = @{ $vectorBoxCorrected[1] };
 
-
-
       # TODO here begin the corrections, this is where the code can be
       #      broken up into pieces.
       if (index($CORRECT, 'Direct') == -1) {
-        print "DEBUG: correct = $CORRECT\n";
 
         # Calculate offsets by comparing against the initial files
         if ($CORRECT eq 'constant') {
-          # TODO more extraneous comments that should only belong with
-          #      this code.
 
           # put this distance is in km once you're done.
           # Remember to convert back later to degrees.
@@ -191,10 +187,12 @@ else {
           my $x1 = distance_x1(@center1, @center2);
           my $y = distance_y(@center1, @center2); #north-south translation
           my $x2 = distance_x2(@center1, @center2);
-          my $x = mean($x1, $x2); #east-west translation. We take the averages of the east-west translation from before and after the north-south translation.
+          # east-west translation. We take the averages of the east-west
+          # translation from before and after the north-south translation.
+          my $x = mean($x1, $x2);
 
           # put the center value into array
-          push(@dTransX, $x); # $center2 is coordinate of initial, $center1 is corrected
+          push(@dTransX, $x);
           push(@dTransY, $y);
         }
         else
@@ -207,10 +205,12 @@ else {
         # put rotation value into array
         my $dRotate = $vectorBoxCorrected[2] - $vectorBoxInitial[2];
         $dRotate = fixRotationValue($dRotate);
-        # compare rotations and push the change into the array
+        # push the difference of rotation into the array
         push(@dRot, $dRotate);
       }
-      else #applying Direct corrections, so push in the actual values of the corrected files. (don't compare to the initial files)
+      # applying Direct corrections, so push in the actual values of the
+      # corrected files. (don't compare to the initial files)
+      else
       {
         # put the center value into array
         push(@dTransX, $center2[0]);
@@ -228,9 +228,9 @@ else {
       push(@dScaleX, ($vector2[0]) / $vector1[0]);
       push(@dScaleY, ($vector2[1]) / $vector1[1]);
     }
+    # Only updating the lookAt values for the corrected files.
     else
     {
-      # Only updating the lookAt values for the corrected files.
       my @latLonBoxCorrected = getLatLonBox($corFile);
       my $initialFile = $corFile . "";
       $initialFile =~ s/\/completed\//\/initial\//;
@@ -243,11 +243,6 @@ else {
   if ($CORRECT ne "lookAt")
   {
     # Now calculate the y-intercept of dTranslate, dRotate, and dScale
-
-    # TODO broken
-    # Also calculate the avg. slope of the changes
-    #my @printThisArray = getInterceptsAndSlopes(\@dTransX, \@dTransY, \@dRot, \@dScaleX, \@dScaleY, \@correctedFiles);
-    #print "@printThisArray\n";
 
     my @dTranslate = (mean(@dTransX), mean(@dTransY));
     my $dRotate = avgRotationValues(@dRot);
@@ -271,7 +266,6 @@ else {
     # Now compute the mean changes and apply them to each initial file (except for the complete ones)
     my @initialFiles = <$initialPath*.kml>;
     print "Correcting " . scalar(@initialFiles) . " initial files in " . $initialPath . "\n";
-    # TODO renamed file to initFile
     foreach my $initFile (@initialFiles)
     {
       print "Correcting initial file: $initFile\n";
@@ -300,8 +294,11 @@ sub containsString
   return 0;
 }
 
+# TODO finish comment
 # apply a correction to an initial file and print to a new file
 # takes in the average deltaTranslate, Rotate, and Scale as well as the initial filepath
+# Take values calculated from correction process, change it back to a
+# LatLonBox and pass that to write/print a new KML file.
 sub applyCorrection
 {
   my @dTranslate = @{ $_[0] };
@@ -483,10 +480,14 @@ sub calcLatLonBox
 }
 
 #
-# getLatLonBox
-#   @param string $filePathToKMLFile
-#   - returns an array
-#       with north(0), south(1), east(2), west(3) and rotation(4).
+# getLatLonBox parses the LatLonBox from a KML file
+#
+#   @param string
+#          Filepath to a KML file
+#
+#   @return array
+#           north(0), south(1), east(2), west(3) and rotation(4)
+#           all are floating point numbers.
 #
 sub getLatLonBox
 {
@@ -548,6 +549,8 @@ sub getLatLonBox
   # average the individual slopes for the overall slope. compare to the avg
   # apply the slope change after comparing the time to the average
 # avgTranslateX, avgTranslateY, avgRotate, avgScaleX, avgScaleY, slopeTranslateX, slopeTranslateY, slopeRotate, slopeScaleX, slopeScaleY, avgTime)
+#
+#
 sub getInterceptsAndSlopes
 {
   my @translateX = @{$_[0]};
@@ -826,7 +829,15 @@ sub printKML
   close(NEWDATA);
 }
 
+#
 # gets rotation value to within 0 and 360
+#
+#   @param float
+#          A rotation value from the LatLonBox of a KML file
+#
+#   @return float
+#           A rotation value between 0 and 360
+#
 sub fixRotationValue
 {
   my ($dRotate) = @_;

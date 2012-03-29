@@ -41,17 +41,17 @@ sub changetolatlonbox {
 }
 
 #
-# changeFromLatLonBox
-#   @param Array of Doubles
-#          Array[0] = North coordinate
-#          Array[1] = South coordinate
-#          Array[2] = East coordinate
-#          Array[3] = West coordinate
-#          Array[4] = Rotation
-#   - returns a array with reference \@topRight, \@center, $rotation
+# Obtains the North-East corner point, center point, and a rotation value
+# from a LatLonBox. These are used to represent this LatLonBox as a vector.
 #
-# TODO Test if this works
-#      Whats the goal of this function?
+#   @param array
+#          The LatLonBox with north[0], south[1], west[2], east[3],
+#          and rotation[4]. All floats.
+#
+#   @return array
+#           A top-right corner(array of two floats), center[1] (array of
+#           two floats), and rotation[2]. All are floats.
+#
 sub changeFromLatLonBox {
 
 	my @latlonbox = @_;
@@ -63,9 +63,8 @@ sub changeFromLatLonBox {
 	my @center = ($x, $y);
 	my $rotation = $latlonbox[4];
 
-	# all very rectangular, but get these mini-vectors so that we can put
+  # all very rectangular, but get these mini-vectors so that we can put
   # them together for the topRight vector.
-  # TODO Check this out, what is this really calculating?
 	my $up = $latlonbox[0] - $y;
 	my $right = $latlonbox[2] - $x;
 
@@ -77,13 +76,16 @@ sub changeFromLatLonBox {
 }
 
 #
-# crossDateLine
-#   @param[0] Double Eastern Coordinate of a LatLonBox
-#   @param[1] Double Western Coordinate of a LatLonBox
-#   - returns 1 if the image crosses the international date line
-#   - 0 if it doesn't.
+# Test whether an image crosses the international date line.
 #
-# TODO Test if this works
+#   @param float
+#          Eastern Coordinate of a LatLonBox
+#   @param float
+#          Western Coordinate of a LatLonBox
+#   @return integer
+#           1 if the image crosses the international date line, and 0 if
+#           it does not.
+#
 sub crossDateLine {
 	my ($east, $west) = @_;
 	# If the value for the eastern coordinate is less than that of the
