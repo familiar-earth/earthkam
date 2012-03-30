@@ -31,7 +31,7 @@ Table of Contents:
     II.O updateNewFields.pl
     II.P updateNewField_singel.pl
 
-  III. Format of Source Code
+  III. Format of Source Code, A simple Perl style sheet
 
 
 I. A Quick Introduction
@@ -80,6 +80,17 @@ III. Format of Source Code
 #   Allen Eubank <adeubank@gmail.com>
 #   John Uba
 #   YourName Here <if_you_want@addyouremail.here>
+#
+### Description ########################################################
+#
+# A simple Perl style sheet, this part describes the purpose of this
+# Perl module.
+#
+#   @param[0] DataType
+#             A short description of my parameter.
+#
+#   @param[1] DataType
+#             A short description of my parameter.
 #
 ### Imports ############################################################
 

@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 ########################################################################
+#
 # Co-Author(s):
 #   Stephanie Tsuei
 #   Alex Fandrianto
@@ -7,20 +8,21 @@
 #   David Choy
 #   Allen Eubank
 #   John Uba
-### Description ########################################################
-# FILE: updateKMLFile.pl
-#       TODO add a descript of this file (one to two sentences)
-#            called by KMLupload.cgi
-# @params:
-#     ARGV[0] The location to the root directory
-#             containing the automated, completed, and initial directories
 #
-#     ARGV[1] The type of correction to apply to the KML files.
+### Description ########################################################
+#
+# TODO Add a description for updateKMLFile.pl
+#
+#   @param[0] string
+#              The location to the root directory containing the
+#              automated, completed, and initial directories.
+#
+#   @param[1] string
+#             The type of correction to apply to the KML files.
 #
 ### Imports ############################################################
 
 use strict;
-# TODO (remove extraneous comment?)
 # Useful for create_automated_orbit.pl when reading old and creating the
 # new .kml files note that throughout this file, dScale and dTranslate
 # will be in km, so the final reading involves a change
@@ -41,7 +43,6 @@ my $completedPath = $orbitPath . "completed/";
 my $automatedPath = $orbitPath . "automated/";
 my $CORRECT = 'constant';
 
-# TODO (another extraneous comment???)
 # The general correction scheme is to apply a constant offset, averaging
 # all those the differences in manual vs initial corrections. Requires 1
 # corrected image to perform.
