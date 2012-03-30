@@ -155,7 +155,7 @@ else {
   foreach my $corFile (@correctedFiles) {
     if ($CORRECT ne 'lookAt') {
 
-      print "Reading corrected file: $file\n";
+      print "Reading corrected file: $corFile\n";
       # get the initial filename by using the search replace, Perl syntax
       # replace '/completed/' with '/initial/'
       my $initialFile = $corFile . "";
@@ -195,8 +195,7 @@ else {
           push(@dTransX, $x);
           push(@dTransY, $y);
         }
-        else
-        {
+        else {
           # put the center value into array
           push(@dTransX, $center2[0] - $center1[0]);
           push(@dTransY, $center2[1] - $center1[1]);
@@ -210,8 +209,7 @@ else {
       }
       # applying Direct corrections, so push in the actual values of the
       # corrected files. (don't compare to the initial files)
-      else
-      {
+      else {
         # put the center value into array
         push(@dTransX, $center2[0]);
         push(@dTransY, $center2[1]);
@@ -229,8 +227,7 @@ else {
       push(@dScaleY, ($vector2[1]) / $vector1[1]);
     }
     # Only updating the lookAt values for the corrected files.
-    else
-    {
+    else {
       my @latLonBoxCorrected = getLatLonBox($corFile);
       my $initialFile = $corFile . "";
       $initialFile =~ s/\/completed\//\/initial\//;
@@ -240,8 +237,7 @@ else {
     }
   }
 
-  if ($CORRECT ne "lookAt")
-  {
+  if ($CORRECT ne "lookAt") {
     # Now calculate the y-intercept of dTranslate, dRotate, and dScale
 
     my @dTranslate = (mean(@dTransX), mean(@dTransY));
@@ -249,25 +245,20 @@ else {
     my @dScale = (mean(@dScaleX), mean(@dScaleY));
 
     my @regressionValues = (); # This will be used by the linear and quadratic corrections to store their deviously different values.
-    if (index($CORRECT, 'linear') != -1)
-    {
+    if (index($CORRECT, 'linear') != -1) {
       @regressionValues = getInterceptsAndSlopes(\@dTransX, \@dTransY, \@dRot, \@correctedFiles);
     }
-    elsif (index($CORRECT, 'quadratic') != -1)
-    {
+    elsif (index($CORRECT, 'quadratic') != -1) {
       @regressionValues = getQuadraticRegressions(\@dTransX, \@dTransY, \@dRot, \@correctedFiles);
     }
-    elsif (index($CORRECT, 'sinusoidal') != -1)
-    {
+    elsif (index($CORRECT, 'sinusoidal') != -1) {
       @regressionValues = getSinusoidalRegressions(\@dTransX, \@dTransY, \@dRot, \@correctedFiles);
     }
-
 
     # Now compute the mean changes and apply them to each initial file (except for the complete ones)
     my @initialFiles = <$initialPath*.kml>;
     print "Correcting " . scalar(@initialFiles) . " initial files in " . $initialPath . "\n";
-    foreach my $initFile (@initialFiles)
-    {
+    foreach my $initFile (@initialFiles) {
       print "Correcting initial file: $initFile\n";
       # apply corrections to the initial files and the automated files will pop-out later
       # We no longer ignore the completed folder
@@ -279,8 +270,7 @@ else {
 
 # search array for an element (strings)
 # Nobody calls this function :(
-sub containsString
-{
+sub containsString {
   my @array = @{ $_[0] };
   my $element = $_[1];
 
@@ -294,13 +284,28 @@ sub containsString
   return 0;
 }
 
-# TODO finish comment
-# apply a correction to an initial file and print to a new file
-# takes in the average deltaTranslate, Rotate, and Scale as well as the initial filepath
-# Take values calculated from correction process, change it back to a
-# LatLonBox and pass that to write/print a new KML file.
-sub applyCorrection
-{
+#
+# Take values calculated from correction process, calculate the new
+# LatLonBox and pass that to print a new KML file.
+#
+#   @param[0] array
+#             Array of two floats, representing the average translation
+#             each manually corrected image under went.
+#
+#   @param[1] float
+#             Average rotation that all corrected images under went
+#
+#   @param[2] array
+#             Array of two floats, representing the average scale that
+#             all corrected images changed by.
+#
+#   @param[3] string
+#             Filepath to initial KML file.
+#
+#   @param[4] array
+#             Dependent on the correction type.
+#
+sub applyCorrection {
   my @dTranslate = @{ $_[0] };
   my $dRotate = $_[1];
   my @dScale = @{ $_[2] };
@@ -311,12 +316,33 @@ sub applyCorrection
   printKML($filepath, \@newLatlonbox);
 }
 
-
-# Requires the input of the avg change in translation, rotation, and size, as well as the old latlonbox.
-# translation and scale are x, y  arrays
-# This gives back the newLatLonBox with the avg changes applied
-sub calcLatLonBox
-{
+#
+# Takes the initial LatLonBox, applies the calculated correction
+# values, and returns the new LatLonBox.
+#
+#   @param[0] array
+#             Array of two floats, representing the average translation
+#             each manually corrected image under went.
+#
+#   @param[1] float
+#             Average rotation that all corrected images under went
+#
+#   @param[2] array
+#             Array of two floats, representing the average scale that
+#             all corrected images changed by.
+#
+#   @param[3] string
+#             Filepath to initial KML file.
+#
+#   @param[4] array
+#             Dependent on the correction type.
+#
+#   @return array
+#           Return a LatLonBox.
+#           north(0), south(1), east(2), west(3) and rotation(4)
+#           all are floating point numbers.
+#
+sub calcLatLonBox {
   my @dTranslate = @{ $_[0] };
   my $dRotate = $_[1];
   my @dScale = @{ $_[2] };
@@ -338,8 +364,7 @@ sub calcLatLonBox
   $cornerVector[1] *= $dScale[1]; # multiply y value
   $centeredData[0] = \@cornerVector;
 
-  if ($CORRECT eq 'constant')
-  {
+  if ($CORRECT eq 'constant') {
     # Rotate: The rotation value just goes up by dRotate
     $centeredData[2] += $dRotate;
 
@@ -353,12 +378,10 @@ sub calcLatLonBox
     $center[1] += $dTranslate[1];
     $centeredData[1] = \@center;
   }
-  else
-  {
+  else {
     my $timeValue = getImageTime($filepath);
 
-    if (index($CORRECT, 'linear') != -1)
-    {
+    if (index($CORRECT, 'linear') != -1) {
       # obtain regression data variables
       my ($dTransX, $dTransY, $dRotation, $dTransXSlope, $dTransYSlope, $dRotateSlope, $avgTime) = @regressionData;
 
@@ -370,15 +393,13 @@ sub calcLatLonBox
       my $changeX = $dTransX + ($timeValue - $avgTime) * $dTransXSlope;
       my $changeY = $dTransY + ($timeValue - $avgTime) * $dTransYSlope;
 
-      if (index($CORRECT, 'Direct') != -1)
-      {
+      if (index($CORRECT, 'Direct') != -1) {
         $centeredData[2] = $rotationValue;
 
         $center[0] = $changeX;
         $center[1] = $changeY;
       }
-      else
-      {
+      else {
         $centeredData[2] += $rotationValue;
 
         $center[0] += $changeX;
@@ -388,8 +409,7 @@ sub calcLatLonBox
       # store the translation changes
       $centeredData[1] = \@center;
     }
-    elsif (index($CORRECT, 'quadratic') != -1)
-    {
+    elsif (index($CORRECT, 'quadratic') != -1) {
       # obtain regression data variables. In a, b, c format
       my @coeffTransX = @{$regressionData[0]};
       my @coeffTransY = @{$regressionData[1]};
@@ -403,15 +423,13 @@ sub calcLatLonBox
       my $changeX = $coeffTransX[0] * $timeValue**2 + $coeffTransX[1] * $timeValue + $coeffTransX[2];
       my $changeY = $coeffTransY[0] * $timeValue**2 + $coeffTransY[1] * $timeValue + $coeffTransY[2];
 
-      if (index($CORRECT, 'Direct') != -1)
-      {
+      if (index($CORRECT, 'Direct') != -1) {
         $centeredData[2] = $rotationValue;
 
         $center[0] = $changeX;
         $center[1] = $changeY;
       }
-      else
-      {
+      else {
         $centeredData[2] += $rotationValue;
 
         $center[0] += $changeX;
@@ -421,8 +439,7 @@ sub calcLatLonBox
       # store the translation changes
       $centeredData[1] = \@center;
     }
-    else
-    {
+    else {
       # sinusoidal regression
       # obtain regression data variables. In a, b, c format
       my @coeffTransX = @{$regressionData[0]};
@@ -442,8 +459,7 @@ sub calcLatLonBox
 
       my $changeY = $coeffTransY[0] * sin($coeffTransY[1] * $timeValue) + $coeffTransY[2] * cos($coeffTransY[1] * $timeValue) + $coeffTransY[3] + $coeffTransY[4] * $timeValue; #sinusoidal
 
-      if (index($CORRECT, 'Direct') != -1)
-      {
+      if (index($CORRECT, 'Direct') != -1) {
         # move image to place along regression line, where we calculate it should be
         $centeredData[2] = $rotationValue;
 
@@ -451,8 +467,7 @@ sub calcLatLonBox
         #$center[0] = $center[0]; # don't change X coordinate at all
         $center[1] = $changeY;
       }
-      else
-      {
+      else {
         $centeredData[2] += $rotationValue;
 
         $center[0] += $changeX;
@@ -464,14 +479,16 @@ sub calcLatLonBox
     }
   }
 
-  # if the translation is more than 180 degrees, then we know that this crossed the international date line after it moved. So we need to keep the data as it is for now, but will pass a boolean ($cross) saying that the image crossed the date line after it was corrected
+  # if the translation is more than 180 degrees, then we know that this
+  # crossed the international date line after it moved. So we need to
+  # keep the data as it is for now, but will pass a boolean ($cross)
+  # saying that the image crossed the date line after it was corrected
   my $cross = 0;
-  if (abs($dTranslate[0]) > 180)
-  {
+  if (abs($dTranslate[0]) > 180) {
     $cross = 1;
   }
 
-  # Now make this a Lat Lon Box again
+  # Now make this a LatLonBox again
   # Recall that it gets you back North, south, east, west, rotate
   my @boxedData = changetolatlonbox(@centeredData, $cross);
 
@@ -486,11 +503,11 @@ sub calcLatLonBox
 #          Filepath to a KML file
 #
 #   @return array
+#           Return a LatLonBox.
 #           north(0), south(1), east(2), west(3) and rotation(4)
 #           all are floating point numbers.
 #
-sub getLatLonBox
-{
+sub getLatLonBox {
   my ($filepath) = @_;
   open (KMLFILE, $filepath) or die "Could not open $filepath";
 
@@ -511,11 +528,14 @@ sub getLatLonBox
   # values in that order.
   # We are currently on the <north> line
   my @data = ();
-  for (my $i = 0; $i < 5; $i++)
-  {
+  for (my $i = 0; $i < 5; $i++) {
+
     # Take the substring of the number between the < > and </ > tags
-    my $string = substr($line, index($line, ">")+1, index($line, "</") - index($line, ">") - 1); # gets whatever is between the <tag>...</tag>
+    # gets whatever is between the <tag>...</tag>
+    my $string = substr($line, index($line, ">")+1,
+                  index($line, "</") - index($line, ">") - 1);
     $data[$i] = $string;
+
     $line = <KMLFILE>; #get the next line
   }
 

@@ -36,18 +36,16 @@ print start_html("KML Uploader"),
     start_multipart_form;
 
 # select total number of files to upload
-if (not param('numberOfFiles'))
-{
-  print "Select number of files to upload: ", textfield(-name => 'numberOfFiles'
-                    ),
-                    submit(-value => "Enter"),hr;
+if (not param('numberOfFiles')) {
+  print "Select number of files to upload: ",
+          textfield(-name => 'numberOfFiles'),
+          submit(-value => "Enter"),hr;
 }
+
 # if number has been given, show that many boxes to upload
-elsif (param('numberOfFiles'))
-{
+elsif (param('numberOfFiles') {
   print "Number of files to upload: ", param('numberOfFiles'), br;
-  for (my $i = 0; $i < param('numberOfFiles'); $i++)
-  {
+  for (my $i = 0; $i < param('numberOfFiles'); $i++) {
     print "Enter a filename, or click on the browse button to choose one: ",
               filefield(
                   -name      => "file$i",
@@ -62,7 +60,6 @@ print end_form;
 #
 # Look for uploads that exceed $CGI::POST_MAX
 #
-
 if (!param('filename') && cgi_error()) {
     print cgi_error();
     print p("The file you are attempting to upload exceeds the maximum allowable file size."),
@@ -74,15 +71,13 @@ if (!param('filename') && cgi_error()) {
 # Upload the file
 #
 
-if (param('file0'))
-{
+if (param('file0')) {
 
   my $i = 0;
   my %orbitMap = ();
   my $source = "";
   my $msnCode = "";
-  while (param("file$i"))
-  {
+  while (param("file$i")) {
     my $name = param("file$i");
     $name =~ /ek_(.*)\.kml/;
     my $query = "SELECT filepath,orbit FROM ekImages WHERE filepath=\'$1\';";
@@ -94,12 +89,10 @@ if (param('file0'))
     my ($msn, $src, $id) = split(/\./, $filepath);
 
     # push each image's data to a hash table to find total number of orbits
-    if (exists $orbitMap{$orbit})
-    {
+    if (exists $orbitMap{$orbit}) {
         push @{$orbitMap{$orbit}}, $filepath;
     }
-    else
-    {
+    else {
         $orbitMap{$orbit} = [$filepath];
     }
     $msn =~ s/ek_(.*)/$1/g;
@@ -112,82 +105,75 @@ if (param('file0'))
     `perl updateNewFields.pl $kml_file_dir/$msn$src/$orbit/completed/ek_$filepath.kml WebUser -i`;
     $i += 1;
   }
+
   my $numberOfOrbits = length(keys %orbitMap);
   my @orbits = keys %orbitMap;
   print "<br>Applying regression to other images.  This will take some time.  Do not close this window!<br><br>";
-  if ($numberOfOrbits == 1)
-  {
-      # if only one orbit, do regresssion on orbit only
-      print "SELECT photoid FROM ekImages WHERE msnCode='$msnCode' AND orbit='$orbits[0]' AND compstat='final' <br>";
-      my $query = "SELECT photoid FROM ekImages WHERE msnCode='$msnCode' AND orbit='$orbits[0]' AND compstat='final'";
-      my @pictures = ();
-      &DataGet::dblookup($query, \@pictures);
-      my $i = $#pictures + 1;
-      # number of corrected files in orbit gives which regression to do
-      $CORRECT = "constant";
-      if ($i == 0)
-      {
-          print "How are there no corrected images?<br>";
-      }
-      elsif ($i == 1)
-      {
-          $CORRECT = "constant";
-      }
-      elsif ($i == 2)
-      {
-          $CORRECT = "linear";
-      }
-      elsif ($i == 3)
-      {
-          $CORRECT = "quadratic";
-      }
-      else
-      {
-          $CORRECT = "sinusoidal";
-      }
-      print "perl updateKMLFile.pl $kml_file_dir/$msnCode$source/$orbits[0]/ $CORRECT <br>";
-      print  "perl updateKMLFile.pl $kml_file_dir/$msnCode$source/$orbits[0]/ copyCorrected <br><br>";
-      `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/$orbits[0]/ $CORRECT`;
-      `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/$orbits[0]/ copyCorrected`;
-      $return_url = "$DOWNLOAD_TOOL_URL?msnCode=$msnCode&orbit=$orbits[0]";
-  }
-  else
-  {
-      # images from multiple orbits given, so do regression on whole mission
-      my $query = "SELECT photoid FROM ekImages WHERE msnCode='$msnCode' AND compstat='final'";
-      my @pictures = ();
-      &DataGet::dblookup($query, \@pictures);
-      my $i = $#pictures + 1;
-      # number of corrected files in the mission gives which regression to do
-      $CORRECT = "constant";
-      if ($i == 0)
-      {
-          print "How are there no corrected images?<br>";
-      }
-      elsif ($i == 1)
-      {
-          $CORRECT = "constant";
-      }
-      elsif ($i == 2)
-      {
-          $CORRECT = "linear";
-      }
-      elsif ($i == 3)
-      {
-          $CORRECT = "quadratic";
-      }
-      else
-      {
-          $CORRECT = "sinusoidal";
-      }
-      `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/ $CORRECT`;
-      `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/ copyCorrected`;
 
-      $return_url = "$DOWNLOAD_TOOL_URL?msnCode=$msnCode&orbit=ALL";
+  if ($numberOfOrbits == 1) {
+    # if only one orbit, do regresssion on orbit only
+    print "SELECT photoid FROM ekImages WHERE msnCode='$msnCode' AND orbit='$orbits[0]' AND compstat='final' <br>";
+    my $query = "SELECT photoid FROM ekImages WHERE msnCode='$msnCode' AND orbit='$orbits[0]' AND compstat='final'";
+    my @pictures = ();
+    &DataGet::dblookup($query, \@pictures);
+    my $i = $#pictures + 1;
+    # number of corrected files in orbit gives which regression to do
+    $CORRECT = "constant";
+    if ($i == 0) {
+        print "How are there no corrected images?<br>";
+    }
+    elsif ($i == 1) {
+        $CORRECT = "constant";
+    }
+    elsif ($i == 2) {
+        $CORRECT = "linear";
+    }
+    elsif ($i == 3) {
+        $CORRECT = "quadratic";
+    }
+    else {
+        $CORRECT = "sinusoidal";
+    }
+
+    print "perl updateKMLFile.pl $kml_file_dir/$msnCode$source/$orbits[0]/ $CORRECT <br>";
+    print  "perl updateKMLFile.pl $kml_file_dir/$msnCode$source/$orbits[0]/ copyCorrected <br><br>";
+    `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/$orbits[0]/ $CORRECT`;
+    `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/$orbits[0]/ copyCorrected`;
+    $return_url = "$DOWNLOAD_TOOL_URL?msnCode=$msnCode&orbit=$orbits[0]";
+  }
+  else {
+
+    # images from multiple orbits given, so do regression on whole mission
+    my $query = "SELECT photoid FROM ekImages WHERE msnCode='$msnCode' AND compstat='final'";
+    my @pictures = ();
+    &DataGet::dblookup($query, \@pictures);
+    my $i = $#pictures + 1;
+
+    # number of corrected files in the mission gives which regression to do
+    $CORRECT = "constant";
+    if ($i == 0) {
+        print "How are there no corrected images?<br>";
+    }
+    elsif ($i == 1) {
+        $CORRECT = "constant";
+    }
+    elsif ($i == 2) {
+        $CORRECT = "linear";
+    }
+    elsif ($i == 3) {
+        $CORRECT = "quadratic";
+    }
+    else {
+        $CORRECT = "sinusoidal";
+    }
+    `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/ $CORRECT`;
+    `perl updateKMLFile.pl $kml_file_dir/$msnCode$source/ copyCorrected`;
+
+    $return_url = "$DOWNLOAD_TOOL_URL?msnCode=$msnCode&orbit=ALL";
   }
   print i("Images done correcting, go back to the ".
-            a({-href => $return_url},
-            "Download Tool")." to see them and/or correct more.");
+          a({-href => $return_url},
+          "Download Tool")." to see them and/or correct more.");
 }
 
 print end_html;
@@ -208,14 +194,12 @@ sub save_file {
 
   # Untaint $filename
 
-  if ($filename =~ /^([-\@:\/\\\w.]+)$/)
-  {
+  if ($filename =~ /^([-\@:\/\\\w.]+)$/) {
       # remove any folder heirarchy from filename so we only get filename
       my @pieces = split(/\//, $1);
       $untainted_filename = pop @pieces;
   }
-  else
-  {
+  else {
     die <<"EOT";
     Unsupported characters in the filename "$filename".
     Your filename may only contain alphabetic characters and numbers,
@@ -223,15 +207,16 @@ sub save_file {
 EOT
   }
 
-  if ($untainted_filename =~ m/\.\./)
-  {
-      die <<"EOT";
+  if ($untainted_filename =~ m/\.\./) {
+    die <<"EOT";
     Your upload filename may not contain the sequence '..'
     Rename your file so that it does not include the sequence '..', and try again.
 EOT
   }
+
   my ($msn, $src, $id) = split(/\./, $untainted_filename);
   $msn =~ s/ek_(.*)/$1/g;
+
   if (! -d "$kml_file_dir/$msn$src/$orbit/completed/") {
     `mkdir -m 770 $kml_file_dir/$msn$src/$orbit/completed/`;
   }
@@ -242,19 +227,19 @@ EOT
   #    perldoc -f open
   # and
   #    perldoc -f binmode
-
   open (OUTFILE, ">", "$file") or die "Couldn't open $file for writing: $! <br>";
 
   while ($bytesread = read($filename, $buffer, $num_bytes)) {
-      $totalbytes += $bytesread;
-      print OUTFILE $buffer;
+    $totalbytes += $bytesread;
+    print OUTFILE $buffer;
   }
   die "Read failure" unless defined($bytesread);
   unless (defined($totalbytes)) {
-      print "<p>Error: Could not read file ${untainted_filename}, ";
-      print "or the file was zero length.<br>";
-  } else {
-      print "<p>File $filename uploaded successfully ($totalbytes bytes) <br>";
+    print "<p>Error: Could not read file ${untainted_filename}, ";
+    print "or the file was zero length.<br>";
+  }
+  else {
+    print "<p>File $filename uploaded successfully ($totalbytes bytes) <br>";
   }
   close OUTFILE or die "Couldn't close $file: $! <br>";
 
