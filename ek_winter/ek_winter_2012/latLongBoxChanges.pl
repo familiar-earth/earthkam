@@ -78,10 +78,10 @@ sub changeFromLatLonBox {
 #
 # Test whether an image crosses the international date line.
 #
-#   @param float
-#          Eastern Coordinate of a LatLonBox
-#   @param float
-#          Western Coordinate of a LatLonBox
+#   @param[0] float
+#             Eastern Coordinate of a LatLonBox
+#   @param[1] float
+#             Western Coordinate of a LatLonBox
 #   @return integer
 #           1 if the image crosses the international date line, and 0 if
 #           it does not.

@@ -43,9 +43,8 @@ $own_url = "http://$SERVER_NAME/cgi-bin/$1/KMLcorrect1.cgi";
 # it will be sent as a parameter.
 $correction_stage = "automated";
 
-if (param('stage'))
-{
-    $correction_stage = param('stage');
+if (param('stage')) {
+  $correction_stage = param('stage');
 }
 
 
@@ -55,83 +54,75 @@ my @flightData = ();
 
 # take all the missions and orbits and create a hash table of orbits in each mission
 my %missionCodes = ();
-foreach my $val (@flightData)
-{
+foreach my $val (@flightData) {
   my @values = split(/\t/, $val);
-  if (exists $missionCodes{$values[0]})
-  {
+  if (exists $missionCodes{$values[0]}) {
     push @{$missionCodes{$values[0]}}, $values[1];
   }
-  else
-  {
+  else {
     $missionCodes{$values[0]} = [$values[1]];
   }
-
 }
+
 my @codes = sort keys %missionCodes;
 my %missionLabels = ();
-foreach my $val (@codes)
-{
+foreach my $val (@codes) {
   $missionLabels{$val} = $val;
 }
 
 print header;
 print start_html("KML Corrector"),
-    h1("KML Correct"),br,
-    i("Please select the mission and orbit(or \"All\" if desired.)"),br,br,
-    start_form;
+      h1("KML Correct"),br,
+      i("Please select the mission and orbit(or \"All\" if desired.)"),
+      br,br,start_form;
 
 # if no mission has been selected, present menu for it
-if (not param('msnCode'))
-{
-   print "Mission Code: ", popup_menu(-name => 'msnCode',
-                    -values => \@codes,
-                    -default => @codes[0],
-                    -labels => \%missionLabels),
-                    submit,hr;
+if (not param('msnCode')) {
+   print "Mission Code: ",
+          popup_menu(-name => 'msnCode',
+          -values => \@codes,
+          -default => @codes[0],
+          -labels => \%missionLabels),
+          submit,hr;
 }
 
 # if mission has been selected and orbit hasn't, show mission and present menu for orbit
-elsif (not param('orbit'))
-{
+elsif (not param('orbit')) {
+
   print "Mission Code is: ", param('msnCode'),
         hidden(-name => 'msnCode', -value => param('msnCode')), br;
 
   my @orbits = sort @{$missionCodes{param('msnCode')}};
   unshift @orbits, "ALL";
   my %orbitLabels = ();
-  foreach my $val (@orbits)
-  {
+
+  foreach my $val (@orbits) {
     $orbitLabels{$val} = $val;
   }
+
   print i("Please select an orbit:"), br,
-    "Orbits: ", popup_menu(-name => 'orbit',
-            -values => \@orbits,
-            -default => 'ALL',
-            -labels => %orbitLabels), submit, hr;
+        "Orbits: ", popup_menu(-name => 'orbit',
+        -values => \@orbits,
+        -default => 'ALL',
+        -labels => %orbitLabels), submit, hr;
 }
 
 # if both mission and orbit are chosen, show what was selected and show images from those orbit(s)
-else
-{
-    my $missionCode = param('msnCode');
-    my $orbitCode = param('orbit');
-    print "Mission is: ", $missionCode, br,
-      "Orbit is: ", $orbitCode, hr;
-    my $query = '';
+else {
+  my $missionCode = param('msnCode');
+  my $orbitCode = param('orbit');
+  print "Mission is: ", $missionCode, br,
+        "Orbit is: ", $orbitCode, hr;
+  my $query = '';
 
-
-  if ($orbitCode eq 'ALL')
-  {
-      $query = "SELECT filepath, orbit, compstat FROM ekImages WHERE msnCode='$missionCode';";
+  if ($orbitCode eq 'ALL') {
+    $query = "SELECT filepath, orbit, compstat FROM ekImages WHERE msnCode='$missionCode';";
   }
-  else
-  {
-      $query = "SELECT filepath, orbit, compstat FROM ekImages WHERE msnCode='$missionCode' AND orbit='$orbitCode';";
+  else {
+    $query = "SELECT filepath, orbit, compstat FROM ekImages WHERE msnCode='$missionCode' AND orbit='$orbitCode';";
   }
 
   system("perl create_GoogleEarthOverlays.pl $missionCode $orbitCode");
-
 
   my @imageData = ();
   &DataGet::dblookup($query, \@imageData);
@@ -139,42 +130,47 @@ else
   print h4("Download KML files below"), i("Please correct as many KML files as possible"),
         br, i("Do not change any filenames"), br
         i("After you have corrected the KML files using Google Earth, you can upload them with the ").
-            a({-href => "KMLupload.cgi"}, "Extrapolation Tool").i(".").br.
-            "If you want to see initial images (without automated corrections), click ".
-            a({-href => "$own_url?msnCode=$missionCode&orbit=$orbitCode&stage=initial"}, "here").".";
+        a({-href => "KMLupload.cgi"}, "Extrapolation Tool").i(".").br.
+        "If you want to see initial images (without automated corrections), click ".
+        a({-href => "$own_url?msnCode=$missionCode&orbit=$orbitCode&stage=initial"}, "here").".";
 
   my $i = 0;
   my @data = ();
   while ($i <= $#imageData) {
+
     my @contents = ();
+
     for (my $j = $i; $j <= min($i + 3, $#imageData); $j++) {
-    my ($filePath, $orbit, $compStat) = split(/\t/, $imageData[$j]);
+
+      my ($filePath, $orbit, $compStat) = split(/\t/, $imageData[$j]);
       my ($msn, $src, $id) = split(/\./, $filePath);
 
-      unless (<$kml_file_dir/$msn$src/$orbit/automated/*>)
-      {
-          $correction_stage = "initial";
+      unless (<$kml_file_dir/$msn$src/$orbit/automated/*>) {
+        $correction_stage = "initial";
       }
 
       my $url = "$image_root/$msn$src/$id/level1.jpg";
       my $kml_url = "$kml_dir_web/$msn$src/$orbit/$correction_stage/ek_$msn.$src.$id.kml";
       my $updated = "";
-      	if ($compStat eq 'final')
-      	{
-		$kml_url = "$kml_dir_web/$msn$src/$orbit/completed/ek_$msn.$src.$id.kml";
-        	$updated = font({-color => "Red"},"COMPLETED");
-      	} else {
-		$kml_url = "$kml_dir_web/$msn$src/$orbit/initial/ek_$msn.$src.$id.kml";
-	}
+
+      if ($compStat eq 'final') {
+        $kml_url = "$kml_dir_web/$msn$src/$orbit/completed/ek_$msn.$src.$id.kml";
+        $updated = font({-color => "Red"},"COMPLETED");
+      }
+      else {
+        $kml_url = "$kml_dir_web/$msn$src/$orbit/initial/ek_$msn.$src.$id.kml";
+      }
       push @contents, table(Tr({-align=>CENTER,-valign=>TOP},
-            [td(a({-href => $kml_url},"<img src=\"$url\" />")), td(a({-href => $kml_url},$filePath)),
+                      [td(a({-href => $kml_url},"<img src=\"$url\" />")),
+                      td(a({-href => $kml_url},$filePath)),
                       td($updated)]));
     }
+
     push @data, td(\@contents);
     $i += 4;
   }
-  print table({-border=>undef}, Tr(\@data));
 
+  print table({-border=>undef}, Tr(\@data));
 
 }
 
