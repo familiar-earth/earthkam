@@ -6,7 +6,7 @@
 #   Alex Fandrianto
 #   Carson McNeil
 #   David Choy
-#   Allen Eubank
+#   Allen Eubank <adeubank@gmail.com>
 #   John Uba
 #
 ### Description ########################################################
@@ -96,7 +96,6 @@ if (defined $ARGV[1]) {
 #   Quadratic requires 3
 #   Sinusoidal requires 4 or more
 
-# TODO Remove extraneous print? Seems to be for testing purposes
 print "$initialPath \n";
 #if (! -d $initialPath) {
 #  die("There are no initial images, so there is nothing to do.\n");
@@ -123,7 +122,6 @@ if ($CORRECT eq 'copyCorrected') {
   exit;
 }
 
-# TODO print statement for testing purposes?
 if ($CORRECT eq '0') {
   my @initialFiles = <$initialPath*.kml>;
   foreach my $file (@initialFiles) {
@@ -132,7 +130,6 @@ if ($CORRECT eq '0') {
   }
 }
 else {
-  print "DEBUG: correct = $CORRECT\n";
   # Actually apply a correction
 
   # X is Lon, Y is Lat
@@ -148,11 +145,9 @@ else {
         "skip updateKMLFile by running with '0' as the second argument\n");
   }
 
-  # TODO Another testing statement?
   print "Reading " . scalar(@correctedFiles) . " corrected files from ".
         $completedPath . "\n";
 
-  # TODO rename $file to $corFile
   foreach my $corFile (@correctedFiles) {
     if ($CORRECT ne 'lookAt') {
 
@@ -289,22 +284,22 @@ sub containsString {
 # Take values calculated from correction process, calculate the new
 # LatLonBox and pass that to print a new KML file.
 #
-#   @param[0] array
-#             Array of two floats, representing the average translation
-#             each manually corrected image under went.
+#   param[0] array
+#            Array of two floats, representing the average translation
+#            each manually corrected image under went.
 #
-#   @param[1] float
-#             Average rotation that all corrected images under went
+#   param[1] float
+#            Average rotation that all corrected images under went
 #
-#   @param[2] array
-#             Array of two floats, representing the average scale that
-#             all corrected images changed by.
+#   param[2] array
+#            Array of two floats, representing the average scale that
+#            all corrected images changed by.
 #
-#   @param[3] string
-#             Filepath to initial KML file.
+#   param[3] string
+#            Filepath to initial KML file.
 #
-#   @param[4] array
-#             Dependent on the correction type.
+#   param[4] array
+#            Dependent on the correction type.
 #
 sub applyCorrection {
   my @dTranslate = @{ $_[0] };
@@ -321,27 +316,28 @@ sub applyCorrection {
 # Takes the initial LatLonBox, applies the calculated correction
 # values, and returns the new LatLonBox.
 #
-#   @param[0] array
-#             Array of two floats, representing the average translation
-#             each manually corrected image under went.
+#   param[0] array
+#            Array of two floats, representing the average translation
+#            each manually corrected image under went.
 #
-#   @param[1] float
-#             Average rotation that all corrected images under went
+#   param[1] float
+#            Average rotation that all corrected images under went
 #
-#   @param[2] array
-#             Array of two floats, representing the average scale that
-#             all corrected images changed by.
+#   param[2] array
+#            Array of two floats, representing the average scale that
+#            all corrected images changed by.
 #
-#   @param[3] string
-#             Filepath to initial KML file.
+#   param[3] string
+#            Filepath to initial KML file.
 #
-#   @param[4] array
-#             Dependent on the correction type.
+#   param[4] array
+#            Array of values needed for regression equations.
+#            Dependent on the correction type.
 #
-#   @return array
-#           Return a LatLonBox.
-#           north(0), south(1), east(2), west(3) and rotation(4)
-#           all are floating point numbers.
+#   return array
+#          Return a LatLonBox.
+#          north(0), south(1), east(2), west(3) and rotation(4)
+#          all are floating point numbers.
 #
 sub calcLatLonBox {
   my @dTranslate = @{ $_[0] };
@@ -500,13 +496,13 @@ sub calcLatLonBox {
 #
 # getLatLonBox parses the LatLonBox from a KML file
 #
-#   @param string
-#          Filepath to a KML file
+#   param string
+#         Filepath to a KML file
 #
-#   @return array
-#           Return a LatLonBox.
-#           north(0), south(1), east(2), west(3) and rotation(4)
-#           all are floating point numbers.
+#   return array
+#          Return a LatLonBox.
+#          north(0), south(1), east(2), west(3) and rotation(4)
+#          all are floating point numbers.
 #
 sub getLatLonBox {
   my ($filepath) = @_;
@@ -552,40 +548,55 @@ sub getLatLonBox {
   return @data;
 }
 
+#
+# Used with linear corrections. Finds the the y-intercepts and best fit
+# slopes for the translate, rotate, and scale adjustments for making a
+# linear equation. Think y = mx + b, our x is calculated time - avgTime.
+#
+# To see how these values are used search "sub calcLatLonBox"
+#
+#   param[0] float
+#            The average change in X(West-East) translation.
+#
+#   param[1] float
+#            The average change in Y(North-South) translation.
+#
+#   param[2] float
+#            The average change in rotation that all corrected images
+#            under went.
+#
+#   param[3] string
+#            Filepath to directory with corrected images.
+#
+#   return array
+#          All coefficients and values needed to make a linear equation.
+#          avgTranslateX(0) used as the intercept for East-West linear
+#          equation. avgTranslateY(1) used as the intercept for
+#          North-South linear equation. avgRotate(2) used as the intercept
+#          for rotation equation. slopesTranslateX(3) used as the slope
+#          for the East-West linear equation. slopesTranslateY(4) used
+#          as the slope for the North-South linear equation.
+#          slopesRotate(5) used as the slope for the rotation linear
+#          equation. avgTime(6) This value is subtracted from a
+#          calculated time that an was taken and plugged into all above
+#          equations as the independent variable.
+#          All are floats except avgTime, it is an integer representing
+#          the time at which this picture was taken in seconds.
+#          See "sub getImageTime"
+#
+sub getInterceptsAndSlopes {
 
-# TODO
-# I think this function needs some serious work,
-# The parameters are messed up, I think there is only 4,
-# avgTranslateX, avgTranslateY, avgRotate, and correctedFilepaths
-#
-#
-# returns the y-intercepts and best fit slopes for the translate, rotate, and scale adjustments
-# The inputs must be indexed together (in the same order)
-# y-intercept... how to find that?
-  # involves finding average time and average values
-  # This is not a true y-intercept at time 0
-  # These are the y-intercepts, make sure to record the time value
-# average slope... how to find that?
-  # involves subtracting y-intercept from the current value and dividing by the time for the current file.
-  # average the individual slopes for the overall slope. compare to the avg
-  # apply the slope change after comparing the time to the average
-# avgTranslateX, avgTranslateY, avgRotate, avgScaleX, avgScaleY, slopeTranslateX, slopeTranslateY, slopeRotate, slopeScaleX, slopeScaleY, avgTime)
-#
-#
-sub getInterceptsAndSlopes
-{
   my @translateX = @{$_[0]};
   my @translateY = @{$_[1]};
   my @rotate = @{$_[2]};
   my @correctedFilepaths = @{$_[3]};
 
-  # Saving time with these base cases
-  if (scalar(@correctedFilepaths) >= 2) # two or more images were corrected, can use linear fit
-  {
+  # two or more images were corrected, can use linear fit
+  if (scalar(@correctedFilepaths) >= 2) {
+
     # first calculate the averages for the intercept
     my @timeValues = ();
-    foreach my $correctedFilepath (@correctedFilepaths)
-    {
+    foreach my $correctedFilepath (@correctedFilepaths) {
       push(@timeValues, getImageTime($correctedFilepath));
     }
     my $avgTime = mean(@timeValues);
@@ -597,8 +608,7 @@ sub getInterceptsAndSlopes
     my @slopesTranslateX = ();
     my @slopesTranslateY = ();
     my @slopesRotate = ();
-    for (my $i = 0; $i < scalar(@correctedFilepaths); $i++)
-    {
+    for (my $i = 0; $i < scalar(@correctedFilepaths); $i++) {
       my $time = getImageTime($correctedFilepaths[$i]);
       push(@slopesTranslateX, ($translateX[$i] - $avgTranslateX) / ($time - $avgTime));
       push(@slopesTranslateY, ($translateY[$i] - $avgTranslateY) / ($time - $avgTime));
@@ -699,6 +709,7 @@ sub getQuadraticRegressionSingleSingle
   return ($a, $b, $c);
 }
 
+# TODO finish function definitiion
 # This asks getImageID() for the ID and calculates the time value of the image
 # As a result, we get the actual time in seconds
 # Image ID is 9 digits long DDDHHMMSS (with 3 digits for day, 2 for hour, 2 for minute, and 2 for seconds)
