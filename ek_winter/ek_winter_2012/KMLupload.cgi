@@ -43,7 +43,7 @@ if (not param('numberOfFiles')) {
 }
 
 # if number has been given, show that many boxes to upload
-elsif (param('numberOfFiles') {
+elsif (param('numberOfFiles')) {
   print "Number of files to upload: ", param('numberOfFiles'), br;
   for (my $i = 0; $i < param('numberOfFiles'); $i++) {
     print "Enter a filename, or click on the browse button to choose one: ",
@@ -66,7 +66,7 @@ if (!param('filename') && cgi_error()) {
         p("Please refer to your system administrator");
     print hr, end_html;
 }
-
+# TODO add check for correct file name form
 #
 # Upload the file
 #

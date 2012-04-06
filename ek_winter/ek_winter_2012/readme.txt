@@ -31,7 +31,9 @@ Table of Contents:
     II.O updateNewFields.pl
     II.P updateNewField_singel.pl
 
-  III. Format of Source Code, A simple Perl style sheet
+  III. Things to work on
+
+  IV. Format of Source Code, A simple Perl style sheet
 
 
 I. A Quick Introduction
@@ -78,7 +80,7 @@ III. Format of Source Code
 #   Stephanie Tsuei
 #   Alex Fandrianto
 #   Allen Eubank <adeubank@gmail.com>
-#   John Uba
+#   John Uba <johnu089@yahoo.com>
 #   YourName Here <if_you_want@addyouremail.here>
 #
 ### Description ########################################################
@@ -86,10 +88,10 @@ III. Format of Source Code
 # A simple Perl style sheet, this part describes the purpose of this
 # Perl module.
 #
-#   @param[0] DataType
+#   param[0] DataType
 #             A short description of my parameter.
 #
-#   @param[1] DataType
+#   param[1] DataType
 #             A short description of my parameter.
 #
 ### Imports ############################################################
@@ -124,13 +126,13 @@ someFunctionThatDoesSomething($foo, $bar);
 # parameters passed in.
 #
 #   param[0] DataType
-#             a short description of my parameter.
+#            a short description of my parameter.
 #
 #   param[1] DataType
-#             a short description of my parameter.
+#            a short description of my parameter.
 #
 #   return DataType
-#           a short description of my return value.
+#          a short description of my return value.
 #
 sub someFunctionThatDoesSomething {
   my @variable = @_;

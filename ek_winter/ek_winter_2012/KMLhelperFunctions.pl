@@ -3,13 +3,12 @@
 #
 # Co-Author(s):
 #   Allen Eubank <adeubank@gmail.com>
-#   John Uba
+#   John Uba <johnu089@yahoo.com>
 #
 ### Description ########################################################
 #
 # A simple Perl style sheet, this part describes the purpose of this
 # Perl module.
-#
 #
 ### Imports ############################################################
 
