@@ -7,7 +7,7 @@
 #   Carson McNeil
 #   David Choy
 #   Allen Eubank <adeubank@gmail.com>
-#   John Uba
+#   John Uba <johnu089@yahoo.com>
 #
 ### Description ########################################################
 #
