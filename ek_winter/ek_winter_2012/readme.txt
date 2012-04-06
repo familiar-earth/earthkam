@@ -100,7 +100,7 @@ use somethingelse;
 ### CONSTANTS ##########################################################
 
 $MY_CONSTANT = "This should not change";
-$Filepath = "/path/to/file"
+$Filepath = "/path/to/file";
 
 ########################################################################
 

@@ -11,24 +11,78 @@
 #
 ### Description ########################################################
 #
-# TODO Add a description for updateKMLFile.pl
+# This script is used to calculate and apply corrections to KML files.
+# The types of corrections that it can do are Constant, Linear, Quadratic,
+# and Sinusodial. After corrections are calculated, the corrections are
+# applied and printed to new KML files within the automated directory.
+# Provide this script with a file path to a directory that contains
+# three folders, completed(for KML files that have been manually adjusted)
+# initial(for KML files that have not been altered), and automated(for
+# KML files the output directory that this script prints KML files to.
 #
-#   @param[0] string
-#              The location to the root directory containing the
-#              automated, completed, and initial directories.
+#   param[0] string
+#            The location to the root directory containing the
+#            automated, completed, and initial directories.
 #
-#   @param[1] string
-#             The type of correction to apply to the KML files.
+#   param[1] string
+#            The type of correction to apply to the KML files.
+#
+#   The possible correction values are listed here:
+#
+#   'constant': Uses the ellipsoidal model (for translations) to help it
+#               look better than a constant offset application only, the
+#               others do not use this model since they've already
+#               attempted to model it.
+#
+#   '0': Skip the correction process and just copy over the initial
+#        files to the automated. (That's a zero not a capital 'o',
+#        by the way)
+#
+#   'lookAt': allow the application of no corrections, just copy over.
+#             Useful for when manually correcting and wanting to update
+#             LookAt only
+#
+#   'linear': application of the linear corrections to offsets for
+#             rotation and translation values. Requires 2 images, or
+#             fails otherwise. Scale is corrected using the 'constant'
+#             corrections because those are better
+#
+#   'linearDirect': application of the linear corrections Directly to
+#                   the values of rotation and center position.
+#                   Scale is corrected using the 'constant' corrections
+#                   because those are better
+#
+#   'quadratic': application of quadratic corrections to offsets for
+#                rotation and translation values. Scale is corrected
+#                using the 'constant' corrections because those are better
+#
+#   'quadraticDirect': application of quadratic corrections to Directly
+#                      to the values of rotation and center position.
+#                      Scale is corrected using the 'constant'
+#                      corrections because those are better
+#
+#   'sinusoidal': application of sinusoidal/sawtooth corrections
+#
+#   'copyCorrected': copy over corrected images to automated folder
 #
 ### Imports ############################################################
 
 use strict;
-# Useful for create_automated_orbit.pl when reading old and creating the
-# new .kml files note that throughout this file, dScale and dTranslate
-# will be in km, so the final reading involves a change
-require "stat_functions.pl"; # for avg
-require "distance_calc.pl"; # for distances
-require "latLongBoxChanges.pl"; #for the conversions to and from the latlonbox
+
+# for avg
+require "stat_functions.pl";
+
+# for distances
+require "distance_calc.pl";
+
+# for the conversions to and from the latlonbox
+require "latLongBoxChanges.pl";
+
+# For obtaining the regression data
+require "regressionFunctions.pl";
+
+require "KMLhelperFunctions.pl";
+
 use Matrix;
 
 ### Constants ##########################################################
@@ -43,26 +97,16 @@ my $completedPath = $orbitPath . "completed/";
 my $automatedPath = $orbitPath . "automated/";
 my $CORRECT = 'constant';
 
+########################################################################
+
+
+
 # The general correction scheme is to apply a constant offset, averaging
 # all those the differences in manual vs initial corrections. Requires 1
 # corrected image to perform.
+
 if (defined $ARGV[1]) {
 
-  # TODO
-  #   Restructure?
-  #   How, why, and when are these different corrections used and called?
-  #   These should belong in there in files (they seem to be their own classes)
-  #   as to increase cohesion.
-
-  # 'constant': Uses the ellipsoidal model (for translations) to help it look better than a constant offset application only, the others do not use this model since they've already attempted to model it.
-  # '0': Skip the correction process and just copy over the initial files to the automated. (That's a zero not a capital 'o', by the way)
-  # 'lookAt': allow the application of no corrections, just copy over. Useful for when manually correcting and wanting to update LookAt only
-  # 'linear': application of the linear corrections to offsets for rotation and translation values. Requires 2 images, or fails otherwise. Scale is corrected using the 'constant' corrections because those are better
-  # 'linearDirect': application of the linear corrections Directly to the values of rotation and center position. Scale is corrected using the 'constant' corrections because those are better
-  # 'quadratic': application of quadratic corrections to offsets for rotation and translation values. Scale is corrected using the 'constant' corrections because those are better
-  # 'quadraticDirect': application of quadratic corrections to Directly to the values of rotation and center position. Scale is corrected using the 'constant' corrections because those are better
-  # 'sinusoidal': application of sinusoidal/sawtooth corrections
-  # 'copyCorrected': copy over corrected images to automated folder
   $CORRECT = $ARGV[1];
 
   # if sinusoidal correction, must be direct correction
@@ -78,10 +122,18 @@ if (defined $ARGV[1]) {
       && $CORRECT ne 'linear' && $CORRECT ne 'linearDirect'
       && $CORRECT ne 'quadratic' && $CORRECT ne 'quadraticDirect'
       && $CORRECT ne 'sinusoidalDirect' && $CORRECT ne 'copyCorrected') {
-        die("Invalid correction type: $CORRECT was inputted.\n"); }
+        die("Invalid correction type: $CORRECT was inputted.\nPlease use".
+          " one of the following values for correcting: \n".
+          "\t0\n".
+          "\tconstant\n".
+          "\tlinear\n".
+          "\tlinearDirect\n".
+          "\tquadratic\n".
+          "\tquadraticDirect\n".
+          "\tsinusoidal\n".
+          "\tcopyCorrected\n"); }
 }
 
-# TODO (remove extraneous comment?)
 # The folders the .kml files should always be in are the 'initial' 'completed' and 'automated' folders.
 # Initial is for the raw .kml files. All uncorrected .kml files go here.
 # Completed is for the manually corrected .kml files.
@@ -123,16 +175,19 @@ if ($CORRECT eq 'copyCorrected') {
 }
 
 if ($CORRECT eq '0') {
+
   my @initialFiles = <$initialPath*.kml>;
+
   foreach my $file (@initialFiles) {
     my @data = getLatLonBox($file);
     printKML($file, \@data);
   }
+
 }
 else {
   # Actually apply a correction
 
-  # X is Lon, Y is Lat
+  # X is Lon(East-West), Y is Lat(North-South)
   my @dTransX = ();
   my @dTransY = ();
   my @dRot = ();
@@ -149,6 +204,7 @@ else {
         $completedPath . "\n";
 
   foreach my $corFile (@correctedFiles) {
+
     if ($CORRECT ne 'lookAt') {
 
       print "Reading corrected file: $corFile\n";
@@ -157,7 +213,7 @@ else {
       my $initialFile = $corFile . "";
       $initialFile =~ s/\/completed\//\/initial\//;
 
-      # get the lat lon boxes
+      # get the lat lon boxes from the completed and initial KML file
       my @latLonBoxCorrected = getLatLonBox($corFile);
       my @latLonBoxInitial = getLatLonBox($initialFile);
 
@@ -170,8 +226,7 @@ else {
       my @center1 = @{ $vectorBoxInitial[1] };
       my @center2 = @{ $vectorBoxCorrected[1] };
 
-      # TODO here begin the corrections, this is where the code can be
-      #      broken up into pieces.
+      # Branch depending on what kind of correction is to be done.
       if (index($CORRECT, 'Direct') == -1) {
 
         # Calculate offsets by comparing against the initial files
@@ -229,11 +284,13 @@ else {
       $initialFile =~ s/\/completed\//\/initial\//;
       printKML($initialFile, \@latLonBoxCorrected);
       # Doing this prints the automated file.
-      # The initial filepath is just a formality to make sure the printing happens in the automated folder.
+      # The initial filepath is just a formality to make sure the
+      # printing happens in the automated folder.
     }
   }
 
   if ($CORRECT ne "lookAt") {
+
     # Now calculate the y-intercept of dTranslate, dRotate, and dScale
 
     my @dTranslate = (mean(@dTransX), mean(@dTransY));
@@ -280,37 +337,7 @@ sub containsString {
   return 0;
 }
 
-#
-# Take values calculated from correction process, calculate the new
-# LatLonBox and pass that to print a new KML file.
-#
-#   param[0] array
-#            Array of two floats, representing the average translation
-#            each manually corrected image under went.
-#
-#   param[1] float
-#            Average rotation that all corrected images under went
-#
-#   param[2] array
-#            Array of two floats, representing the average scale that
-#            all corrected images changed by.
-#
-#   param[3] string
-#            Filepath to initial KML file.
-#
-#   param[4] array
-#            Dependent on the correction type.
-#
-sub applyCorrection {
-  my @dTranslate = @{ $_[0] };
-  my $dRotate = $_[1];
-  my @dScale = @{ $_[2] };
-  my $filepath = $_[3];
-  my @regressionData = @{ $_[4] };
 
-  my @newLatlonbox = calcLatLonBox(\@dTranslate, $dRotate, \@dScale, $filepath, \@regressionData);
-  printKML($filepath, \@newLatlonbox);
-}
 
 #
 # Takes the initial LatLonBox, applies the calculated correction
@@ -493,382 +520,16 @@ sub calcLatLonBox {
   return @boxedData;
 }
 
-#
-# getLatLonBox parses the LatLonBox from a KML file
-#
-#   param string
-#         Filepath to a KML file
-#
-#   return array
-#          Return a LatLonBox.
-#          north(0), south(1), east(2), west(3) and rotation(4)
-#          all are floating point numbers.
-#
-sub getLatLonBox {
-  my ($filepath) = @_;
-  open (KMLFILE, $filepath) or die "Could not open $filepath";
 
-  my $seenNorth = 0;
-  my $line = "";
-  until ($seenNorth) {
-    $line = <KMLFILE>;
-    chomp($line); # get rid of new line at end of this line
-
-    my $index = index($line, "<north>"); # this is the index we need
-    if ($index != -1) {
-      $seenNorth = 1; # now we can just read 5 lines of data
-    }
-  }
-
-  # the next 5 lines of data contain the
-  # north (0), south (1), east (2), west (3), and rotation (4)
-  # values in that order.
-  # We are currently on the <north> line
-  my @data = ();
-  for (my $i = 0; $i < 5; $i++) {
-
-    # Take the substring of the number between the < > and </ > tags
-    # gets whatever is between the <tag>...</tag>
-    my $string = substr($line, index($line, ">")+1,
-                  index($line, "</") - index($line, ">") - 1);
-    $data[$i] = $string;
-
-    $line = <KMLFILE>; #get the next line
-  }
-
-  # If the picture so happens to cross the international date line here
-  # (if the eastern side of the picture has coordinates that are less
-  # than those on the western side), then we will add 360 degrees to the
-  # eastern side for the rest of the correction step
-  if (crossDateLine($data[2], $data[3])) {
-    $data[2] += 360;
-  }
-  close(KMLFILE);
-
-  return @data;
-}
-
-#
-# Used with linear corrections. Finds the the y-intercepts and best fit
-# slopes for the translate, rotate, and scale adjustments for making a
-# linear equation. Think y = mx + b, our x is calculated time - avgTime.
-#
-# To see how these values are used search "sub calcLatLonBox"
-#
-#   param[0] float
-#            The average change in X(West-East) translation.
-#
-#   param[1] float
-#            The average change in Y(North-South) translation.
-#
-#   param[2] float
-#            The average change in rotation that all corrected images
-#            under went.
-#
-#   param[3] string
-#            Filepath to directory with corrected images.
-#
-#   return array
-#          All coefficients and values needed to make a linear equation.
-#          avgTranslateX(0) used as the intercept for East-West linear
-#          equation. avgTranslateY(1) used as the intercept for
-#          North-South linear equation. avgRotate(2) used as the intercept
-#          for rotation equation. slopesTranslateX(3) used as the slope
-#          for the East-West linear equation. slopesTranslateY(4) used
-#          as the slope for the North-South linear equation.
-#          slopesRotate(5) used as the slope for the rotation linear
-#          equation. avgTime(6) This value is subtracted from a
-#          calculated time that an was taken and plugged into all above
-#          equations as the independent variable.
-#          All are floats except avgTime, it is an integer representing
-#          the time at which this picture was taken in seconds.
-#          See "sub getImageTime"
-#
-sub getInterceptsAndSlopes {
-
-  my @translateX = @{$_[0]};
-  my @translateY = @{$_[1]};
-  my @rotate = @{$_[2]};
-  my @correctedFilepaths = @{$_[3]};
-
-  # two or more images were corrected, can use linear fit
-  if (scalar(@correctedFilepaths) >= 2) {
-
-    # first calculate the averages for the intercept
-    my @timeValues = ();
-    foreach my $correctedFilepath (@correctedFilepaths) {
-      push(@timeValues, getImageTime($correctedFilepath));
-    }
-    my $avgTime = mean(@timeValues);
-    my $avgTranslateX = mean(@translateX);
-    my $avgTranslateY = mean(@translateY);
-    my $avgRotate = mean(@rotate);
-
-    # Now calculate the individual slopes with respect to that intercept to get the average slope
-    my @slopesTranslateX = ();
-    my @slopesTranslateY = ();
-    my @slopesRotate = ();
-    for (my $i = 0; $i < scalar(@correctedFilepaths); $i++) {
-      my $time = getImageTime($correctedFilepaths[$i]);
-      push(@slopesTranslateX, ($translateX[$i] - $avgTranslateX) / ($time - $avgTime));
-      push(@slopesTranslateY, ($translateY[$i] - $avgTranslateY) / ($time - $avgTime));
-      push(@slopesRotate, ($rotate[$i] - $avgRotate) / ($time - $avgTime));
-    }
-
-    return ($avgTranslateX, $avgTranslateY, $avgRotate,
-      mean(@slopesTranslateX), mean(@slopesTranslateY), mean(@slopesRotate),
-      $avgTime);
-  }
-  else
-  {
-    die ("Not enough images were corrected for a linear fit. Min 2\n");
-  }
-}
-
-# Calculates the average of all the sets of triple quadratic regressions
-sub getQuadraticRegressions
-{
-  my @translateX = @{$_[0]};
-  my @translateY = @{$_[1]};
-  my @rotate = @{$_[2]};
-  my @correctedFilepaths = @{$_[3]};
-
-  if (scalar(@correctedFilepaths < 3))
-  {
-    die ("Not enough images were corrected for a quadratic fit. Min 3\n");
-  }
-  # gets you the a, b, c coefficients for each of these values.
-  my @coeffTransX = getQuadraticRegressionSingle(\@translateX, \@correctedFilepaths);
-  my @coeffTransY = getQuadraticRegressionSingle(\@translateY, \@correctedFilepaths);
-  my @coeffRotate = getQuadraticRegressionSingle(\@rotate, \@correctedFilepaths);
-  return (\@coeffTransX, \@coeffTransY, \@coeffRotate);
-}
-
-# Calculates the quadratic regression for a single list only
-sub getQuadraticRegressionSingle
-{
-  my @deltaYValues = @{$_[0]};
-  my @correctedFilepaths = @{$_[1]};
-
-  # Basically, we just need every combination of 3 corrected images.
-  # Perform the regression and then average the results at the end
-  # Calculates the coefficients for the given set of values, but only 1 set of given values
-
-  my @aVals = ();
-  my @bVals = ();
-  my @cVals = ();
-  for (my $i = 0; $i < scalar(@deltaYValues); $i++)
-  {
-    for (my $j = 0; $j < scalar(@deltaYValues); $j++)
-    {
-      for (my $k = 0; $k < scalar(@deltaYValues); $k++)
-      {
-        if ($i != $j && $j != $k && $i != $k)
-        {
-          my ($a, $b, $c) = getQuadraticRegressionSingleSingle(\@deltaYValues, \@correctedFilepaths, $i, $j, $k);
-          push(@aVals, $a);
-          push(@bVals, $b);
-          push(@cVals, $c);
-        }
-      }
-    }
-  }
-
-#  print mean(@aVals);
-#  print "\n";
-#  print mean(@bVals);
-#  print "\n";
-#  print mean(@cVals);
-#  print "\n";
-
-  # Average each of the combinations together for the final coefficients (There may be a better way involving minimizing RMSE instead of this average coefficients method)
-  return (mean(@aVals), mean(@bVals), mean(@cVals));
-}
-
-# Calculates the quadratic regression for 3 points only with a very specific input
-sub getQuadraticRegressionSingleSingle
-{
-  my @yVals = @{$_[0]};
-  my @correctedFilepaths = @{$_[1]};
-  my $point1 = $_[2];
-  my $point2 = $_[3];
-  my $point3 = $_[4];
-
-  my $x1 = getImageTime($correctedFilepaths[$point1]);
-  my $x2 = getImageTime($correctedFilepaths[$point2]);
-  my $x3 = getImageTime($correctedFilepaths[$point3]);
-  my $y1 = $yVals[$point1];
-  my $y2 = $yVals[$point2];
-  my $y3 = $yVals[$point3];
-
-  # Calculate the coefficients for these 3 points. This is the exact quadratic curve for these 3 points
-  my $a = (-1 * $x3 * ($y1 - $y2) + $x2 * ($y1 - $y3) - $x1 * ($y2 - $y3)) / (($x1 - $x2) * ($x1 - $x3) * ($x2 - $x3));
-  my $b = ($x3**2 * ($y1 - $y2) - $x2**2 * ($y1 - $y3) + $x1**2 * ($y2 - $y3)) / (($x1 - $x2) * ($x1 - $x3) * ($x2 - $x3));
-  my $c = ($x3 * ($x2 * ($x2 - $x3) * $y1 - $x1 * ($x1 - $x3) * $y2) + $x1 * ($x1 - $x2) * $x2 * $y3) / (($x1 - $x2) * ($x1 - $x3) * ($x2 - $x3));
-
-  return ($a, $b, $c);
-}
-
-# TODO finish function definitiion
-# This asks getImageID() for the ID and calculates the time value of the image
-# As a result, we get the actual time in seconds
-# Image ID is 9 digits long DDDHHMMSS (with 3 digits for day, 2 for hour, 2 for minute, and 2 for seconds)
-# Image ID can also be 8 digits for the STS DDHHMMSS. Luckily, since I calculate 'the rest' as days, the formula still works!
-sub getImageTime
-{
-  my $filepath = $_[0];
-  my $imageid = getImageID($filepath);
-
-  $imageid = int($imageid); # since a string may have been returned, let's protect by converting to int (front 0s are deleted)
-
-  my $time = 0;
-  $time += ($imageid % 100); #tack on seconds
-  $imageid = int($imageid / 100); #shift so that minutes are last
-
-  $time += ($imageid % 100) * 60; # tack on minutes converted to seconds
-  $imageid = int($imageid / 100); #shift so that hours are last
-
-  $time += ($imageid % 100) * 60 * 60; # tack on hours converted to seconds
-  $imageid = int($imageid / 100); #shift so that days are last
-
-  $time += $imageid * 24 * 60 * 60; # The rest are days, so convert them to seconds
-
-  return $time;
-}
-
-# This gets you the image id from the inputted .kml filepath
-sub getImageID
-{
-  my $filepath = $_[0];
-
-  open (KMLFILE, $filepath) or die "Could not open $filepath";
-  while (my $line = <KMLFILE>)
-  {
-    if (index($line, "<name>") != -1) # This is the line with the imageid on it
-    {
-      my $string = substr($line, index($line, ">")+1, index($line, "</") - index($line, ">") - 1); # gets whatever is between the <tag>...</tag>
-
-      # $string is of form ######.####.imageid
-      # We are getting rid of everything before and including the 2 periods.
-      $string = substr($string, index($string, ".")+1);
-      $string = substr($string, index($string, ".")+1);
-
-       # This is our $imageID
-      return $string;
-    }
-  }
-  die "Did not find an imageid in $filepath\n";
-}
-
-# This prints out the new .kml file, given the filepath to the old .kml file and the new latlonbox data
-# See a .kml file for the approximate syntax. This should be correct though.]
-# Make sure that 'initial' is the only folder called 'initial' in your filepath though.
-sub printKML
-{
-  my $filepath = $_[0];
-  my @data = @{ $_[1] };
-
-  my $newFilepath = $filepath . ""; # Make a copy of the original filepath
-  $newFilepath =~ s/\/initial\//\/automated\//; # replaces the string '/initial/' with '/automated/' in the filepath
-
-  # begin by reading from the old .kml file and copying to a new .kml file until we reach "<LatLonBox>"
-  open(FILE, $filepath) or die("ERROR: Could not open $filepath\n");
-  open(NEWDATA, ">$newFilepath") or die("Could not open/create $newFilepath\n");
-
-  my $lookAt = 0;
-  until ($lookAt)
-  {
-    my $line = <FILE>;
-    print NEWDATA $line;
-
-    if (index($line, "<LookAt>") != -1)
-    {
-      $lookAt = 1;
-    }
-  }
-
-  my $lon = mean($data[2], $data[3]);
-  my $lat = mean($data[0], $data[1]);
-
-  # lookAt box just needs 2 fields updated
-  for (my $i = 0; $i < 2; $i++)
-  {
-    my $line = <FILE>; # skip lines in the oldfile
-
-    # and write the corresponding new line
-    # it is 4 spaces per 'tab'
-    if ($i == 0)
-    {
-      print NEWDATA "            <longitude>$lon</longitude>\n";
-    }
-    else # $i is 1
-    {
-      print NEWDATA "            <latitude>$lat</latitude>\n";
-    }
-  }
-
-  my $skipFive = 0;
-  until ($skipFive)
-  {
-    my $line = <FILE>;
-    print NEWDATA $line;
-
-    if (index($line, "<LatLonBox>") != -1)
-    {
-      $skipFive = 1;
-    }
-  }
-
-  # latlonbox data is north, south, east, west, rotation
-  for (my $i = 0; $i < 5; $i++)
-  {
-    my $line = <FILE>; # skip lines in the oldfile
-
-    #and write the corresponding new line
-    if ($i == 0)
-    {
-      print NEWDATA "            <north>$data[$i]</north>\n";
-    }
-    elsif ($i == 1)
-    {
-      print NEWDATA "            <south>$data[$i]</south>\n";
-    }
-    elsif ($i == 2)
-    {
-      print NEWDATA "            <east>$data[$i]</east>\n";
-    }
-    elsif ($i == 3)
-    {
-      print NEWDATA "            <west>$data[$i]</west>\n";
-    }
-    elsif ($i == 4)
-    {
-      print NEWDATA "            <rotation>" . fixRotationValue($data[$i]) . "</rotation>\n";
-    }
-    else
-    {
-      print NEWDATA "This 'for' loop is broken.\n";
-    }
-  }
-
-  while (my $line = <FILE>) # until end of file, continue copying over
-  {
-    print NEWDATA $line;
-  }
-
-  # We're done, so close the files.
-  close(FILE);
-  close(NEWDATA);
-}
 
 #
 # gets rotation value to within 0 and 360
 #
-#   @param float
-#          A rotation value from the LatLonBox of a KML file
+#   param float
+#         A rotation value from the LatLonBox of a KML file
 #
-#   @return float
-#           A rotation value between 0 and 360
+#   return float
+#          A rotation value between 0 and 360
 #
 sub fixRotationValue
 {
