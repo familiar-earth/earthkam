@@ -78,10 +78,7 @@ require "distance_calc.pl";
 # for the conversions to and from the latlonbox
 require "latLongBoxChanges.pl";
 
-
-
-
-
+# Matrix operations used with sinusoidal regressions
 use Matrix;
 
 ### Constants ##########################################################
@@ -97,7 +94,6 @@ my $automatedPath = $orbitPath . "automated/";
 my $CORRECT = 'constant';
 
 ########################################################################
-
 
 
 # The general correction scheme is to apply a constant offset, averaging
@@ -139,7 +135,8 @@ if (defined $ARGV[1]) {
 # Completed is for the manually corrected .kml files.
 # Automated will be the folder where all the automatically generated files appear.
 # Note: The completed folder files are not simply copied over.
-# Corrections are applied to them too.
+# Corrections are applied to them too. Run updateKMLFile.pl with correction type
+# 'copyCorrected' to directly copy from completed folder to automated.
 #
 # As a result, if more than the # of images required are manually corrected,
 # then a correction will not keep those images in the same place.
@@ -368,11 +365,6 @@ sub applyCorrection {
   my @newLatlonbox = calcLatLonBox(\@dTranslate, $dRotate, \@dScale, $filepath, \@regressionData);
   printKML($filepath, \@newLatlonbox);
 }
-
-
-
-
-
 
 #
 # Takes the initial LatLonBox, applies the calculated correction
@@ -771,6 +763,7 @@ sub getQuadraticRegressionSingleSingle
 
   return ($a, $b, $c);
 }
+
 #
 # Returns the time value at which this image was taken in seconds.
 # This asks getImageID() for the ID and calculates the time value of the image
