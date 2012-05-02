@@ -4,7 +4,8 @@ my $circ_earth = $radius_earth * 2 * $pi;
 
 # Name
 #   calc_orig_dim
-# Description: calculates the original dimensions of an image...? (after the image has been resized and stuff?)
+# Description: calculates the original dimensions of an image...? (
+# after the image has been resized and stuff?)
 #   
 # Arguments
 #   0   bounding rectangle width

@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-########################################################################
+################################################################################
 #
 # Co-Author(s):
 #   Carson McNeil
@@ -9,13 +9,13 @@
 #   Allen Eubank
 #   John Uba
 #
-### Imports ############################################################
+### Imports ####################################################################
 
 use CGI qw(:standard);
 use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
 use DataGet;
 
-### CONSTANTS ##########################################################
+### CONSTANTS ##################################################################
 
 $PUBLIC_WEB_ROOT = "/var/www/html";
 $SERVER_NAME = "ssvekdev.jpl.nasa.gov";
@@ -27,7 +27,7 @@ $DOWNLOAD_TOOL_URL = "http://$SERVER_NAME/cgi-bin/$INSTALLATION_ROOT/KMLcorrect1
 my $return_url = "";
 $CGI::POST_MAX = 1024 * 1024;  # maximum upload filesize is 1MB
 
-########################################################################
+################################################################################
 
 print header;
 print start_html("KML Uploader"),

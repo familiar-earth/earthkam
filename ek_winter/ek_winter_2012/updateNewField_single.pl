@@ -1,7 +1,8 @@
 #!/usr/bin/perl
 use strict;
 
-# This file updates the ekImages database with new correction information for one file. 
+# This file updates the ekImages database with new correction information for 
+# one file. 
 
 # arguments passed to it are just the absolute path of the file. ...
 
@@ -44,13 +45,19 @@ sub update_single { # subroutine takes in image and user as input
     my $rotation;
     while(<KML>) # This loop will read the contents of $file (kml file)
     {
-	  # The 'split' subroutine returns an array, therefore you will see the '[1]' after the split call. This means to initialize the variable
-	  # with the string in returned array element[1], which is the name. If the '[1]' is not included, there will be a compiler error because the left variable is not an array.
+	  # The 'split' subroutine returns an array, therefore you will see the '[1]' 
+    # after the split call. This means to initialize the variable
+	  # with the string in returned array element[1], which is the name. If the 
+    # '[1]' is not included, there will be a compiler error because the left 
+    # variable is not an array.
 	  #
-	  # Example name: <name>Namehere</name>. The split call uses 'name>' as the separator so the returned array is '< Namehere</ '
-	  # element[1] of the returned array is 'Namehere</' so the left variable is initialized with 'Namehere</'
+	  # Example name: <name>Namehere</name>. The split call uses 'name>' as the 
+    # separator so the returned array is '< Namehere</ '
+	  # element[1] of the returned array is 'Namehere</' so the left variable is 
+    # initialized with 'Namehere</'
 	  #
-	  # After the split subroutine, the left variable uses the binding operator '=~' . This removes the remaining '</' at the end.
+	  # After the split subroutine, the left variable uses the binding 
+    # operator '=~' . This removes the remaining '</' at the end.
 	  # The left variable will now have 'Namehere' and not 'Namehere</'
 	  
       if($_ =~ /\<name/) {

@@ -3,7 +3,6 @@
 # use strict;
 
 # mean calculates the numerical average of a list of numbers
-# TODO add function description
 sub mean {
     my @numbers = @_;
     my $sum = 0;
@@ -20,7 +19,6 @@ sub mean {
 }
 
 # std_dev calculate the standard deviation of a list of numbers
-
 sub std_dev {
     my @numbers = @_;
     my $mean = mean(@numbers);

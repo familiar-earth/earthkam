@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-########################################################################
+################################################################################
 #
 # Co-Author(s):
 #   Carson McNeil
@@ -9,23 +9,20 @@
 #   Allen Eubank
 #   John Uba
 #
-### Imports ############################################################
+### Imports ####################################################################
 
 use CGI qw(:standard);
 use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
 use DataGet;
 use List::Util qw(min);
 
-### INSTALLER SET CONSTANTS ############################################
+### Constants ##################################################################
 
 $PUBLIC_WEB_ROOT = "/var/www/html";
 $SERVER_NAME = "ssvekdev.jpl.nasa.gov";
 $CGI_ROOT = "/var/www/cgi-bin";
 $INSTALLATION_ROOT = "datasys/ek_summer";
 $KML_ROOT = "ek/ek_summer/kml_files";
-
-### Constants ##########################################################
-
 $PROGRAM_ROOT = "$CGI_ROOT/$INSTALLATION_ROOT";
 $KML_ROOT = "$PUBLIC_WEB_ROOT/$KML_ROOT";
 $IMAGE_ROOT = "$PUBLIC_WEB_ROOT/ek/imgs";
@@ -37,7 +34,7 @@ $kml_dir_web = "http://$SERVER_NAME/$1";
 $PROGRAM_ROOT =~ /$CGI_ROOT\/(.*)$/;
 $own_url = "http://$SERVER_NAME/cgi-bin/$1/KMLcorrect1.cgi";
 
-########################################################################
+################################################################################
 
 # Default place to look for images is the automated folder. Otherwise,
 # it will be sent as a parameter.
@@ -86,7 +83,8 @@ if (not param('msnCode')) {
           submit,hr;
 }
 
-# if mission has been selected and orbit hasn't, show mission and present menu for orbit
+# if mission has been selected and orbit hasn't, 
+# show mission and present menu for orbit
 elsif (not param('orbit')) {
 
   print "Mission Code is: ", param('msnCode'),
@@ -107,7 +105,8 @@ elsif (not param('orbit')) {
         -labels => %orbitLabels), submit, hr;
 }
 
-# if both mission and orbit are chosen, show what was selected and show images from those orbit(s)
+# if both mission and orbit are chosen, show what was selected and show images 
+# from those orbit(s)
 else {
   my $missionCode = param('msnCode');
   my $orbitCode = param('orbit');

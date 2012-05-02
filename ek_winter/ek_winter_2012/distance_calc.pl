@@ -1,22 +1,36 @@
-################################################################################
-# distance_calc.pl
+#!/usr/bin/perl -w
+###############################################################################
+#
+# Co-Author(s):
+#   Carson McNeil
+#   David Choy
+#   Stephanie Tsuei
+#   Alex Fandrianto
+#   Allen Eubank <adeubank@gmail.com>
+#   John Uba <johnu089@yahoo.com>
+#
+### Description ###############################################################
 #
 # This program takes two points described by their latitudes and longitudes and
 # calculates the distance (in km) between them.
-################################################################################
+#
+### Imports ###################################################################
 
-#!/usr/bin/perl -w
 use strict;
 use Math::Trig;
 
-## Constant Definitions ########################################################
+### CONSTANTS #################################################################
+
 use constants 'PI', 'RADIUS_EARTH';
 
 my $pi = atan2(1, 1) * 4;
 my $radius_earth = RADIUS_EARTH;
 
-# calculates the distance between two points modeling the earth as an ellipsoid. Follow Wikipedia (http://en.wikipedia.org/wiki/Vincenty%27s_formulae) for help if you're confused, but some of the lines there are wrong.
-# ---distance, calc_lambda, calc_lambda_helper uses the information in the "Inverse Problem" section from Wikipedia---
+###############################################################################
+
+#
+# calculates the distance between two points modeling the earth as an ellipsoid
+#   
 sub distance {
 
 	################## CONSTANTS
@@ -43,7 +57,9 @@ sub distance {
 	################## END CONSTANTS
 
 
-	# now the gory calculations. Yes, there be blood everywhere! The two times is so that we know for absolutely sure that calc_lambda will recurse at least once
+	# now the gory calculations. Yes, there be blood everywhere! The two times is 
+  # so that we know for absolutely sure that calc_lambda will recurse at least 
+  # once
 	my @lambda_result = calc_lambda($reduced_lat, $reduced_nlat, $flattening, $longdiff);
 
 	if (scalar(@lambda_result) == 1)
@@ -65,7 +81,11 @@ sub distance {
 	return $distance;
 }
 
-# a little iterative helper function for the great circle distance. Once the value "lambda" is 10**-12 percent from the last one, it has converged to a value.
+#
+# a little iterative helper function for the great circle distance. 
+# Once the value "lambda" is 10**-12 percent from the last one, it has converged
+# to a value.
+#
 sub calc_lambda {
 	my ($u, $v, $f, $longdiff) = @_;
 	# From formula
@@ -86,8 +106,8 @@ sub calc_lambda {
 	return ($lambda, $cos_sq_alpha, $cos_2sigma_m, $sin_sigma, $sigma, $cos_sigma);
 }
 
-# helper function to calc_lambda so that calc_lambda can iterate. This part iterates the lambda value so that
-# From Wikipedia formula: $u = U1, $v = U2
+# helper function to calc_lambda so that calc_lambda can iterate. This part 
+# iterates the lambda value so that From Wikipedia formula: $u = U1, $v = U2
 # See FIRST HALF of the "Inverse Problem" section in Wikipedia.
 sub calc_lambda_helper {
 	my ($u, $v, $f, $lambda, $longdiff) = @_;
@@ -109,9 +129,11 @@ sub calc_lambda_helper {
 	return ($lambda, $cos_sq_alpha, $cos_2sigma_m, $sin_sigma, $sigma, $cos_sigma);
 }
 
-# To model the Earth as a sphere instead and use the great circle distance formula instead of the ellipsoid model, use the predefined function:
+# To model the Earth as a sphere instead and use the great circle distance 
+# formula instead of the ellipsoid model, use the predefined function:
 # great_circle_distance($lon, pi/2 - $lat, $nlon, pi/2 - $nlat, $radius_of_earth);
-# Since the formula thinks that the north pole and not the equator is 0 degrees, the pi/2 - $ lat is necessary
+# Since the formula thinks that the north pole and not the equator is 0 degrees,
+# the pi/2 - $ lat is necessary
 
 
 ################################################################################

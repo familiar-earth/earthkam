@@ -4,26 +4,33 @@
 
 # calculates the average changes in the <LatLonBox> between several .kml files
 # arguments: vectors
-# output: array of changes 0: new north, 1: new south, 2: new east, 3: new west, 4: new rotation
+# output: array of changes 0: new north, 1: new south, 2: new east, 3: new west,
+#         4: new rotation
 
 # require "matrix_functions.pl";
 require "stat_functions.pl";
 
+
 # takes data and recalculates lat lon box data
+# TODO fix up this function's documentation.
 sub changetolatlonbox {
   # the vector array is the topRight corner point (normally thought of as Corner 1)
   # $center[0] is longitude of center of image. $center[1] is latitude of the center.
   my @vector = @{$_[0]};
   my @center = @{$_[1]};
   my $rotation = $_[2];
-  my $cross = $_[3]; # boolean specifying whether the image crossed the international date line after correction or not
+  # boolean specifying whether the image crossed the international date line 
+  # after correction or not
+  my $cross = $_[3]; 
 
   my $nrth;
   my $sth;
   my $est;
   my $wst;
 
-  # If the image crossed the date line after the average correction was applied, then the translation vector and the value for the east coordinate needs to change before
+  # If the image crossed the date line after the average correction was applied,
+  # then the translation vector and the value for the east coordinate needs to 
+  # change before
   if ($cross) {
     $vector[0] -= 360 if ($vector[0] > 0);
     $vector[0] += 360 if ($vector[0] < 0);
@@ -48,8 +55,9 @@ sub changetolatlonbox {
 #          and rotation[4]. All floats.
 #
 #   @return array
-#           A top-right corner(array of two floats), center[1] (array of
-#           two floats), and rotation[2]. All are floats.
+#           [0]The top-right corner point(array of two floats)
+#           [1]center point (array of two floats), 
+#           [2]rotation.
 #
 sub changeFromLatLonBox {
 

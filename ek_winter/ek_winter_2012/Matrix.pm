@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
 
+# TODO fix up this file's documentation
+
 # Contains Matrix data type, for use in linear regressions 
 package Matrix;
 
