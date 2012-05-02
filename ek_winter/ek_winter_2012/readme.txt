@@ -1,13 +1,10 @@
+
+EarthKAM Readme
+
 Author(s):
   Allen Eubank <adeubank@gmail.com>
 
 From Spring 2012,
-
-Foreword/Introduction:
-
-  This readme attempts to give an introduction and overview to current
-  EarthKAM system. The purpose of this document is to serve as a guide
-  to working on/with the source code of EarthKAM.
 
 Table of Contents:
 
@@ -31,14 +28,27 @@ Table of Contents:
     II.O updateNewFields.pl
     II.P updateNewField_singel.pl
 
-  III. Things to work on
+  III. Issues that need attention
 
   IV. Format of Source Code, A simple Perl style sheet
 
-
+  
+  
+  
+  
+  
 I. A Quick Introduction
 
-II. Description of EarthKAM code behind
+  This readme attempts to give an introduction and overview to current
+  EarthKAM system. The purpose of this document is to serve as a guide
+  to working on/with the source code of EarthKAM. 
+  
+  The EarthKAM image correction process has been worked on by many students now.
+  From here on out this readme should be included with the source code. This 
+  document is in no way a substitution for reading the source code. It only 
+  serves as a primer and a reference when needed.
+
+II. Description of EarthKAM files
   II.A constants.pm
   II.B create_GoogleEarthOverlays.pl
   II.C DataGet.pm
