@@ -1,16 +1,26 @@
 #!/usr/bin/perl
 # use strict;
 
-### This file is called in KMLupload.cgi! Based on KMLupload.cgi, the script so far only uses the "-i" option. ###
+# TODO clean up this file, add the documentation template from the Perl style 
+# sheet in readme.txt
 
-# This file updates new fields in the ekImages database for corrected images. Images will not annotate unless the fields are updated. Currently takes in a .kml file as an argument. and a user as an argument 
-#Args: 0 - absolute path to overlays directory (required)
+### This file is called in KMLupload.cgi! 
+# Based on KMLupload.cgi, the script so far only uses the "-i" option. ###
+
+# This file updates new fields in the ekImages database for corrected images. 
+# Images will not annotate unless the fields are updated. Currently takes in a 
+# .kml file as an argument. and a user as an argument 
+#
+# Args: 0 - absolute path to overlays directory (required)
 #   1 - user (required)
-#     2 - single image, orbit, or mission. "-i" for single image, "-o" for orbit, "-m" for mission, (otherwise will update all images in overlays directory)
-#          3 - mission id (required unless argument 2 is not given) or 
+#   2 - single image, orbit, or mission. "-i" for single image, "-o" for orbit, 
+#       "-m" for mission, (otherwise will update all images in overlays 
+#         directory)
+#   3 - mission id (required unless argument 2 is not given) or 
 #   4 - orbit id (required for unless argument 2 "-m" or not given)
 
-# This program assumes that you have in your images in the hierarchy, "Overlays, Mission, Orbit, automated/completed/initial"
+# This program assumes that you have in your images in the hierarchy, 
+# "Overlays, Mission, Orbit, automated/completed/initial"
 
 $usage = "Usage error. Go read documentation please\n";
 

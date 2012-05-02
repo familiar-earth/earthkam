@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-########################################################################
+###############################################################################
 #
 # Co-Author(s):
 #   Stephanie Tsuei
@@ -9,7 +9,7 @@
 #   Allen Eubank <adeubank@gmail.com>
 #   John Uba <johnu089@yahoo.com>
 #
-### Description ########################################################
+### Description ###############################################################
 #
 # This script is used to calculate and apply corrections to KML files.
 # The types of corrections that it can do are Constant, Linear, Quadratic,
@@ -65,7 +65,7 @@
 #
 #   'copyCorrected': copy over corrected images to automated folder
 #
-### Imports ############################################################
+### Imports ###################################################################
 
 use strict;
 
@@ -81,7 +81,7 @@ require "latLongBoxChanges.pl";
 # Matrix operations used with sinusoidal regressions
 use Matrix;
 
-### Constants ##########################################################
+### Constants #################################################################
 
 use constants 'PI', 'RADIUS_EARTH';
 my $pi = atan2(1, 1) * 4;
@@ -93,7 +93,7 @@ my $completedPath = $orbitPath . "completed/";
 my $automatedPath = $orbitPath . "automated/";
 my $CORRECT = 'constant';
 
-########################################################################
+###############################################################################
 
 
 # The general correction scheme is to apply a constant offset, averaging
