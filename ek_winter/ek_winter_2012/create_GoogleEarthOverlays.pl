@@ -21,18 +21,29 @@ $web_image_root = "http://$SERVER_NAME/$1";
 
 $msn .= "%";
 if ($orb eq '' || $orb eq 'ALL'){
-    $CMD1 = "select filepath, imagedate, frmwidth, frmheight, altitude, cenlat, cenlon, newclat, newclon, newwidth, newrotation, orbit, lookdir, locname, divavisible, compstat from ekImages where filepath like \'$msn\' order by filepath";
+    $CMD1 = "select filepath, imagedate, frmwidth, frmheight, altitude, cenlat".
+    ", cenlon, newclat, newclon, newwidth, newrotation, orbit, lookdir, locname".
+    ", divavisible, compstat from ekImages where filepath like \'$msn\' order by".
+    " filepath";
 }
 else {
-    $CMD1 = "select filepath, imagedate, frmwidth, frmheight, altitude, cenlat, cenlon, newclat, newclon, newwidth, newrotation, orbit, lookdir, locname, divavisible, compstat from ekImages where filepath like \'$msn\' and orbit=\'$orb\' order by filepath";
+    $CMD1 = "select filepath, imagedate, frmwidth, frmheight, altitude, cenlat".
+    ", cenlon, newclat, newclon, newwidth, newrotation, orbit, lookdir, locname,".
+    " divavisible, compstat from ekImages where filepath like \'$msn\' and".
+    " orbit=\'$orb\' order by filepath";
 }
-print "Cannot perform $CMD1 properly\n" unless(&DataGet::dblookup($CMD1, \@RESULTS));
-foreach $image (@RESULTS){
-    ($fp, $imgd, $wid, $hght, $alt, $clat, $clon, $nclat, $nclon, $nwid, $nld, $orb, $ld, $loc, $visible, $cs) = split (/\t/, $image);
 
-    #print "fp is $fp , clat is $clat , clon is $clon , lookdir is $ld  ..\n nclat is $nclat nclon is $nclon and nld is $nld\n";
+print "Cannot perform $CMD1 properly\n" unless(&DataGet::dblookup($CMD1, \@RESULTS));
+
+foreach $image (@RESULTS){
+    ($fp, $imgd, $wid, $hght, $alt, $clat, $clon, $nclat, $nclon, $nwid,
+        $nld, $orb, $ld, $loc, $visible, $cs) = split (/\t/, $image);
+
+    #print "fp is $fp , clat is $clat , clon is $clon , lookdir is $ld  ..\n".
+    #       " nclat is $nclat nclon is $nclon and nld is $nld\n";
     if ($clat==0 && $clon==0){
-        #print "skipping $fp , clat is $clat , clon is $clon ,  vis is $visible and compstat is $cs ..\n";
+        #print "skipping $fp , clat is $clat , clon is $clon ,  vis is".
+        #   " $visible and compstat is $cs ..\n";
         next;
     }
     if ($clat eq "" || $visible eq "X" ){
@@ -40,8 +51,9 @@ foreach $image (@RESULTS){
         #next;
     }
     $completed = 0;
-    if (($nclat ne "" && $nclat != 0) && ($nclon ne "" && $nclon != 0) && ($nld ne "" && $nld != 0) && ($nwid ne "" && $nwid != 0)){
-        $completed = 1;
+    if (($nclat ne "" && $nclat != 0) && ($nclon ne "" && $nclon != 0)
+        && ($nld ne "" && $nld != 0) && ($nwid ne "" && $nwid != 0)) {
+            $completed = 1;
     }
     if ($completed){
         @states = ('initial', 'completed');
@@ -50,11 +62,11 @@ foreach $image (@RESULTS){
         @states = ('initial');
     }
     foreach $state (@states){
-        
+
         if ($state eq "completed"){
-            $clon = $nclon; 
-            $clat = $nclat; 
-            $ld = $nld; 
+            $clon = $nclon;
+            $clat = $nclat;
+            $ld = $nld;
             $wid = $nwid;
             $hght = (2 * $wid/3);
         }
@@ -64,7 +76,7 @@ foreach $image (@RESULTS){
     #print "Output File is: ".$outdir."\n";
 
         #print "continuing with  $fp ,\n clat is $clat , clon is $clon \n";
-        
+
         # we need to make the folders individually to give them all the right permissions
         $outdir = $kml_file_dir . "/" . $mid.$esc . "/";
         if (! -d $outdir) {
@@ -112,7 +124,7 @@ foreach $image (@RESULTS){
             $range = $alt * 1000;
             $overlayName = $fp;
             $rot = 360 - $ld;
-            
+
             print OUT "        <GroundOverlay>\n";
             print OUT "          <name>$overlayName</name>\n";
             print OUT "          <description>$overlayDescrip</description>\n";

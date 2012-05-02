@@ -32,25 +32,32 @@ Table of Contents:
 
   IV. Format of Source Code, A simple Perl style sheet
 
-  
-  
-  
-  
-  
+
+
+
+
+
 I. A Quick Introduction
 
   This readme attempts to give an introduction and overview to current
   EarthKAM system. The purpose of this document is to serve as a guide
-  to working on/with the source code of EarthKAM. 
-  
+  to working on/with the source code of EarthKAM.
+
   The EarthKAM image correction process has been worked on by many students now.
-  From here on out this readme should be included with the source code. This 
-  document is in no way a substitution for reading the source code. It only 
+  From here on out this readme should be included with the source code. This
+  document is in no way a substitution for reading the source code. It only
   serves as a primer and a reference when needed.
 
 II. Description of EarthKAM files
+
   II.A constants.pm
+
+    Module to hold constants for other Perl modules.
+
   II.B create_GoogleEarthOverlays.pl
+
+
+
   II.C DataGet.pm
   II.D db_test.pl
   II.E distance_calc.pl
