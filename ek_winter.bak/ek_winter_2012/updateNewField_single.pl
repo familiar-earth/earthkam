@@ -74,6 +74,7 @@ sub update_single {
     my $width = ($dlon / 360) * ($circ_earth * $cosCLat);
     my $rotation = $rotation % 360; # rotation value that is less than 360 degrees. %= does not work.
     
+    # Calculate corners, refer to method inside frame_incl.pl
     my($c1lat, $c1lon, $c2lat, $c2lon, $c3lat, $c3lon, $c4lat, $c4lon) = calc_corners($lat, $lon, $width, $height, $rotation);
     
     # get the current date and time

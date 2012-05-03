@@ -1,21 +1,30 @@
 #!/usr/bin/perl -w
-################################################################################
+###############################################################################
 #
 # Co-Author(s):
 #   Carson McNeil
 #   David Choy
 #   Stephanie Tsuei
 #   Alex Fandrianto
-#   Allen Eubank
+#   Allen Eubank <adeubank@gmail.com>
 #   John Uba
 #
-### Imports ####################################################################
+### Description ###############################################################
+#
+# A web application that uploads corrected KML files. It stores them in the 
+# KML file's corresponding mission/orbit/completed directory. After the files 
+# have been uploaded the corrected values of the KML file are sent to the 
+# database. Then it begins the correction process by calling the
+# updateKMLFile.pl with the filepath to the completed directory with the newly 
+# uploaded files.
+#
+### Imports ###################################################################
 
 use CGI qw(:standard);
 use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
 use DataGet;
 
-### CONSTANTS ##################################################################
+### CONSTANTS #################################################################
 
 $PUBLIC_WEB_ROOT = "/var/www/html";
 $SERVER_NAME = "ssvekdev.jpl.nasa.gov";
@@ -27,7 +36,7 @@ $DOWNLOAD_TOOL_URL = "http://$SERVER_NAME/cgi-bin/$INSTALLATION_ROOT/KMLcorrect1
 my $return_url = "";
 $CGI::POST_MAX = 1024 * 1024;  # maximum upload filesize is 1MB
 
-################################################################################
+###############################################################################
 
 print header;
 print start_html("KML Uploader"),
