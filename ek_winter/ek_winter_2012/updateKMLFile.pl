@@ -99,6 +99,23 @@ my $CORRECT = 'constant';
 # The general correction scheme is to apply a constant offset, averaging
 # all those the differences in manual vs initial corrections. Requires 1
 # corrected image to perform.
+#
+# The folders the .kml files should always be in are the 'initial' 'completed'
+# and 'automated' folders. Initial is for the raw .kml files. All uncorrected 
+# kml files go here.
+# Completed is for the manually corrected .kml files.
+# Automated will be the folder where all the automatically generated files appear.
+# Note: The completed folder files are not simply copied over, unless the 
+#   $CORRECT parameter is set to 'copyCorrected'.
+# Corrections are applied to them too. Run updateKMLFile.pl with correction type
+# 'copyCorrected' to directly copy from completed folder to automated.
+#
+# As a result, if more than the # of images required are manually corrected,
+# then a correction will not keep those images in the same place.
+#   Constant/Averaged requires 1
+#   Linear requires 2
+#   Quadratic requires 3
+#   Sinusoidal requires 4 or more
 
 if (defined $ARGV[1]) {
 
@@ -129,21 +146,7 @@ if (defined $ARGV[1]) {
           "\tcopyCorrected\n"); }
 }
 
-# The folders the .kml files should always be in are the 'initial' 'completed'
-# and 'automated' folders. Initial is for the raw .kml files. All uncorrected 
-# `.kml files go here.
-# Completed is for the manually corrected .kml files.
-# Automated will be the folder where all the automatically generated files appear.
-# Note: The completed folder files are not simply copied over.
-# Corrections are applied to them too. Run updateKMLFile.pl with correction type
-# 'copyCorrected' to directly copy from completed folder to automated.
-#
-# As a result, if more than the # of images required are manually corrected,
-# then a correction will not keep those images in the same place.
-#   Constant/Averaged requires 1
-#   Linear requires 2
-#   Quadratic requires 3
-#   Sinusoidal requires 4 or more
+
 
 print "$initialPath \n";
 #if (! -d $initialPath) {

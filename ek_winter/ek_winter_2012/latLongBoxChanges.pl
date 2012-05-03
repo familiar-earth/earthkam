@@ -1,21 +1,48 @@
-# !/usr/bin/perl
-
+#!/usr/bin/perl
+###############################################################################
+#
+# Co-Author(s):
+#   Carson McNeil
+#   David Choy
+#   Stephanie Tsuei
+#   Alex Fandrianto
+#   Allen Eubank <adeubank@gmail.com>
+#   John Uba
+#
+### Description ###############################################################
+#
+# Necessary functions for the correction process. Contains sub routines to
+# change a lat lon box to be represented as a center point, top-right corner 
+# point and the degrees of rotation and a sub routine given the center and 
+# top-right point convert it back to a lat lon box.
+#
 # We are assuming that the Earth is flat when making these calculations
+#
+### Imports ###################################################################
 
-# calculates the average changes in the <LatLonBox> between several .kml files
-# arguments: vectors
-# output: array of changes 0: new north, 1: new south, 2: new east, 3: new west,
-#         4: new rotation
-
-# require "matrix_functions.pl";
 require "stat_functions.pl";
 
-
-# takes data and recalculates lat lon box data
-# TODO fix up this function's documentation.
+#
+# Takes a center point, top-right corner point, and the degrees of rotation 
+# then recalculates lat lon box data
+#
+#   param[0] array
+#            The top-right corner point of a lat lon box.
+#
+#   param[1] array
+#            The center point of a lat lon box.
+#
+#   param[2] float
+#            The degrees of rotation.
+#
+#   return array
+#          The calculated LatLonBox with north[0], south[1], west[2], east[3],
+#          and rotation[4]. All floats.
+#
 sub changetolatlonbox {
-  # the vector array is the topRight corner point (normally thought of as Corner 1)
-  # $center[0] is longitude of center of image. $center[1] is latitude of the center.
+  # the vector array is the topRight corner point (normally thought of 
+  # as Corner 1) $center[0] is longitude of center of image. $center[1] is 
+  # latitude of the center.
   my @vector = @{$_[0]};
   my @center = @{$_[1]};
   my $rotation = $_[2];
@@ -50,11 +77,11 @@ sub changetolatlonbox {
 # Obtains the North-East corner point, center point, and a rotation value
 # from a LatLonBox. These are used to represent this LatLonBox as a vector.
 #
-#   @param array
+#   param array
 #          The LatLonBox with north[0], south[1], west[2], east[3],
 #          and rotation[4]. All floats.
 #
-#   @return array
+#   return array
 #           [0]The top-right corner point(array of two floats)
 #           [1]center point (array of two floats), 
 #           [2]rotation.
@@ -85,11 +112,11 @@ sub changeFromLatLonBox {
 #
 # Test whether an image crosses the international date line.
 #
-#   @param[0] float
+#   param[0] float
 #             Eastern Coordinate of a LatLonBox
-#   @param[1] float
+#   param[1] float
 #             Western Coordinate of a LatLonBox
-#   @return integer
+#   return integer
 #           1 if the image crosses the international date line, and 0 if
 #           it does not.
 #
