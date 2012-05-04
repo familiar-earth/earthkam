@@ -197,6 +197,9 @@ III. Issues that need attention
   - Refractor frame_incl.pl. This file seemed rushed and not tested. The code
     is inconsistent with the rest of the system. It is not reusing code where
     it could.
+    
+  - Sinusoidal regression is broken, refractor code to not allow this type of
+    correction.
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

@@ -19,7 +19,7 @@ sub update_single { # subroutine takes in image and user as input
   my $TRUE = 1;
   my $FALSE = 0;
   my $pi = atan2(1, 1) *4;
-  my $radius_earth = 6378;
+  my $radius_earth = 6371;
   my $circ_earth = $radius_earth * 2 * $pi;
   # CONSTANTS
 
