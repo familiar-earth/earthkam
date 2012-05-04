@@ -18,12 +18,12 @@
 
 use strict;
 use Math::Trig;
+use constants 'PI', 'RADIUS_EARTH';
 
 ### CONSTANTS #################################################################
 
-use constants 'PI', 'RADIUS_EARTH';
-
-my $pi = atan2(1, 1) * 4;
+my $pi = PI;
+$pi = ${$pi};
 my $radius_earth = RADIUS_EARTH;
 
 ###############################################################################

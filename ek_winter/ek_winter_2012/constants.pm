@@ -25,14 +25,21 @@ use constant {
   SIZE => 10,
 };
 
-my $pi = atan2(1, 1) * 4;
+$pi = atan2(1, 1) * 4;
 
-# some constants
-use constant PI => $pi;
+# To use PI,
+# paste what is in between copy and cut into the constants section.
+
+=copy
+my $pi = PI;
+$pi = ${$pi};
+=cut
+use constant PI => \$pi;
+
 use constant RADIUS_EARTH => 6371; # Wikipedia
 
 our @EXPORT_OK = ('FONT', 'COLOR', 'FONT_SIZE', 'COUNTRY', 'MAX_NUM', 'PRIORITY',
  'FONT_OUTLINE', 'OUTLINE_STROKE_WIDTH', 'FEATURE_CODE', 'GRAVITY', 'SIZE',
-  'PI', 'RADIUS_EARTH', 'CIRC_EARTH');
+  'PI', 'RADIUS_EARTH', 'CIRC_EARTH', 'floaty');
 
 1;

@@ -1,6 +1,28 @@
-my $pi = atan2(1, 1) * 4;
-my $radius_earth = 6371;
+#!/usr/bin/perl -w
+###############################################################################
+#
+# Co-Author(s):
+#   Stephanie Tsuei
+#   Alex Fandrianto
+#   Allen Eubank <adeubank@gmail.com>
+#   John Uba <johnu089@yahoo.com>
+#
+### Description ###############################################################
+#
+# Calculates the four corners of a lat long box. 
+#
+### IMPORTS ###################################################################
+
+use constants 'PI', 'RADIUS_EARTH';
+
+### CONSTANTS #################################################################
+
+my $pi = PI;
+$pi = ${$pi};
+my $radius_earth = RADIUS_EARTH;
 my $circ_earth = $radius_earth * 2 * $pi;
+
+###############################################################################
 
 # Name
 #   calc_orig_dim
