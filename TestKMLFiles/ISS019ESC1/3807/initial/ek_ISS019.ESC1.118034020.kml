@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.118034020</name>
+          <description>Overlay of ISS019.ESC1.118034020, located at or near Tasman Sea and South Island, New Zealand, taken on </description>
+          <LookAt>
+            <longitude>168.9800</longitude>
+            <latitude>-46.7800</latitude>
+            <range>363000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118034020/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-46.1746123264171</north>
+            <south>-47.3853876735829</south>
+            <east>170.302547500947</east>
+            <west>167.657452499053</west>
+            <rotation>154.61</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

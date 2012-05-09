@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS012.ESC2.042042028</name>
+	<description>Overlay of ISS012.ESC2.042042028, located at or near Caspian Sea and Iran, taken on Sat Feb 11 04:20:28 2006</description>
+	<LookAt>
+		<longitude>53.05</longitude>
+		<latitude>36.96</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>352000</range>
+	</LookAt>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS012ESC2/042042028/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>36.89264855391102</north>
+		<south>36.56709210205403</south>
+		<east>53.39816873093013</east>
+		<west>52.78860968273453</west>
+		<rotation>-30.88305208695491</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

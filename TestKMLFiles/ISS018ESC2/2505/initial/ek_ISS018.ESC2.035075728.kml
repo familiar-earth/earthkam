@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS018.ESC2.035075728</name>
+          <description>Overlay of ISS018.ESC2.035075728, located at or near Russia and Mongolia, taken on </description>
+          <LookAt>
+            <longitude>100.9100</longitude>
+            <latitude>51.7800</latitude>
+            <range>363000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS018ESC2/035075728/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>52.386196174705</north>
+            <south>51.173803825295</south>
+            <east>102.375766679149</east>
+            <west>99.4442333208508</west>
+            <rotation>181.79</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

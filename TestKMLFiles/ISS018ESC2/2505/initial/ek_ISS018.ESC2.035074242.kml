@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS018.ESC2.035074242</name>
+          <description>Overlay of ISS018.ESC2.035074242, located at or near Red Sea, taken on </description>
+          <LookAt>
+            <longitude>37.0000</longitude>
+            <latitude>23.5500</latitude>
+            <range>353000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS018ESC2/035074242/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>24.1380947329144</north>
+            <south>22.9619052670856</south>
+            <east>37.9598601065169</east>
+            <west>36.0401398934831</west>
+            <rotation>227.46</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

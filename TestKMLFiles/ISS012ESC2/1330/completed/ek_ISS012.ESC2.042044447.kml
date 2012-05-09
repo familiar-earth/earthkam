@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS012.ESC2.042044447</name>
+	<description>Overlay of ISS012.ESC2.042044447, located at or near Western Australia, Australia and Indian Ocean, taken on Sat Feb 11 04:44:47 2006</description>
+	<LookAt>
+		<longitude>116.47</longitude>
+		<latitude>-34.95</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>351000</range>
+	</LookAt>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS012ESC2/042044447/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>-34.52538119986196</north>
+		<south>-34.85003931713872</south>
+		<east>116.219589644939</east>
+		<west>115.626991189907</west>
+		<rotation>-29.17212043571798</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

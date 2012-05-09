@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS018.ESC2.035074006</name>
+          <description>Overlay of ISS018.ESC2.035074006, located at or near Sudan, taken on </description>
+          <LookAt>
+            <longitude>30.4800</longitude>
+            <latitude>15.8100</latitude>
+            <range>351000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS018ESC2/035074006/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>16.395938729922</north>
+            <south>15.224061270078</south>
+            <east>31.3911982465564</east>
+            <west>29.5688017534436</west>
+            <rotation>229.87</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>
