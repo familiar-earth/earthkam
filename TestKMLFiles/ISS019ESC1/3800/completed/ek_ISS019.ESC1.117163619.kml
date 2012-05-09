@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS019.ESC1.117163619</name>
+	<description>Overlay of ISS019.ESC1.117163619, located at or near Gulf of Mexico and Mexico, taken on</description>
+	<LookAt>
+		<longitude>-94.23603752571361</longitude>
+		<latitude>18.42488672224501</latitude>
+		<altitude>0</altitude>
+		<heading>0.1092840672061379</heading>
+		<tilt>0</tilt>
+		<range>401091.3653179633</range>
+		<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+	</LookAt>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/117163619/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>19.29183127876665</north>
+		<south>18.10539193339846</south>
+		<east>-93.64785139800834</east>
+		<west>-95.49619065302716</west>
+		<rotation>128.6982082661804</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

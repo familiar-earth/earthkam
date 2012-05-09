@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<GroundOverlay>
+  <name>ISS012.ESC2.042042730</name>
+  <description>Overlay of ISS012.ESC2.042042730, located at or near India, taken on Sat Feb 11 04:27:30 2006 </description>
+  <LookAt>
+   	<longitude>73.7400</longitude>
+		<latitude>16.8400</latitude>
+    <range>347000</range>
+    <tilt>0</tilt>
+    <heading>0</heading>
+  </LookAt>
+  <Icon>
+    <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS012ESC2/042042730/IMAGE.JPG</href>
+  </Icon>
+  <LatLonBox>
+    <north>17.000352722562</north>
+    <south>16.679647277438</south>
+    <east>73.9906481760123</east>
+    <west>73.4893518239877</west>
+    <rotation>0</rotation>
+  </LatLonBox>
+</GroundOverlay>
+</kml>

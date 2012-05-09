@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS019.ESC1.118034020</name>
+	<description>Overlay of ISS019.ESC1.118034020, located at or near Tasman Sea and South Island, New Zealand, taken on</description>
+	<LookAt>
+		<longitude>168.98</longitude>
+		<latitude>-46.78</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>363000</range>
+	</LookAt>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118034020/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>-46.23905807182204</north>
+		<south>-47.44983341898783</south>
+		<east>170.3767493797045</east>
+		<west>167.7316543778103</west>
+		<rotation>152.7020475003548</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

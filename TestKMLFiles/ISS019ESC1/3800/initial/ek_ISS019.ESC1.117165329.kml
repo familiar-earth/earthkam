@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.117165329</name>
+          <description>Overlay of ISS019.ESC1.117165329, located at or near Uruguay and Brazil, taken on </description>
+          <LookAt>
+            <longitude>-53.0300</longitude>
+            <latitude>-32.7500</latitude>
+            <range>360000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/117165329/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-32.1502718342723</north>
+            <south>-33.3497281657277</south>
+            <east>-51.9631127627906</east>
+            <west>-54.0968872372094</west>
+            <rotation>137.43</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

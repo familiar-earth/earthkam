@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<GroundOverlay>
+  <name>ISS012.ESC2.042044435</name>
+  <description>Overlay of ISS012.ESC2.042044435, located at or near Western Australia, Australia and Indian Ocean, taken on Sat Feb 11 04:44:35 2006 </description>
+  <LookAt>
+   	<longitude>115.9100</longitude>
+		<latitude>-34.5200</latitude>
+    <range>351000</range>
+    <tilt>0</tilt>
+    <heading>0</heading>
+  </LookAt>
+  <Icon>
+    <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS012ESC2/042044435/IMAGE.JPG</href>
+  </Icon>
+  <LatLonBox>
+    <north>-34.3577607748196</north>
+    <south>-34.6822392251804</south>
+    <east>116.204652499859</east>
+    <west>115.615347500141</west>
+    <rotation>0</rotation>
+  </LatLonBox>
+</GroundOverlay>
+</kml>

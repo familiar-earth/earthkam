@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS018.ESC2.035074552</name>
+	<description>Overlay of ISS018.ESC2.035074552, located at or near Iraq, taken on</description>
+	<LookAt>
+		<longitude>46.19</longitude>
+		<latitude>32.48</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>355000</range>
+	</LookAt>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS018ESC2/035074552/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>32.49944434826126</north>
+		<south>31.47118444398894</south>
+		<east>46.75258555104941</east>
+		<west>44.61822234256641</west>
+		<rotation>226.3937234368094</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>

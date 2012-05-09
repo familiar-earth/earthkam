@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+        <GroundOverlay>
+          <name>ISS019.ESC1.118033540</name>
+          <description>Overlay of ISS019.ESC1.118033540, located at or near New South Wales, Australia, taken on </description>
+          <LookAt>
+            <longitude>149.4100</longitude>
+            <latitude>-36.8300</latitude>
+            <range>361000</range>
+            <tilt>0</tilt>
+            <heading>0</heading>
+          </LookAt>
+          <Icon>
+            <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118033540/IMAGE.JPG</href>
+          </Icon>
+          <LatLonBox>
+            <north>-36.2285649985699</north>
+            <south>-37.4314350014301</south>
+            <east>150.53417155564</east>
+            <west>148.28582844436</west>
+            <rotation>140.67</rotation>
+          </LatLonBox>
+        </GroundOverlay>
+</kml>

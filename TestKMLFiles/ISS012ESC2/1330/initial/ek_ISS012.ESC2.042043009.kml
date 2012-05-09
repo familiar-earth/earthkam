@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<GroundOverlay>
+  <name>ISS012.ESC2.042043009</name>
+  <description>Overlay of ISS012.ESC2.042043009, located at or near Indian Ocean and Sri Lanka, taken on Sat Feb 11 04:30:09 2006 </description>
+  <LookAt>
+   	<longitude>79.8900</longitude>
+		<latitude>8.7500</latitude>
+    <range>346000</range>
+    <tilt>0</tilt>
+    <heading>0</heading>
+  </LookAt>
+  <Icon>
+    <href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS012ESC2/042043009/IMAGE.JPG</href>
+  </Icon>
+  <LatLonBox>
+    <north>8.90981372181391</north>
+    <south>8.59018627818609</south>
+    <east>80.1319070499018</east>
+    <west>79.6480929500982</west>
+    <rotation>0</rotation>
+  </LatLonBox>
+</GroundOverlay>
+</kml>

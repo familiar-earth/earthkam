@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>ISS019.ESC1.118031931</name>
+	<description>Overlay of ISS019.ESC1.118031931, located at or near South China Sea and Vietnam, taken on</description>
+	<LookAt>
+		<longitude>108.68</longitude>
+		<latitude>10.93</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>355000</range>
+	</LookAt>
+	<Icon>
+		<href>http://ssvekdev.jpl.nasa.gov/ek/imgs/ISS019ESC1/118031931/IMAGE.JPG</href>
+	</Icon>
+	<LatLonBox>
+		<north>11.43003886342556</north>
+		<south>10.24486605179497</south>
+		<east>109.6144457979405</east>
+		<west>107.8083719019225</west>
+		<rotation>129.1699967529099</rotation>
+	</LatLonBox>
+</GroundOverlay>
+</kml>
