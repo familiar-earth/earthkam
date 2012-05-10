@@ -75,7 +75,17 @@ if (!param('filename') && cgi_error()) {
         p("Please refer to your system administrator");
     print hr, end_html;
 }
-# TODO add check for correct file name form
+# check for correct KML file name format
+while (param("file$i")) {
+  my $name = param("file$i");
+  if ($name !~ m/ek_ISS(\d){3}\.ESC(\d){1}\.(\d){9}\.kml/) {
+	print p("Hold it! You are trying to upload a KML file whose format is not
+          "." like ek_ISS###.ESC#.#########.kml"),
+        p("Please refresh the page and try again.");
+    print hr, end_html;
+  }
+}
+
 #
 # Upload the file
 #
@@ -99,10 +109,10 @@ if (param('file0')) {
 
     # push each image's data to a hash table to find total number of orbits
     if (exists $orbitMap{$orbit}) {
-        push @{$orbitMap{$orbit}}, $filepath;
+      push @{$orbitMap{$orbit}}, $filepath;
     }
     else {
-        $orbitMap{$orbit} = [$filepath];
+      $orbitMap{$orbit} = [$filepath];
     }
     $msn =~ s/ek_(.*)/$1/g;
     $msnCode = $msn;
