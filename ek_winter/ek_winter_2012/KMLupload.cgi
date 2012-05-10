@@ -75,7 +75,10 @@ if (!param('filename') && cgi_error()) {
         p("Please refer to your system administrator");
     print hr, end_html;
 }
+
+#
 # check for correct KML file name format
+#
 while (param("file$i")) {
   my $name = param("file$i");
   if ($name !~ m/ek_ISS(\d){3}\.ESC(\d){1}\.(\d){9}\.kml/) {
@@ -89,7 +92,6 @@ while (param("file$i")) {
 #
 # Upload the file
 #
-
 if (param('file0')) {
 
   my $i = 0;
