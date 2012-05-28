@@ -91,7 +91,7 @@ sub calc_corners {
     # |  Q3                 Q4   |
     # ----------------------------
     
-    if (abs($angle) < 90) {
+    if (( 0 <= $angle && $angle < 90) || (-360 < $angle && $angle < -270)) {
       # Quadrant 1 of image is most north corner or corner 1
       ($c1lon, $c1lat) = rotate_vector($width / 2, $height / 2, $angle);
       # Q2
@@ -102,7 +102,7 @@ sub calc_corners {
       ($c4lon, $c4lat) = rotate_vector($width / 2, -$height / 2, $angle);
       
     } 
-    elsif ((90 <= abs($angle)) && (abs($angle) < 180)) {
+    elsif ((90 <= $angle && $angle < 180) || (-270 <= $angle && $angle < -180)) {
       # Quadrant 4 of image is most north corner or corner 1
       ($c1lon, $c1lat) = rotate_vector($width / 2, -$height / 2, $angle);
       # Q1
@@ -113,7 +113,7 @@ sub calc_corners {
       ($c4lon, $c4lat) = rotate_vector(-$width / 2, -$height / 2, $angle);
     
     }
-    elsif ((180 <= abs($angle)) && (abs($angle) < 270)) {
+    elsif ((180 <= $angle && $angle < 270) || (-180 <= $angle && $angle < -90)) {
       # Quadrant 3 of image is most north corner or corner 1
       ($c1lon, $c1lat) = rotate_vector(-$width / 2, -$height / 2, $angle);
       # Q2
