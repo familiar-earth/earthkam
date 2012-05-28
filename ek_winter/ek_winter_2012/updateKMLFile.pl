@@ -84,7 +84,8 @@ use Matrix;
 ### Constants #################################################################
 
 use constants 'PI', 'RADIUS_EARTH';
-my $pi = atan2(1, 1) * 4;
+my $pi = PI;
+$pi = ${$pi};
 my $radius_earth = RADIUS_EARTH; # Wikipedia
 my $circ_earth = 2 *$pi * $radius_earth;
 my $orbitPath = $ARGV[0];
@@ -153,7 +154,7 @@ print "$initialPath \n";
 #  die("There are no initial images, so there is nothing to do.\n");
 #}
 if (! -d $completedPath) {
-  `mkdir -p $completedPath`;
+  `mkdir -p -m 770 $completedPath`;
   unless ($CORRECT eq '0') {
     die "Warning: There are no completed images, ".
         "so there are no offsets, corrections should NOT occur.\n";
