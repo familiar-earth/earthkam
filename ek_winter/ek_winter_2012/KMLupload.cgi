@@ -80,9 +80,14 @@ if (!param('filename') && cgi_error()) {
 # check for correct KML file name format
 #
 if (param('file0')) {
-  while (param("file$i")) {
-    my $name = param("file$i");
-    if ($name !~ m/ek_ISS(\d){3}\.ESC(\d){1}\.(\d){9}\.kml/) {
+
+
+  my $j = 0;
+  
+  while (param("file$j")) {
+  
+    my $filename = param("file$j");
+    if ($filename !~ m/ek_ISS(\d){3}\.ESC(\d){1}\.(\d){9}\.kml/) {
       print p("Hold it! You are trying to upload a KML file whose format is not
             "." like ek_ISS###.ESC#.#########.kml"),
             p("Please refresh the page and try again.");
