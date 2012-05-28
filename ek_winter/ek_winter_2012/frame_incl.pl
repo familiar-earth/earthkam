@@ -66,18 +66,73 @@ sub calc_orig_dim {
 # Return Value
 #   (c1lat, c1lon, c2lat, c2lon, c3lat, c3lon, c4lat, c4lon)
 
-# calculates the position of the four corners of an image given the coordinates of the center and the width and the height (in kilometers) and the angle of rotation. Returns the latitude and longitudes of the four corners
+# calculates the position of the four corners of an image given the coordinates 
+# of the center and the width and the height (in kilometers) and the angle of 
+# rotation. Returns the latitude and longitudes of the four corners
 sub calc_corners {
-    my($cLat, $cLon, $width, $height, $angle) = @_; # the angle will always be less than 360 degrees
     
-	#print "$cLat $cLon $width $height $angle \n";
-	
+    # the angle will always be less than 360 degrees
+    my($cLat, $cLon, $width, $height, $angle) = @_; 
+    
+    # print "$cLat $cLon $width $height $angle \n";
+    my $c1lon, $c1lat, $c2lon, $c2lat, $c3lon, $c3lat, $c4lon, $c4lat;
+   
     # Rotates the corner points relative to the center of the image
-    # Stores in c1...c4 the points relative to the center of the image in km 
-    my($c1lon, $c1lat) = rotate_vector($width / 2, $height / 2, $angle); # These are distance vectors in kilometers
-    my($c2lon, $c2lat) = rotate_vector(-$width / 2, $height / 2, $angle);
-    my($c3lon, $c3lat) = rotate_vector(-$width / 2, -$height / 2, $angle);
-    my($c4lon, $c4lat) = rotate_vector($width / 2, -$height / 2, $angle);
+    # Stores in c1...c4 the points relative to the center of the image in km
+    # These are distance vectors in kilometers. 
+    # 
+    # c1 will always be the most north corner of the image after rotation.
+    #
+    # Think of it like this, before rotation the image looks like this
+    #
+    # ----------------------------
+    # |  Q2                 Q1   |
+    # |                          |
+    # |  Q3                 Q4   |
+    # ----------------------------
+    
+    if (abs($angle) < 90) {
+      # Quadrant 1 of image is most north corner or corner 1
+      ($c1lon, $c1lat) = rotate_vector($width / 2, $height / 2, $angle);
+      # Q2
+      ($c2lon, $c2lat) = rotate_vector(-$width / 2, $height / 2, $angle);
+      # Q3
+      ($c3lon, $c3lat) = rotate_vector(-$width / 2, -$height / 2, $angle);
+      # Q4
+      ($c4lon, $c4lat) = rotate_vector($width / 2, -$height / 2, $angle);
+      
+    } 
+    elsif ((90 <= abs($angle)) && (abs($angle) < 180)) {
+      # Quadrant 4 of image is most north corner or corner 1
+      ($c1lon, $c1lat) = rotate_vector($width / 2, -$height / 2, $angle);
+      # Q1
+      ($c2lon, $c2lat) = rotate_vector($width / 2, $height / 2, $angle);
+      # Q2
+      ($c3lon, $c3lat) = rotate_vector(-$width / 2, $height / 2, $angle);
+      # Q3
+      ($c4lon, $c4lat) = rotate_vector(-$width / 2, -$height / 2, $angle);
+    
+    }
+    elsif ((180 <= abs($angle)) && (abs($angle) < 270)) {
+      # Quadrant 3 of image is most north corner or corner 1
+      ($c1lon, $c1lat) = rotate_vector(-$width / 2, -$height / 2, $angle);
+      # Q2
+      ($c2lon, $c2lat) = rotate_vector($width / 2, -$height / 2, $angle);
+      # Q1
+      ($c3lon, $c3lat) = rotate_vector($width / 2, $height / 2, $angle);
+      # Q4
+      ($c4lon, $c4lat) = rotate_vector(-$width / 2, $height / 2, $angle);
+    }
+    else {
+      # Quadrant 2 of image is most north corner or corner 1
+      ($c1lon, $c1lat) = rotate_vector(-$width / 2, $height / 2, $angle);
+      # Q3
+      ($c2lon, $c2lat) = rotate_vector(-$width / 2, -$height / 2, $angle);
+      # Q4
+      ($c3lon, $c3lat) = rotate_vector($width / 2, -$height / 2, $angle);
+      # Q1
+      ($c4lon, $c4lat) = rotate_vector($width / 2, $height / 2, $angle);
+    }
 		
     # Converts corner point latitudes from kilometers to degrees
     $c1lat *= 360 / $circ_earth;
