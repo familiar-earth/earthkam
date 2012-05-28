@@ -29,7 +29,7 @@ use DataGet;
 $PUBLIC_WEB_ROOT = "/var/www/html";
 $SERVER_NAME = "ssvekdev.jpl.nasa.gov";
 $CGI_ROOT = "/var/www/cgi-bin";
-$INSTALLATION_ROOT = "datasys/ek_summer";
+$INSTALLATION_ROOT = "datasys/ek_winter_2012";
 $KML_ROOT = "ek/ek_summer/kml_files";
 $kml_file_dir = "$PUBLIC_WEB_ROOT/$KML_ROOT";
 $DOWNLOAD_TOOL_URL = "http://$SERVER_NAME/cgi-bin/$INSTALLATION_ROOT/KMLcorrect1.cgi";
@@ -79,13 +79,16 @@ if (!param('filename') && cgi_error()) {
 #
 # check for correct KML file name format
 #
-while (param("file$i")) {
-  my $name = param("file$i");
-  if ($name !~ m/ek_ISS(\d){3}\.ESC(\d){1}\.(\d){9}\.kml/) {
-	print p("Hold it! You are trying to upload a KML file whose format is not
-          "." like ek_ISS###.ESC#.#########.kml"),
-        p("Please refresh the page and try again.");
-    print hr, end_html;
+if (param('file0')) {
+  while (param("file$i")) {
+    my $name = param("file$i");
+    if ($name !~ m/ek_ISS(\d){3}\.ESC(\d){1}\.(\d){9}\.kml/) {
+      print p("Hold it! You are trying to upload a KML file whose format is not
+            "." like ek_ISS###.ESC#.#########.kml"),
+            p("Please refresh the page and try again.");
+      print hr, end_html;
+      die;
+    }
   }
 }
 
