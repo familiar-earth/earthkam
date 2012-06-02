@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+﻿#!/usr/bin/perl
 use strict;
 
 # This file updates the ekImages database with new correction information for 
@@ -93,7 +93,7 @@ sub update_single { # subroutine takes in image and user as input
     my $dlon = abs($east - $west);
     my $height = ($dlat / 360) * $circ_earth; #height and width are in km
     my $width = ($dlon / 360) * ($circ_earth * $cosCLat);
-    my $rotation = $rotation % 360; # rotation value that is less than 360 degrees. %= does not work.
+
     
     my($c1lat, $c1lon, $c2lat, $c2lon, $c3lat, $c3lon, $c4lat, $c4lon) = calc_corners($lat, $lon, $width, $height, $rotation);
     
@@ -150,10 +150,10 @@ sub get_angle_distances {
       $rotation = substr($line, index($line, ">")+1, index($line, "</") - index($line, ">") - 1);
     }
 	
+  }
 	close(KMLFILE);
 	
 	return ($longitude, $latitude, $rotation);
-  }
 }
 
 #calculates the distanceOff and angleOff values to update the database with
@@ -183,5 +183,7 @@ sub calc_distanceOff_angleOff {
   
   return ($distanceOff, $angleOff);
 }
+
+update_single("/home/eubank/EarthKAM/ek_winter/ek_winter_2012/completed/ek_ISS018.ESC2.035074227.kml", "something");
 
 1;
